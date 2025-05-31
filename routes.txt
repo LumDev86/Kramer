@@ -1,0 +1,9 @@
+rutas para productos:
+
+* GET/POST: https://ecommerce-kramer.onrender.com/api/products/
+* 
+
+
+rutas para categorias:
+
+* GET: https://ecommerce-kramer.onrender.com/api/categories
