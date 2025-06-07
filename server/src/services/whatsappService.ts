@@ -1,4 +1,4 @@
-import fs from "fs";
+/* import fs from "fs";
 import path from "path";
 import { Client, LocalAuth } from "whatsapp-web.js";
 import qrcode from "qrcode-terminal";
@@ -104,4 +104,4 @@ export const cleanOldSessions = () => {
   }
 };
 
-
+*/

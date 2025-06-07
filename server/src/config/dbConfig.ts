@@ -8,11 +8,11 @@ import { Order } from "../entities/Order";
 export const AppDataSource = new DataSource({
   type: "mysql",
   host: config.HOST_NAME_DATABASE,
-  port: config.PORT_DATABASE, // Usar puerto dinámico
+  port: 59260, 
   username: config.USER_NAME_DATABASE,
   password: config.PASSWORD_DATABASE,
   database: config.NAME_DATABASE,
-  synchronize: false,
+  synchronize: true,
   logging: true,
   entities: [Category, Product, Order],
 });

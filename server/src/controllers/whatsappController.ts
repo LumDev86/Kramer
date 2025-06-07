@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+/* import { Request, Response } from "express";
 import { sendWhatsAppMessage, logoutWhatsApp, resetWhatsAppSession } from "../services/whatsappService";
 
 // Controlador para enviar mensajes
@@ -25,5 +25,5 @@ export const resetSession = async (_req: Request, res: Response) => {
   const response = await resetWhatsAppSession();
   res.status(response.success ? 200 : 500).json(response);
 };
-
+*/
 
