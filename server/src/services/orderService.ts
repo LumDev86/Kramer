@@ -96,7 +96,7 @@ export class OrderService {
     }    
 }
 */
-import { OrderRepository } from "../repositories/OrderRepository";
+/*import { OrderRepository } from "../repositories/OrderRepository";
 import { ProductRepository } from "../repositories/ProductRepository";
 import { OrderDto } from "../dto/OrderDto";
 import { In } from "typeorm";
@@ -179,4 +179,4 @@ export class OrderService {
         }
     }
 }
-
+*/
