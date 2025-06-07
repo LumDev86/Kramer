@@ -3,13 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-"scripts": {
-  "prestart": "npm run build",
-  "start": "node dist/index.js",
-  "dev": "ts-node src/index.ts",
-  "build": "tsc"
-},
-
+  "scripts": {
+    "prestart": "npm run build",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "build": "tsc"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -20,7 +19,7 @@
     "@types/express-validator": "^3.0.2",
     "@types/multer": "^1.4.12",
     "@types/multer-s3": "^3.0.3",
-    "@types/node": "^22.13.5",
+    "@types/node": "^22.15.30",
     "@types/uuid": "^10.0.0",
     "aws-sdk": "^2.1692.0",
     "axios": "^1.7.9",
@@ -40,9 +39,9 @@
     "whatsapp-web.js": "^1.26.0"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.17",
-    "@types/express": "^5.0.0",
-    "@types/morgan": "^1.9.9",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/morgan": "^1.9.10",
     "@types/qrcode-terminal": "^0.12.2",
     "ts-node": "^10.9.2"
   }
