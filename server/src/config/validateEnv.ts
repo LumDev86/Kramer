@@ -11,8 +11,11 @@ const getEnvVar = (key: string): string => {
 
 export const config = {
   HOST_NAME_DATABASE: getEnvVar("NAME_HOST"),
-  PORT_DATABASE: parseInt(getEnvVar("DB_PORT"), 10), // Agregado
+  PORT_DATABASE: parseInt(getEnvVar("DB_PORT"), 10),
   USER_NAME_DATABASE: getEnvVar("DB_USER"),
   PASSWORD_DATABASE: getEnvVar("DB_PASSWORD"),
   NAME_DATABASE: getEnvVar("DB_NAME"),
 };
+
+
+
