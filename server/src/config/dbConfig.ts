@@ -8,7 +8,7 @@ import { Order } from "../entities/Order";
 export const AppDataSource = new DataSource({
   type: "mysql",
   host: config.HOST_NAME_DATABASE,
-  port: 59260, 
+  port: config.PORT_DATABASE, 
   username: config.USER_NAME_DATABASE,
   password: config.PASSWORD_DATABASE,
   database: config.NAME_DATABASE,

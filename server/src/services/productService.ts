@@ -1,7 +1,7 @@
 import { ProductDto } from "../dto/ProductDto";
 import { ProductRepository } from "../repositories/ProductRepository";
 import { CategoryRepository } from "../repositories/CategoryRepository";
-import { deleteImage } from "../utils/awsS3";
+// import { deleteImage } from "../utils/awsS3";
 
 interface MulterS3File extends Express.Multer.File {
   location: string;
@@ -60,10 +60,6 @@ export class ProductService {
     const product = await ProductRepository.findOne({ where: { id } });
     if (!product) throw new Error("Producto no encontrado.");
 
-    if (file && product.image) {
-      await deleteImage(product.image.split("/").pop()!);
-    }
-
     const imageUrl = file ? (file as MulterS3File).location : product.image;
     await ProductRepository.update(id, { ...data, image: imageUrl });
     return await ProductRepository.findOne({ where: { id }, relations: ["category"] });
@@ -72,10 +68,6 @@ export class ProductService {
   async delete(id: string) {
     const product = await ProductRepository.findOne({ where: { id } });
     if (!product) throw new Error("Producto no encontrado.");
-
-    if (product.image) {
-      await deleteImage(product.image.split("/").pop()!);
-    }
 
     await ProductRepository.delete(id);
     return { message: "Producto eliminado correctamente." };

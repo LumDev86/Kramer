@@ -33,7 +33,7 @@ export class OrderController {
         }
     }
 }
-*/
+
 import { Request, Response } from "express";
 import { OrderService } from "../services/orderService";
 
@@ -69,3 +69,4 @@ export class OrderController {
         }
     }
 }
+*/
