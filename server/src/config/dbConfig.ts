@@ -3,6 +3,7 @@ import { DataSource } from "typeorm";
 import { config } from "./validateEnv";
 import { Category } from "../entities/Category";
 import { Product } from "../entities/Product";
+import { CartItem } from "../entities/CartItem";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -11,7 +12,7 @@ export const AppDataSource = new DataSource({
   username: config.USER_NAME_DATABASE,
   password: config.PASSWORD_DATABASE,
   database: config.NAME_DATABASE,
-  synchronize: true,
+  synchronize: false,
   logging: true,
-  entities: [Category, Product],
+  entities: [Category, Product, CartItem],
 });

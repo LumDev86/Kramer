@@ -1,3 +1,31 @@
+// import { deleteImage } from "../utils/awsS3"; 
+// ⚠️ COMENTARIO IMPORTANTE PARA EL EQUIPO:
+// Antes estábamos usando AWS S3 para almacenar las imágenes (`file.location`),
+// pero **ya no contamos con ese servicio**.
+
+// 🧩 NUEVA ESTRATEGIA:
+// Ahora debemos trabajar con **imágenes cargadas localmente** desde una carpeta,
+// por ejemplo: `/public/images`.
+
+// 👉 También deberíamos permitir, como alternativa, cargar imágenes por URL externa
+// desde el formulario (por ejemplo, pegar una URL de una imagen en internet).
+
+// 🚫 ESTA LÍNEA:
+// image: file ? (file as MulterS3File).location : undefined
+
+// ✅ DEBERÍA CAMBIARSE POR ALGO COMO:
+// image: file ? `/images/${file.filename}` : data.imageURL
+
+// 🔧 ACCIONES NECESARIAS:
+// 1. Usar `multer` con `diskStorage` para guardar archivos en la carpeta `public/images`.
+// 2. En el frontend, permitir al usuario cargar una imagen desde su PC o pegar una URL.
+// 3. Validar la URL (opcional) con alguna dependencia como `validator` o `yup`.
+// 4. En la base de datos, guardar sólo la ruta relativa (ej: `/images/nombre.jpg`) o la URL.
+
+// 💡 Esto simplifica el desarrollo y evita depender de servicios externos.
+/////////////////////////////////////////////////////////////////////////////////////////
+
+
 import { ProductDto } from "../dto/ProductDto";
 import { ProductRepository } from "../repositories/ProductRepository";
 import { CategoryRepository } from "../repositories/CategoryRepository";
