@@ -25,7 +25,7 @@ export class ProductController {
 
   async create(req: Request, res: Response) {
     try {
-      res.status(201).json(await productService.create(req.body, req.file));
+      res.status(201).json(await productService.create(req.body)); // sin req.file
     } catch (error: any) {
       res.status(400).json({ error: error.message });
     }
@@ -33,7 +33,7 @@ export class ProductController {
 
   async update(req: Request, res: Response) {
     try {
-      res.json(await productService.update(req.params.id, req.body, req.file));
+      res.json(await productService.update(req.params.id, req.body)); // sin req.file
     } catch (error: any) {
       res.status(400).json({ error: error.message });
     }

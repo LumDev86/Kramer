@@ -71,25 +71,24 @@ export class ProductService {
     };
   }  
 
-  async create(data: ProductDto, file?: Express.Multer.File) {
+  async create(data: ProductDto) {
     const category = await CategoryRepository.findOne({ where: { name: data.category as unknown as string } });
     if (!category) throw new Error("La categoría especificada no existe.");
 
     const product = ProductRepository.create({ 
       ...data, 
-      category, 
-      image: file ? (file as MulterS3File).location : undefined
+      category,
+      image: data.image // ← directamente desde el body
     });
 
     return await ProductRepository.save(product);
   }
 
-  async update(id: string, data: Partial<ProductDto>, file?: Express.Multer.File) {
+  async update(id: string, data: Partial<ProductDto>) {
     const product = await ProductRepository.findOne({ where: { id } });
     if (!product) throw new Error("Producto no encontrado.");
 
-    const imageUrl = file ? (file as MulterS3File).location : product.image;
-    await ProductRepository.update(id, { ...data, image: imageUrl });
+    await ProductRepository.update(id, { ...data, image: data.image ?? product.image });
     return await ProductRepository.findOne({ where: { id }, relations: ["category"] });
   }
 
