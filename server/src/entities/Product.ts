@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, ManyToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToOne } from "typeorm";
 import { Category } from "./Category";
+import { Promotion } from "./Promotion";
 
 @Entity()
 export class Product {
@@ -8,6 +9,12 @@ export class Product {
 
   @Column({ type: "varchar", length: 255 })
   name: string;
+
+  @Column({ type: "varchar", length: 255 })
+  brand: string; 
+
+  @Column({ type: "varchar", length: 50 })
+  weight: string; 
 
   @Column({ type: "text" })
   description: string;
@@ -24,6 +31,9 @@ export class Product {
   @ManyToOne(() => Category, (category) => category.products, { nullable: false, onDelete: "CASCADE" })
   @JoinColumn({ name: "categoryId" })
   category: Category;
+
+  @OneToOne(() => Promotion, (promotion) => promotion.product, { nullable: true })
+  promotion?: Promotion;
 
 }
 
