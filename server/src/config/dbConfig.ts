@@ -4,6 +4,7 @@ import { config } from "./validateEnv";
 import { Category } from "../entities/Category";
 import { Product } from "../entities/Product";
 import { CartItem } from "../entities/CartItem";
+import { Promotion } from "../entities/Promotion"; // Importa la entidad Promotion si es necesario
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -12,7 +13,7 @@ export const AppDataSource = new DataSource({
   username: config.USER_NAME_DATABASE,
   password: config.PASSWORD_DATABASE,
   database: config.NAME_DATABASE,
-  synchronize: false,
+  synchronize: true,
   logging: true,
-  entities: [Category, Product, CartItem],
+  entities: [Category, Product, CartItem, Promotion],
 });
