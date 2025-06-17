@@ -2,18 +2,20 @@
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import { Express } from "express";
+import { config } from "./validateEnv";
 
 const options: swaggerJSDoc.Options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "E-Commerce API",
+      title: "E-Commerce Kramer API",
       version: "1.0.0",
       description: "API documentation for the E-Commerce project",
     },
     servers: [
       {
-        url: "http://localhost:3000/api",
+        url: config.PORT_SERVER_PRODUCTION, // URL del servidor local  
+        description: "Production server",      
       },
     ],
   },
