@@ -25,11 +25,12 @@ export class CategoryController {
     async create(req: Request, res: Response) {
         try {
             const category = await categoryService.create(req.body);
-            res.status(200).json(category);
+            res.status(201).json(category);
         } catch (error: any) {
-            res.status(500).json({ error: error.message });
+            res.status(400).json({ error: error.message }); // 400 por errores de validación
         }
     }
+
 
     async update(req: Request, res: Response) {
         try {

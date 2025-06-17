@@ -10,6 +10,9 @@ export class Category {
   @Column({ type: "varchar", length: 255 })
   name: string;
 
+  @Column({ type: "varchar", length: 255, nullable: true })
+  image?: string;
+
   @OneToMany(() => Product, (product) => product.category)
   products: Product[];
 

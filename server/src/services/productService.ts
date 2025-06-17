@@ -29,6 +29,7 @@
 import { ProductDto } from "../dto/ProductDto";
 import { ProductRepository } from "../repositories/ProductRepository";
 import { CategoryRepository } from "../repositories/CategoryRepository";
+import { PromotionRepository } from "../repositories/PromotionRepository";
 // import { deleteImage } from "../utils/awsS3";
 
 interface MulterS3File extends Express.Multer.File {
@@ -37,15 +38,16 @@ interface MulterS3File extends Express.Multer.File {
 
 export class ProductService {
   async getAll(page: number = 1, limit: number = 10) {
-    const [products, total] = await ProductRepository.findAndCount({
-      relations: ["category"],
+      const [products, total] = await ProductRepository.findAndCount({
+      relations: ["category", "promotion"],
       skip: (page - 1) * limit,
       take: limit,
     });
-  
+
     const sanitizedProducts = products.map(product => ({
       ...product,
-      image: product.image ? `IMAGE_${product.id}` : null, // Oculta la URL real
+      image: product.image ? `IMAGE_${product.id}` : null,
+      promotion: product.promotion ?? undefined, // ← solo si existe
     }));
 
     return {
@@ -56,29 +58,33 @@ export class ProductService {
       products: sanitizedProducts,
     };
   }
-   
+
   async getById(id: string) {
     const product = await ProductRepository.findOne({ 
       where: { id }, 
-      relations: ["category"] 
+      relations: ["category", "promotion"] 
     });
-  
+
     if (!product) throw new Error("Producto no encontrado.");
-  
+
     return {
       ...product,
-      image: product.image ? `IMAGE_${product.id}` : null, // Oculta la URL real
+      image: product.image ? `IMAGE_${product.id}` : null,
+      promotion: product.promotion ?? undefined,
     };
-  }  
+  }
 
   async create(data: ProductDto) {
     const category = await CategoryRepository.findOne({ where: { name: data.category as unknown as string } });
+    const promotion = data.promotionId ? await PromotionRepository.findOne({ where: { id: data.promotionId } }) : undefined;
+
     if (!category) throw new Error("La categoría especificada no existe.");
 
     const product = ProductRepository.create({ 
       ...data, 
       category,
-      image: data.image // ← directamente desde el body
+      promotion : undefined,
+      image: data.image,
     });
 
     return await ProductRepository.save(product);
@@ -88,8 +94,23 @@ export class ProductService {
     const product = await ProductRepository.findOne({ where: { id } });
     if (!product) throw new Error("Producto no encontrado.");
 
-    await ProductRepository.update(id, { ...data, image: data.image ?? product.image });
-    return await ProductRepository.findOne({ where: { id }, relations: ["category"] });
+    await ProductRepository.update(id, { 
+      ...data, 
+      image: data.image ?? product.image 
+    });
+
+    const updatedProduct = await ProductRepository.findOne({ 
+      where: { id }, 
+      relations: ["category", "promotion"] 
+    });
+
+    if (!updatedProduct) throw new Error("Error al obtener el producto actualizado.");
+
+    return {
+      ...updatedProduct,
+      image: updatedProduct.image ? `IMAGE_${updatedProduct.id}` : null,
+      promotion: updatedProduct.promotion ?? undefined,
+    };
   }
 
   async delete(id: string) {
@@ -103,17 +124,18 @@ export class ProductService {
   async getByCategory(categoryName: string, page: number = 1, limit: number = 10) {
     const category = await CategoryRepository.findOne({ where: { name: categoryName } });
     if (!category) throw new Error("La categoría especificada no existe.");
-  
+
     const [products, total] = await ProductRepository.findAndCount({
       where: { category },
-      relations: ["category"],
+      relations: ["category", "promotion"],
       skip: (page - 1) * limit,
       take: limit,
     });
-  
+
     const sanitizedProducts = products.map(product => ({
       ...product,
-      image: product.image ? `IMAGE_${product.id}` : null, // Oculta la URL real
+      image: product.image ? `IMAGE_${product.id}` : null,
+      promotion: product.promotion ?? undefined,
     }));
 
     return {
@@ -123,7 +145,8 @@ export class ProductService {
       totalPages: Math.ceil(total / limit),
       products: sanitizedProducts,
     };
-  }  
+  }
 }
+
 
 

@@ -3,9 +3,19 @@ import { CategoryDto } from "../dto/CategoryDto";
 import { ProductRepository } from "../repositories/ProductRepository";
 
 export class CategoryService {
-    async getAll() {
+    async getAll(page: number = 1, limit: number = 10) {
         try {
-            return await CategoryRepository.find();
+            const [categories, total] = await CategoryRepository.findAndCount({
+                skip: (page - 1) * limit,
+                take: limit,
+            });
+                return {
+                total,
+                page,
+                limit,
+                totalPages: Math.ceil(total / limit),
+                categories
+            }; 
         } catch (error) {
             throw new Error("Error al obtener las categorías.");
         }
@@ -22,13 +32,22 @@ export class CategoryService {
     }
 
     async create(data: CategoryDto) {
+        if (!data.name || data.name.trim() === "") {
+            throw new Error("El nombre de la categoría es obligatorio.");
+        }
+
         try {
-            if (!data.name || data.name.trim() === "") throw new Error("El nombre de la categoría es obligatorio.");
-            
-            const category = CategoryRepository.create({ name: data.name });
+            const exists = await CategoryRepository.findOne({ where: { name: data.name } });
+            if (exists) throw new Error("Ya existe una categoría con ese nombre.");
+
+            const category = CategoryRepository.create({
+                name: data.name.trim(),
+                image: data.image?.trim() || undefined,
+            });
+
             return await CategoryRepository.save(category);
-        } catch (error) {
-            throw new Error("Error al crear la categoría.");
+        } catch (error: any) {
+            throw new Error(error.message || "Error al crear la categoría.");
         }
     }
 
