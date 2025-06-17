@@ -83,8 +83,7 @@ export class ProductService {
     const product = ProductRepository.create({ 
       ...data, 
       category,
-      promotion : undefined,
-      image: data.image,
+      promotion : undefined
     });
 
     return await ProductRepository.save(product);
