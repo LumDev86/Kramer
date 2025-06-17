@@ -79,8 +79,11 @@ categoryRouter.get("/:id", categoryController.getById);
  *             type: object
  *             required:
  *               - name
+ *               - image
  *             properties:
  *               name:
+ *                 type: string
+ *               image:
  *                 type: string
  *     responses:
  *       201:
