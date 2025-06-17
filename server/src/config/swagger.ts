@@ -14,8 +14,12 @@ const options: swaggerJSDoc.Options = {
     },
     servers: [
       {
-        url: config.PORT_SERVER_PRODUCTION, // URL del servidor local  
-        description: "Production server",      
+        url: config.PORT_SERVER_PRODUCTION,
+        description: "Production server",
+      },
+      {
+        url: config.HOST_SERVER_LOCAL,
+        description: "Local server",
       },
     ],
   },
