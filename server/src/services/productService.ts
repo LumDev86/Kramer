@@ -30,24 +30,36 @@ import { ProductDto } from "../dto/ProductDto";
 import { ProductRepository } from "../repositories/ProductRepository";
 import { CategoryRepository } from "../repositories/CategoryRepository";
 import { PromotionRepository } from "../repositories/PromotionRepository";
-// import { deleteImage } from "../utils/awsS3";
+import { buildProductFilters, buildProductSort } from "../utils/productQueryFilter";
 
 interface MulterS3File extends Express.Multer.File {
   location: string;
 }
 
 export class ProductService {
-  async getAll(page: number = 1, limit: number = 10) {
-      const [products, total] = await ProductRepository.findAndCount({
+  async getAll(
+    page: number = 1,
+    limit: number = 10,
+    sort?: string,
+    brand?: string,
+    promotion?: boolean,
+    status?: string
+  ) {
+    const where = await buildProductFilters(brand, promotion, status);
+    const order = buildProductSort(sort);
+
+    const [products, total] = await ProductRepository.findAndCount({
+      where,
       relations: ["category", "promotion"],
       skip: (page - 1) * limit,
       take: limit,
+      order,
     });
 
     const sanitizedProducts = products.map(product => ({
       ...product,
       image: product.image ? `IMAGE_${product.id}` : null,
-      promotion: product.promotion ?? undefined, // ← solo si existe
+      promotion: product.promotion ?? undefined,
     }));
 
     return {

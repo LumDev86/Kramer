@@ -28,6 +28,28 @@ const productController = new ProductController();
  *         schema:
  *           type: integer
  *         description: Cantidad de resultados por página
+ *       - in: query
+ *         name: sort
+ *         schema:
+ *           type: string
+ *           enum: [price_asc, price_desc]
+ *         description: Ordenar por precio ascendente o descendente
+ *       - in: query
+ *         name: brand
+ *         schema:
+ *           type: string
+ *         description: Filtrar por nombre de marca
+ *       - in: query
+ *         name: promotion
+ *         schema:
+ *           type: boolean
+ *         description: Filtrar productos con promoción activa
+ *       - in: query
+ *         name: status
+ *         schema:
+ *           type: string
+ *           enum: [active, inactive]
+ *         description: Filtrar por estado del producto
  *     responses:
  *       200:
  *         description: Lista de productos

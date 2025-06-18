@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 import { Product } from "./Product";
 
 @Entity()
@@ -18,8 +18,7 @@ export class Promotion {
   @Column({ type: "json", nullable: true })
   data?: any; // Campo opcional para reglas específicas (ej: { percent: 20 })
 
-  @OneToOne(() => Product, { nullable: false, onDelete: "CASCADE" })
-  @JoinColumn({ name: "productId" })
-  product: Product;
+  @OneToMany(() => Product, (product) => product.promotion)
+  products: Product[];
   
 }
