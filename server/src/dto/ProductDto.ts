@@ -1,4 +1,5 @@
 import { Category } from "../entities/Category";
+import { ProductStatus } from "../enums/ProductStatus";
 
 export class ProductDto {
     name: string;
@@ -8,6 +9,7 @@ export class ProductDto {
     price: number;
     stock: number;
     image?: string;
+    status?: ProductStatus;
     category: Category;
     promotionId?: string; // Optional, for creating or updating products with promotions
 }
