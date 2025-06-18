@@ -25,7 +25,8 @@
 // 💡 Esto simplifica el desarrollo y evita depender de servicios externos.
 /////////////////////////////////////////////////////////////////////////////////////////
 
-
+import upload from "../middleware/validateImageProduct";
+import validator from "validator";
 import { ProductDto } from "../dto/ProductDto";
 import { ProductRepository } from "../repositories/ProductRepository";
 import { CategoryRepository } from "../repositories/CategoryRepository";
@@ -37,6 +38,9 @@ interface MulterS3File extends Express.Multer.File {
 }
 
 export class ProductService {
+
+  static uploadImage = upload.single("image");
+
   async getAll(page: number = 1, limit: number = 10) {
       const [products, total] = await ProductRepository.findAndCount({
       relations: ["category", "promotion"],
@@ -79,6 +83,7 @@ export class ProductService {
     const promotion = data.promotionId ? await PromotionRepository.findOne({ where: { id: data.promotionId } }) : undefined;
 
     if (!category) throw new Error("La categoría especificada no existe.");
+
 
     const product = ProductRepository.create({ 
       ...data, 
