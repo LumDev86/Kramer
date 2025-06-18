@@ -71,10 +71,10 @@ export interface CartContextType extends CartActions {
 }
 
 // Tarjeta de categoría
-export interface CategoryCardProps {
-  name: string;
-  image: string;
-  onClick: () => void;
+export interface CategoryProps {
+  to: string;
+  label: string;
+  img: string;
 }
 
 // Propiedades relacionadas con la apertura del carrito
