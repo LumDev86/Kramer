@@ -38,7 +38,7 @@ export class ProductController {
 
   async create(req: Request, res: Response) {
     try {
-      const newProduct = await productService.create(req.body);
+      const newProduct = await productService.create(req.body, req.file); 
       res.status(201).json({
         message: "Producto creado exitosamente.",
         product: newProduct
@@ -50,7 +50,8 @@ export class ProductController {
 
   async update(req: Request, res: Response) {
     try {
-      res.json(await productService.update(req.params.id, req.body)); // sin req.file
+      console.log("ressss", req.file);
+      res.json(await productService.update(req.params.id, req.body, req.file)); 
     } catch (error: any) {
       res.status(400).json({ error: error.message });
     }

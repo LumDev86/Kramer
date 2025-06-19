@@ -1,42 +1,20 @@
-// import { deleteImage } from "../utils/awsS3"; 
 // ⚠️ COMENTARIO IMPORTANTE PARA EL EQUIPO:
-// Antes estábamos usando AWS S3 para almacenar las imágenes (`file.location`),
-// pero **ya no contamos con ese servicio**.
-
-// 🧩 NUEVA ESTRATEGIA:
-// Ahora debemos trabajar con **imágenes cargadas localmente** desde una carpeta,
-// por ejemplo: `/public/images`.
-
-// 👉 También deberíamos permitir, como alternativa, cargar imágenes por URL externa
-// desde el formulario (por ejemplo, pegar una URL de una imagen en internet).
-
-// 🚫 ESTA LÍNEA:
-// image: file ? (file as MulterS3File).location : undefined
-
-// ✅ DEBERÍA CAMBIARSE POR ALGO COMO:
-// image: file ? `/images/${file.filename}` : data.imageURL
-
-// 🔧 ACCIONES NECESARIAS:
-// 1. Usar `multer` con `diskStorage` para guardar archivos en la carpeta `public/images`.
-// 2. En el frontend, permitir al usuario cargar una imagen desde su PC o pegar una URL.
-// 3. Validar la URL (opcional) con alguna dependencia como `validator` o `yup`.
-// 4. En la base de datos, guardar sólo la ruta relativa (ej: `/images/nombre.jpg`) o la URL.
-
-// 💡 Esto simplifica el desarrollo y evita depender de servicios externos.
-/////////////////////////////////////////////////////////////////////////////////////////
-
-
+// considerar si la sanitizacion es necesaria en este caso ya que podria no encontrar la ruta de la imagen.
+import upload from "../middleware/validateImageProduct";
+import validator from "validator";
+import fs from "fs/promises";
+import path from "path";
 import { ProductDto } from "../dto/ProductDto";
 import { ProductRepository } from "../repositories/ProductRepository";
 import { CategoryRepository } from "../repositories/CategoryRepository";
 import { PromotionRepository } from "../repositories/PromotionRepository";
 import { buildProductFilters, buildProductSort } from "../utils/productQueryFilter";
-
-interface MulterS3File extends Express.Multer.File {
-  location: string;
-}
+import { RequestHandler } from "express";
 
 export class ProductService {
+
+  static uploadImage = upload.single("image") as RequestHandler;
+
   async getAll(
     page: number = 1,
     limit: number = 10,
@@ -86,11 +64,27 @@ export class ProductService {
     };
   }
 
-  async create(data: ProductDto) {
+  async create(data: ProductDto, file?: Express.Multer.File) {
     const category = await CategoryRepository.findOne({ where: { name: data.category as unknown as string } });
     const promotion = data.promotionId ? await PromotionRepository.findOne({ where: { id: data.promotionId } }) : undefined;
 
     if (!category) throw new Error("La categoría especificada no existe.");
+
+
+    let imagePath: string | undefined;
+    if (file) {
+      imagePath = `/images/${file.filename}`;
+    } else if (data.image) {
+      if (!validator.isURL(data.image)) {
+        throw new Error("URL de imagen inválida.");
+      }
+      imagePath = data.image;
+    }
+
+    console.log("Image Path:", imagePath);
+    console.log("dedede", data.image)
+
+    data.image = imagePath;
 
     const product = ProductRepository.create({ 
       ...data, 
@@ -101,13 +95,41 @@ export class ProductService {
     return await ProductRepository.save(product);
   }
 
-  async update(id: string, data: Partial<ProductDto>) {
+  async update(id: string, data: Partial<ProductDto>, file?: Express.Multer.File) {
     const product = await ProductRepository.findOne({ where: { id } });
     if (!product) throw new Error("Producto no encontrado.");
 
+    let imagePath: string | undefined = product.image;
+    if (file) {
+      imagePath = `/images/${file.filename}`;
+      if (product.image && product.image.startsWith("/images/")) {
+        const oldImagePath = path.join(__dirname, "../../public", product.image);
+        try {
+          await fs.unlink(oldImagePath);
+        } catch (err) {
+          console.error("Error al eliminar la imagen antigua:", err);
+        }
+      }
+    } else if (data.image) {
+      if (!validator.isURL(data.image)) {
+        throw new Error("URL de imagen inválida.");
+      }
+      imagePath = data.image;
+      if (product.image && product.image.startsWith("/images/")) {
+        const oldImagePath = path.join(__dirname, "../../public", product.image);
+        try {
+          await fs.unlink(oldImagePath);
+        } catch (err) {
+          console.error("Error al eliminar la imagen antigua:", err);
+        }
+      }
+    }
+
+    console.log("Image Path:", imagePath);
+
     await ProductRepository.update(id, { 
       ...data, 
-      image: data.image ?? product.image 
+      image: imagePath,
     });
 
     const updatedProduct = await ProductRepository.findOne({ 
@@ -127,6 +149,15 @@ export class ProductService {
   async delete(id: string) {
     const product = await ProductRepository.findOne({ where: { id } });
     if (!product) throw new Error("Producto no encontrado.");
+
+    if (product.image && product.image.startsWith("/images/")) {
+      const imagePath = path.join(__dirname, "../../public", product.image);
+      try {
+        await fs.unlink(imagePath);
+      } catch (err) {
+        console.error("Error al eliminar la imagen:", err);
+      }
+    }
 
     await ProductRepository.delete(id);
     return { message: "Producto eliminado correctamente." };

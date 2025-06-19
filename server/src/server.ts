@@ -14,6 +14,7 @@ setupSwagger(server);
 server.use(cors()); // Habilita CORS para todas las solicitudes
 server.use(morgan("dev")); // Muestra logs de las peticiones en consola
 server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
 
 server.use("/api", router);
 
