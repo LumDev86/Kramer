@@ -1,0 +1,3 @@
+# Ignora todos los archivos dentro de public/images excepto .gitkeep
+public/images/*
+!public/images/.gitkeep
