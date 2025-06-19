@@ -182,27 +182,6 @@ productRouter.put("/:id", ProductService.uploadImage, productController.update);
 
 /**
  * @swagger
- * /api/products/category/{category}:
- *   get:
- *     summary: Obtener productos por nombre de categoría
- *     tags: [Products]
- *     parameters:
- *       - in: path
- *         name: category
- *         required: true
- *         schema:
- *           type: string
- *         description: Nombre de la categoría
- *     responses:
- *       200:
- *         description: Lista de productos por categoría
- *       400:
- *         description: Categoría no válida
- */
-productRouter.get("/category/:category", productController.getByCategory);
-
-/**
- * @swagger
  * /api/products/{id}:
  *   delete:
  *     summary: Eliminar un producto

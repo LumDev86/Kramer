@@ -157,32 +157,6 @@ export class ProductService {
     await ProductRepository.delete(id);
     return { message: "Producto eliminado correctamente." };
   }
-
-  async getByCategory(categoryName: string, page: number = 1, limit: number = 10) {
-    const category = await CategoryRepository.findOne({ where: { name: categoryName } });
-    if (!category) throw new Error("La categoría especificada no existe.");
-
-    const [products, total] = await ProductRepository.findAndCount({
-      where: { category },
-      relations: ["category", "promotion"],
-      skip: (page - 1) * limit,
-      take: limit,
-    });
-
-    const sanitizedProducts = products.map(product => ({
-      ...product,
-      image: product.image ? `IMAGE_${product.id}` : null,
-      promotion: product.promotion ?? undefined,
-    }));
-
-    return {
-      total,
-      page,
-      limit,
-      totalPages: Math.ceil(total / limit),
-      products: sanitizedProducts,
-    };
-  }
 }
 
 

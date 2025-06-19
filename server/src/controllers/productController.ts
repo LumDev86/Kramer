@@ -63,17 +63,5 @@ export class ProductController {
       res.status(404).json({ error: error.message });
     }
   }
-
-  async getByCategory(req: Request, res: Response) {
-    try {
-      const { category } = req.params;
-      const page = parseInt(req.query.page as string) || 1;
-      const limit = parseInt(req.query.limit as string) || 10;
-  
-      res.json(await productService.getByCategory(category, page, limit));
-    } catch (error: any) {
-      res.status(400).json({ error: error.message });
-    }
-  }
   
 }
