@@ -88,7 +88,7 @@ productRouter.get("/:id", productController.getById);
  *     requestBody:
  *       required: true
  *       content:
- *         application/json:
+ *         multipart/form-data:
  *           schema:
  *             type: object
  *             required:
@@ -114,17 +114,22 @@ productRouter.get("/:id", productController.getById);
  *                 type: integer
  *               image:
  *                 type: string
+ *                 description: URL de imagen (opcional si se sube archivo)
+ *               file:
+ *                 type: string
+ *                 format: binary
+ *                 description: Imagen del producto (opcional)
  *               category:
  *                 type: string
  *                 description: Nombre de la categoría existente
  *     responses:
  *       201:
- *         description: Producto creado
+ *         description: Producto creado exitosamente
  *       400:
  *         description: Datos inválidos
  */
-
 productRouter.post("/", ProductService.uploadImage ,productController.create);
+
 /**
  * @swagger
  * /api/products/{id}:
@@ -139,8 +144,9 @@ productRouter.post("/", ProductService.uploadImage ,productController.create);
  *           type: string
  *         description: ID del producto
  *     requestBody:
+ *       required: true
  *       content:
- *         application/json:
+ *         multipart/form-data:
  *           schema:
  *             type: object
  *             properties:
@@ -158,8 +164,14 @@ productRouter.post("/", ProductService.uploadImage ,productController.create);
  *                 type: integer
  *               image:
  *                 type: string
+ *                 description: URL de imagen alternativa (opcional si se sube archivo)
+ *               file:
+ *                 type: string
+ *                 format: binary
+ *                 description: Nueva imagen del producto (opcional)
  *               category:
  *                 type: string
+ *                 description: Nombre de la categoría existente
  *     responses:
  *       200:
  *         description: Producto actualizado
