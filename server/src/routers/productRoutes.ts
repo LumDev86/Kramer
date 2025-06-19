@@ -1,5 +1,7 @@
 import { Router } from "express";
 import { ProductController } from "../controllers/productController";
+import upload from "../middleware/validateImageProduct";
+import { ProductService } from "../services/productService";
 
 const productRouter = Router();
 const productController = new ProductController();
@@ -99,8 +101,8 @@ productRouter.get("/:id", productController.getById);
  *       400:
  *         description: Datos inválidos
  */
-productRouter.post("/", productController.create);
 
+productRouter.post("/", ProductService.uploadImage ,productController.create);
 /**
  * @swagger
  * /api/products/{id}:
@@ -142,7 +144,7 @@ productRouter.post("/", productController.create);
  *       400:
  *         description: Error al actualizar
  */
-productRouter.put("/:id", productController.update);
+productRouter.put("/:id", ProductService.uploadImage, productController.update);
 
 /**
  * @swagger
