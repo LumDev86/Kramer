@@ -81,9 +81,6 @@ export class ProductService {
       imagePath = data.image;
     }
 
-    console.log("Image Path:", imagePath);
-    console.log("dedede", data.image)
-
     data.image = imagePath;
 
     const product = ProductRepository.create({ 
@@ -124,8 +121,6 @@ export class ProductService {
         }
       }
     }
-
-    console.log("Image Path:", imagePath);
 
     await ProductRepository.update(id, { 
       ...data, 
