@@ -1,3 +1,3 @@
-# Ignora todos los archivos dentro de public/images excepto .gitkeep
-public/images/*
-!public/images/.gitkeep
+# Esta carpeta es para almacenar imágenes subidas por usuarios
+# Git ignora los archivos dentro (configurado en .gitignore)
+# pero mantiene la estructura de directorios
