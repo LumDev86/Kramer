@@ -1,23 +1,42 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Product } from './cards/Product';
+import { FaCaretDown } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
+import { ProductInterface } from '../interfaces/product';
+import { getProductsByCategory } from '../services/getProductsByCategory';
 
-const allProducts = [
-  { id: 1, name: 'Camisa', price: 25, description: 'Camisa de algodón', brand: 'Marca A', weight: '200g', image: '/images/camisa.jpg', category: 'ropa' },
-  { id: 2, name: 'Auriculares', price: 50, description: 'Auriculares inalámbricos', brand: 'Marca B', weight: '300g', image: '/images/auriculares.jpg', category: 'electronica' },
-  { id: 3, name: 'Silla', price: 10, description: 'Silla ergonómica', brand: 'Marca C', weight: '5kg', image: '/images/silla.jpg', category: 'hogar' },
-  { id: 4, name: 'Camisa', price: 50, description: 'Camisa de algodón', brand: 'Marca A', weight: '200g', image: '/images/camisa.jpg', category: 'ropa' },
-  { id: 5, name: 'Auriculares', price: 100, description: 'Auriculares inalámbricos', brand: 'Marca B', weight: '300g', image: '/images/auriculares.jpg', category: 'electronica' },
-  { id: 6, name: 'Cama', price: 100, description: 'Cama ergonómica', brand: 'Marca C', weight: '5kg', image: '/images/silla.jpg', category: 'hogar' }
-];
+const categories = ['kiosco', 'Bebidas', 'Almacen']
 
 export const Products = () => {
+  const navigate = useNavigate();
   const { category } = useParams<{ category: string }>();
   const [search, setSearch] = useState('');
-  
-  const filteredProducts = allProducts.filter(product =>
-    product.category === category && product.name.toLowerCase().includes(search.toLowerCase())
+  const [products, setProducts] = useState<ProductInterface[]>()
+  const [openCategory, setOpenCategory] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const filteredProducts = products && products.filter(product =>
+    product.name.toLowerCase().includes(search.toLowerCase())
   );
+
+  useEffect(() => {
+    if (!category) return;
+    const fetchProductByCategory = async () => {
+      setLoading(true);
+      try {
+        const data = await getProductsByCategory(category);
+        setProducts(data || []);
+      } catch (error) {
+        console.error("Error al obtener los productos por categoria:", error);
+        setProducts([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProductByCategory();
+  }, [category]);
 
   return (
     <>
@@ -28,21 +47,49 @@ export const Products = () => {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-      <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
+
+      <section onClick={() => setOpenCategory(!openCategory)} className='select-none relative rounded-[5px] outline outline-1 outline-[#6EC3F680] flex items-center justify-between px-3 py-2 my-4 bg-[#6EC3F61A] font-outfit cursor-pointer'>
+        <p>Categoría: {category}</p>
+        <FaCaretDown className={`${openCategory ? 'rotate-180' : ''} transition`} />
         {
-          filteredProducts.length > 0 ? (
-            filteredProducts.map(product => (
-              <Product key={product.id} product={product} />
-            ))
-          ) : (
-            <p className='text-center text-gray-500'>
-              {search
-                ? `No hay productos que coincidan con '${search}'.`
-                : 'No hay productos para mostrar.'}
-            </p>
+          openCategory && (
+            <div className='absolute top-12 left-0 rounded-[5px] w-full outline outline-1 outline-[#6EC3F680] flex flex-col bg-white z-50'>
+              {categories.map((ct, i) => (
+                <span
+                  key={i}
+                  onClick={() => {
+                    setOpenCategory(false);
+                    navigate(`/categoria/${ct}`);
+                  }}
+                  className='p-3 py-2 cursor-pointer hover:bg-[#6EC3F680]'
+                >
+                  {ct}
+                </span>
+              ))}
+            </div>
           )
         }
-      </div>
+      </section >
+      {loading ? (
+        <div className='w-full py-10 flex justify-center items-center flex-col'>
+          <div className="border-4 border-[#6EC3F680] border-l-transparent w-24 h-24 rounded-[50%] animate-spin"></div>
+          <p className='mt-4 text-gray-500'>Cargando productos...</p>
+        </div>
+      ) : filteredProducts && filteredProducts.length > 0 ? (
+        <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
+          {filteredProducts.map(product => (
+            <Product key={product.id} product={product} />
+          ))}
+        </div>
+      ) : (
+        <div className='w-full py-8 flex justify-center items-center'>
+          <p className='text-gray-500 text-center'>
+            {search
+              ? `No hay productos que coincidan con '${search}'.`
+              : 'No hay productos para mostrar.'}
+          </p>
+        </div>
+      )}
     </>
   );
 };

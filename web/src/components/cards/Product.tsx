@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ProductProps } from '../../interfaces/interfaces';
+import { ProductProps } from '../../interfaces/product';
 import { useCart } from '../../context/CartContext';
 
 export const Product = ({ product }: ProductProps) => {

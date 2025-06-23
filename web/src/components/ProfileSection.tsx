@@ -1,7 +1,7 @@
 import { FaClock, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import { useState, useEffect } from "react";
-import Logo from "../assets/imgLogos/Logo500.png";
-import backgroundImage from "../assets/imgLogos/Yellow Modern Corporate Banner.png"; // Importa la imagen
+import Logo from "../assets/logos/transparent.png";
+//import backgroundImage from "../assets/imgLogos/Yellow Modern Corporate Banner.png"; // Importa la imagen
 
 const isOpen = () => {
   const now = new Date();
@@ -20,7 +20,7 @@ export function ProfileSection() {
   return (
     <section
       className="bg-white rounded-lg shadow p-4 my-4 text-center bg-cover bg-center"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
+      // style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <img src={Logo} alt="Empresa" className="w-28 h-28 rounded-full mx-auto border-4 border-gray-300" />
       <h2 className="text-xl font-semibold mt-2">Kiosco Kramer</h2>
