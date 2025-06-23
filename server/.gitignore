@@ -4,3 +4,4 @@
 # Ignora todo en public/images excepto .gitkeep
 public/images/*
 !public/images/.gitkeep
+Dockerfile
