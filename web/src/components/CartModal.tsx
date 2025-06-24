@@ -1,4 +1,4 @@
-// CartModal.tsx
+/*
 import { motion } from "framer-motion";
 import { useState } from "react";
 import CartItem from "./CartItem";
@@ -56,4 +56,4 @@ const CartModal: React.FC<CartModalProps> = ({ cart, updateCartItem, decreaseQua
   );
 };
 
-export default CartModal;
+export default CartModal;*/
