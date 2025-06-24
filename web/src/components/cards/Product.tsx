@@ -1,26 +1,15 @@
-<<<<<<< HEAD
 import { useState } from 'react';
-import { ProductProps } from '../../interfaces/interfaces';
-import { useCart } from '../../context/CartContext';
+import { ProductProps } from '../../interfaces/product';
+import { useCart } from '../../hooks/useCart';
 
 export const Product = ({ product }: ProductProps) => {
   const [showPopup, setShowPopup] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const { addToCart } = useCart(); // Obtenemos la función para agregar productos al carrito
-=======
-import { useState } from "react";
-import { ProductProps } from "../../interfaces/product";
-import { useCart } from "../../hooks/useCart";
-
-export const Product = ({ product }: ProductProps) => {
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-  const { addToCart } = useCart(); 
->>>>>>> 68b326920831ad3f8b56b8502fe5fc4a3e66100b
 
   const handleAddToCart = () => {
     if (isButtonDisabled) return;
   
-<<<<<<< HEAD
     addToCart({ ...product, quantity: 1 }); // Agregar la propiedad 'quantity'
     setShowPopup(true);
     setIsButtonDisabled(true);
@@ -29,10 +18,6 @@ export const Product = ({ product }: ProductProps) => {
       setShowPopup(false);
       setIsButtonDisabled(false);
     }, 3000); // Ocultar el popup después de 3 segundos
-=======
-    addToCart({ ...product, quantity: 1 }); 
-    setIsButtonDisabled(true);
->>>>>>> 68b326920831ad3f8b56b8502fe5fc4a3e66100b
   };
 
   return (
@@ -48,17 +33,12 @@ export const Product = ({ product }: ProductProps) => {
         onClick={handleAddToCart} 
         disabled={isButtonDisabled} 
         className={`mt-3 w-full px-4 py-1 rounded ${
-<<<<<<< HEAD
           isButtonDisabled ? 'bg-gray-400' : 'bg-green-500 hover:bg-green-600 text-white'
-=======
-          isButtonDisabled ? "bg-gray-400" : "bg-green-500 hover:bg-green-600 text-white"
->>>>>>> 68b326920831ad3f8b56b8502fe5fc4a3e66100b
         }`}
       >
         Agregar al carrito
       </button>
 
-<<<<<<< HEAD
       {showPopup && (
         <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-green-500 text-white text-sm p-3 rounded-lg shadow-lg z-50 w-4/5 text-center">
           Producto agregado al carrito ✅
@@ -67,9 +47,3 @@ export const Product = ({ product }: ProductProps) => {
     </div>
   );
 }
-=======
-      {/* utilizar librería sonner */}
-    </div>
-  );
-};
->>>>>>> 68b326920831ad3f8b56b8502fe5fc4a3e66100b
