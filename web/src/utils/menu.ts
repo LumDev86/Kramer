@@ -1,7 +1,7 @@
 const categories = [
-  { to: "ropa", label: "Ropa", img: "" },
-  { to: "electronica", label: "Electrónica", img: "" },
-  { to: "hogar", label: "Hogar", img: "" },
+  { to: "kiosco", label: "kiosco", img: "" },
+  { to: "Bebidas", label: "Bebidas", img: "" },
+  { to: "Almacen", label: "Almacen", img: "" },
 ];
 
 export const menu = {

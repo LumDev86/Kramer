@@ -2,8 +2,13 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        outfit: ["Outfit", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };
 
+// "Outfit", sans-serif
