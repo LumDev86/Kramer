@@ -1,4 +1,4 @@
-// CartItem.tsx
+/*
 import { Plus, Minus } from "lucide-react";
 import { CartItemProps } from "../interfaces/interfaces";
 
@@ -31,4 +31,4 @@ const CartItem: React.FC<CartItemProps> = ({ item, updateCartItem, decreaseQuant
   );
 };
 
-export default CartItem;
+export default CartItem;*/
