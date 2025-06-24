@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Product } from './cards/Product';
-import { FaCaretDown } from "react-icons/fa";
+import { ChevronDown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { ProductInterface } from '../interfaces/product';
-import { getProductsByCategory } from '../services/getProductsByCategory';
+import { productsService } from '../services/productsService';
 
 const categories = ['kiosco', 'Bebidas', 'Almacen']
 
@@ -15,6 +15,7 @@ export const Products = () => {
   const [products, setProducts] = useState<ProductInterface[]>()
   const [openCategory, setOpenCategory] = useState<boolean>(false)
   const [loading, setLoading] = useState<boolean>(false);
+  const { getProductsByCategory } = productsService
 
   const filteredProducts = products && products.filter(product =>
     product.name.toLowerCase().includes(search.toLowerCase())
@@ -50,7 +51,7 @@ export const Products = () => {
 
       <section onClick={() => setOpenCategory(!openCategory)} className='select-none relative rounded-[5px] outline outline-1 outline-[#6EC3F680] flex items-center justify-between px-3 py-2 my-4 bg-[#6EC3F61A] font-outfit cursor-pointer'>
         <p>Categoría: {category}</p>
-        <FaCaretDown className={`${openCategory ? 'rotate-180' : ''} transition`} />
+        <ChevronDown className={`${openCategory ? 'rotate-180' : ''} transition`} />
         {
           openCategory && (
             <div className='absolute top-12 left-0 rounded-[5px] w-full outline outline-1 outline-[#6EC3F680] flex flex-col bg-white z-50'>

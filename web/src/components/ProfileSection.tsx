@@ -1,4 +1,4 @@
-import { FaClock, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { Clock, CheckCircle, XCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 import Logo from "../assets/logos/transparent.png";
 //import backgroundImage from "../assets/imgLogos/Yellow Modern Corporate Banner.png"; // Importa la imagen
@@ -31,10 +31,10 @@ export function ProfileSection() {
         🎉¡Tu kiosco de confianza! 
       </p>
       <div className="flex items-center justify-center gap-2 mt-2 text-gray-700">
-        <FaClock /> <span className="font-semibold">Horario: 11:00 A 00:00 </span>
+        <Clock /> <span className="font-semibold">Horario: 11:00 A 00:00 </span>
       </div>
       <div className={`flex items-center justify-center gap-2 mt-2 ${open ? "text-green-600" : "text-red-600"}`}>
-        {open ? <FaCheckCircle /> : <FaTimesCircle />} <span>{open ? "Abierto" : "Cerrado"}</span>
+        {open ? <CheckCircle /> : <XCircle />} <span>{open ? "Abierto" : "Cerrado"}</span>
       </div>
     </section>
   );
