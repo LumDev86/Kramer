@@ -1,8 +1,7 @@
-// src/components/Header.tsx
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import golosinasImage from '../assets/imgFlyer/Golosinas.png';
-import kioscoImage from '../assets/imgFlyer/kiosco en casa.png';
+import golosinasImage from '../assets/images/chuches.png';
+import kioscoImage from '../assets/images/kiosco-casa.png'
 
 const images = [
   golosinasImage,
@@ -10,7 +9,7 @@ const images = [
   "/images/banner3.jpg",
 ];
 
-export function Header() {
+export const Header = () => {
   return (
     <header className="w-full relative">
       <Carousel showThumbs={false} autoPlay infiniteLoop>
@@ -22,4 +21,4 @@ export function Header() {
       </Carousel>
     </header>
   );
-}
+};
