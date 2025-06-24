@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ProductProps } from '../../interfaces/product';
-import { useCart } from '../../context/CartContext';
+import { useCart } from '../../hooks/useCart';
 
 export const Product = ({ product }: ProductProps) => {
   const [showPopup, setShowPopup] = useState(false);
