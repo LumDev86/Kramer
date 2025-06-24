@@ -37,7 +37,7 @@ export const Products = () => {
     };
 
     fetchProductByCategory();
-  }, [category]);
+  }, [category, getProductsByCategory]);
 
   return (
     <>
