@@ -1,5 +1,5 @@
-import { Category } from './cards/Category';
-import { menu } from '../utils/menu';
+import { Category } from "./cards/Category";
+import { menu } from "../utils/menu";
 
 export const Categories = () => {
   return (

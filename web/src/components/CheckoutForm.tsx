@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+/*import React, { useState } from "react";
 import { CheckoutFormProps } from "../interfaces/interfaces";
 
 const CheckoutForm: React.FC<CheckoutFormProps> = ({ total, onSubmit, goBack }) => {
@@ -75,4 +75,4 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ total, onSubmit, goBack }) 
   );
 };
 
-export default CheckoutForm;
+export default CheckoutForm;*/

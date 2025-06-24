@@ -1,4 +1,4 @@
-import { useState } from "react";
+/*import { useState } from "react";
 import { ShoppingCart } from "lucide-react";
 import CartModal from "./CartModal";
 import { useCart } from "../context/CartContext";
@@ -45,7 +45,7 @@ const FloatingCartButton: React.FC = () => {
   );
 };
 
-export default FloatingCartButton;
+export default FloatingCartButton;*/
 
 
 
