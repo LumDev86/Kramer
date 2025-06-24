@@ -1,4 +1,4 @@
-const apiUrl = import.meta.env.VITE_URI;
+const apiUrl = import.meta.env.VITE_API_URL;
 
 export const getProductsByCategory = async (category: string) => {
   try {
