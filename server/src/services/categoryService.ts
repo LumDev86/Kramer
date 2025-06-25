@@ -77,7 +77,7 @@ export class CategoryService {
         }
     }
 
-    async getProductsByCategoryName(categoryName: string) {
+    async getProductsByCategoryName(categoryName: string, page: number = 1, limit: number = 10) {
         try {
             // Buscar la categoría por su nombre
             const category = await CategoryRepository.findOne({
@@ -86,17 +86,23 @@ export class CategoryService {
 
             if (!category) throw new Error("Categoría no encontrada.");
 
-            // Buscar los productos que pertenecen a la categoría encontrada
-            const products = await ProductRepository.find({
+            // Buscar productos de esa categoría con paginación
+            const [products, total] = await ProductRepository.findAndCount({
                 where: { category: { id: category.id } },
-                relations: ["category"]
+                relations: ["category"],
+                skip: (page - 1) * limit,
+                take: limit,
             });
 
-            if (products.length === 0) throw new Error("No hay productos en esta categoría.");
-
-            return products;
+            return {
+                total,
+                page,
+                limit,
+                totalPages: Math.ceil(total / limit),
+                products
+            };
         } catch (error) {
             throw new Error("Error al obtener productos por nombre de categoría.");
         }
     }
-}
+}    
