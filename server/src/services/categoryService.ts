@@ -1,3 +1,9 @@
+// ⚠️ IMPORTANTE:
+// Al eliminar una categoría, los productos asociados se borran automáticamente (por onDelete: "CASCADE").
+// Sin embargo, si esos productos tienen imágenes en Cloudinary, las imágenes NO se eliminan automáticamente.
+// Tarea pendiente: antes de borrar la categoría, obtener los productos relacionados y eliminar sus imágenes de Cloudinary.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 import { CategoryRepository } from "../repositories/CategoryRepository";
 import { CategoryDto } from "../dto/CategoryDto";
 import { ProductRepository } from "../repositories/ProductRepository";
@@ -78,28 +84,24 @@ export class CategoryService {
     }
 
     async getProductsByCategoryName(categoryName: string, page: number = 1, limit: number = 10) {
-        try {
-            // Buscar la categoría por su nombre
-            const category = await CategoryRepository.findOne({
-                where: { name: categoryName }
-            });
+    try {
+            const category = await CategoryRepository.findOne({ where: { name: categoryName } });
 
             if (!category) throw new Error("Categoría no encontrada.");
 
-            // Buscar productos de esa categoría con paginación
-            const [products, total] = await ProductRepository.findAndCount({
-                where: { category: { id: category.id } },
-                relations: ["category"],
-                skip: (page - 1) * limit,
-                take: limit,
-            });
+            const [products, total] = await ProductRepository.createQueryBuilder("product")
+            .where("product.categoryId = :categoryId", { categoryId: category.id })
+            .skip((page - 1) * limit)
+            .take(limit)
+            .getManyAndCount();
 
             return {
-                total,
-                page,
-                limit,
-                totalPages: Math.ceil(total / limit),
-                products
+            category: category.name,    
+            total,
+            page,
+            limit,
+            totalPages: Math.ceil(total / limit),
+            products,
             };
         } catch (error) {
             throw new Error("Error al obtener productos por nombre de categoría.");

@@ -1,5 +1,18 @@
-// ⚠️ COMENTARIO IMPORTANTE PARA EL EQUIPO:
-// considerar si la sanitizacion es necesaria en este caso ya que podria no encontrar la ruta de la imagen.
+/**
+ * NOTA IMPORTANTE ⚠️
+ * Actualmente las imágenes se están guardando localmente en la carpeta `public/images/` 
+ * y se eliminan manualmente al actualizar o borrar productos.
+ * 
+ * Debemos reemplazar este manejo local de archivos 
+ * con una solución basada en Cloudinary (que ya está integrada en las variables de entorno .env).
+ * 
+ * Esto implicaría:
+ * - Subir imágenes directamente a Cloudinary desde `multer`.
+ * - Guardar solo la URL pública de Cloudinary en la base de datos.
+ * - Eliminar las llamadas a `fs.unlink()` que intentan borrar archivos locales.
+ * 
+ * Dejar este comentario como recordatorio hasta que se implemente la migración completa.
+ */
 import upload from "../middleware/validateImageProduct";
 import validator from "validator";
 import fs from "fs/promises";
