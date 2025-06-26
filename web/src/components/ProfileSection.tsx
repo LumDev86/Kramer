@@ -1,6 +1,6 @@
 import { Clock, CheckCircle, XCircle } from "lucide-react";
 import { useState, useEffect } from "react";
-import Logo from "../assets/logos/transparent.png";
+import Logo from "../assets/logos/logo_kramer.png";
 //import backgroundImage from "../assets/imgLogos/Yellow Modern Corporate Banner.png"; // Importa la imagen
 
 const isOpen = () => {
@@ -19,7 +19,7 @@ export function ProfileSection() {
 
   return (
     <section
-      className="bg-white rounded-lg shadow p-4 my-4 text-center bg-cover bg-center"
+      className="bg-white rounded-lg shadow p-4 text-center bg-cover bg-center"
       // style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <img src={Logo} alt="Empresa" className="w-28 h-28 rounded-full mx-auto border-4 border-gray-300" />
