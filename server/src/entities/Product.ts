@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, Index } from "typeorm";
 import { Category } from "./Category";
 import { Promotion } from "./Promotion";
 import { ProductStatus } from "../enums/ProductStatus";
@@ -34,6 +34,7 @@ export class Product {
 
   @ManyToOne(() => Category, (category) => category.products, { nullable: false, onDelete: "CASCADE" })
   @JoinColumn({ name: "categoryId" })
+  @Index()
   category: Category;
 
   @ManyToOne(() => Promotion, (promotion) => promotion.products, { nullable: true, onDelete: "SET NULL" })
