@@ -35,7 +35,7 @@ export class Product {
   @Column({ type: "enum", enum: ProductStatus, default: ProductStatus.ACTIVE, })
   status: ProductStatus;
 
-  @ManyToOne(() => Category, (category) => category.products, { nullable: false, onDelete: "CASCADE" })
+  @ManyToOne(() => Category, (category) => category.products, { nullable: false })
   @JoinColumn({ name: "categoryId" })
   @Index()
   category: Category;
