@@ -13,7 +13,7 @@ export const AppDataSource = new DataSource({
   username: config.USER_NAME_DATABASE,
   password: config.PASSWORD_DATABASE,
   database: config.NAME_DATABASE,
-  synchronize: false,
+  synchronize: true,
   dropSchema: true, // Cambia a false en producción
   logging: true,
   entities: [Category, Product, CartItem, Promotion],
