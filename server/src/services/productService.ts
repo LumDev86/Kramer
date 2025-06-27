@@ -13,7 +13,7 @@
  * 
  * Dejar este comentario como recordatorio hasta que se implemente la migración completa.
  */
-import upload from "../middleware/validateImageProduct";
+import upload from "../middleware/cloudinaryMulter";
 import validator from "validator";
 import fs from "fs/promises";
 import path from "path";
@@ -23,6 +23,7 @@ import { CategoryRepository } from "../repositories/CategoryRepository";
 import { PromotionRepository } from "../repositories/PromotionRepository";
 import { buildProductFilters, buildProductSort } from "../utils/productQueryFilter";
 import { RequestHandler } from "express";
+import cloudinary from "../config/cloudinary";
 
 export class ProductService {
 
@@ -83,21 +84,21 @@ export class ProductService {
 
     if (!category) throw new Error("La categoría especificada no existe.");
 
+    let imageUrl: string | undefined;
+    let publicId: string | undefined;
 
-    let imagePath: string | undefined;
     if (file) {
-      imagePath = `/images/${file.filename}`;
+      imageUrl = file.path;
+      publicId = file.filename; 
     } else if (data.image) {
-      if (!validator.isURL(data.image)) {
-        throw new Error("URL de imagen inválida.");
-      }
-      imagePath = data.image;
+      if (!validator.isURL(data.image)) throw new Error("URL de imagen inválida.");
+      imageUrl = data.image;
     }
 
-    data.image = imagePath;
-
     const product = ProductRepository.create({ 
-      ...data, 
+      ...data,
+      image: imageUrl,
+      imagePublicId: publicId, 
       category,
       promotion : undefined
     });
@@ -109,35 +110,30 @@ export class ProductService {
     const product = await ProductRepository.findOne({ where: { id } });
     if (!product) throw new Error("Producto no encontrado.");
 
-    let imagePath: string | undefined = product.image;
+     let imageUrl = product.image;
+    let publicId = product.imagePublicId;
+
     if (file) {
-      imagePath = `/images/${file.filename}`;
-      if (product.image && product.image.startsWith("/images/")) {
-        const oldImagePath = path.join(__dirname, "../../public", product.image);
+      if (publicId) {
         try {
-          await fs.unlink(oldImagePath);
+          await cloudinary.uploader.destroy(publicId);
         } catch (err) {
-          console.error("Error al eliminar la imagen antigua:", err);
+          console.error("Error al eliminar la imagen anterior de Cloudinary:", err);
         }
       }
+
+      imageUrl = file.path;
+      publicId = file.filename;
     } else if (data.image) {
-      if (!validator.isURL(data.image)) {
-        throw new Error("URL de imagen inválida.");
-      }
-      imagePath = data.image;
-      if (product.image && product.image.startsWith("/images/")) {
-        const oldImagePath = path.join(__dirname, "../../public", product.image);
-        try {
-          await fs.unlink(oldImagePath);
-        } catch (err) {
-          console.error("Error al eliminar la imagen antigua:", err);
-        }
-      }
+      if (!validator.isURL(data.image)) throw new Error("URL de imagen inválida.");
+      imageUrl = data.image;
+      publicId = undefined; 
     }
 
     await ProductRepository.update(id, { 
       ...data, 
-      image: imagePath,
+      image: imageUrl,
+      imagePublicId: publicId,
     });
 
     const updatedProduct = await ProductRepository.findOne({ 
@@ -158,12 +154,11 @@ export class ProductService {
     const product = await ProductRepository.findOne({ where: { id } });
     if (!product) throw new Error("Producto no encontrado.");
 
-    if (product.image && product.image.startsWith("/images/")) {
-      const imagePath = path.join(__dirname, "../../public", product.image);
+    if (product.imagePublicId) {
       try {
-        await fs.unlink(imagePath);
+        await cloudinary.uploader.destroy(product.imagePublicId);
       } catch (err) {
-        console.error("Error al eliminar la imagen:", err);
+        console.error("Error al eliminar la imagen de Cloudinary:", err);
       }
     }
 

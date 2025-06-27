@@ -19,6 +19,11 @@ export const config = {
   // Variables de entorno para el servidor Local y de Producción
   PORT_SERVER_PRODUCTION: getEnvVar("URL_PRODUCCION"),
   HOST_SERVER_LOCAL: getEnvVar("URL_LOCAL"),
+
+  // Cloudinary
+  CLOUDINARY_CLOUD_NAME: getEnvVar("CLOUDINARY_CLOUD_NAME"),
+  CLOUDINARY_API_KEY: getEnvVar("CLOUDINARY_API_KEY"),
+  CLOUDINARY_API_SECRET: getEnvVar("CLOUDINARY_API_SECRET"),
 };
 
 

@@ -29,6 +29,9 @@ export class Product {
   @Column({ type: "varchar", length: 255, nullable: true })
   image?: string;
 
+  @Column({ type: "varchar", length: 255, nullable: true })
+  imagePublicId?: string;
+
   @Column({ type: "enum", enum: ProductStatus, default: ProductStatus.ACTIVE, })
   status: ProductStatus;
 
