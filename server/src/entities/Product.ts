@@ -35,10 +35,10 @@ export class Product {
   @Column({ type: "enum", enum: ProductStatus, default: ProductStatus.ACTIVE, })
   status: ProductStatus;
 
-  @ManyToOne(() => Category, (category) => category.products, { nullable: false, onDelete: "CASCADE" })
+  @ManyToOne(() => Category, (category) => category.products, { nullable: true, onDelete: "SET NULL" })
   @JoinColumn({ name: "categoryId" })
   @Index()
-  category: Category;
+  category: Category | null;
 
   @ManyToOne(() => Promotion, (promotion) => promotion.products, { nullable: true, onDelete: "SET NULL" })
   @JoinColumn({ name: "promotionId" })
@@ -46,4 +46,6 @@ export class Product {
 
 }
 
+
+// Diagnosticar la base de datos.
 

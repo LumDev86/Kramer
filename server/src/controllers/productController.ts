@@ -50,7 +50,8 @@ export class ProductController {
 
   async update(req: Request, res: Response) {
     try {
-      res.json(await productService.update(req.params.id, req.body, req.file)); 
+      const result = await productService.update(req.params.id, req.body, req.file);
+      res.json(result);
     } catch (error: any) {
       res.status(400).json({ error: error.message });
     }
@@ -63,5 +64,5 @@ export class ProductController {
       res.status(404).json({ error: error.message });
     }
   }
-  
+    
 }

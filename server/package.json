@@ -7,7 +7,8 @@
     "prestart": "npm run build",
     "start": "node dist/index.js",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js"
   },
   "keywords": [],
   "author": "",
@@ -30,7 +31,6 @@
     "reflect-metadata": "^0.2.2",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
-    "typeorm": "^0.3.20",
     "typescript": "^5.7.3",
     "uuid": "^11.1.0"
   },
@@ -43,6 +43,7 @@
     "@types/swagger-ui-express": "^4.1.8",
     "@types/validator": "^13.15.2",
     "ts-node": "^10.9.2",
-    "ts-node-dev": "^2.0.0"
+    "ts-node-dev": "^2.0.0",
+    "typeorm": "^0.3.25"
   }
 }
