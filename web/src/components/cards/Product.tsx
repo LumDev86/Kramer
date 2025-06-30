@@ -1,16 +1,23 @@
-import { useState } from "react";
-import { ProductProps } from "../../interfaces/product";
-import { useCart } from "../../hooks/useCart";
+import { useState } from 'react';
+import { ProductProps } from '../../interfaces/product';
+import { useCart } from '../../hooks/useCart';
 
 export const Product = ({ product }: ProductProps) => {
+  const [showPopup, setShowPopup] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-  const { addToCart } = useCart(); 
+  const { addToCart } = useCart(); // Obtenemos la función para agregar productos al carrito
 
   const handleAddToCart = () => {
     if (isButtonDisabled) return;
   
-    addToCart({ ...product, quantity: 1 }); 
+    addToCart({ ...product, quantity: 1 }); // Agregar la propiedad 'quantity'
+    setShowPopup(true);
     setIsButtonDisabled(true);
+  
+    setTimeout(() => {
+      setShowPopup(false);
+      setIsButtonDisabled(false);
+    }, 3000); // Ocultar el popup después de 3 segundos
   };
 
   return (
@@ -26,13 +33,17 @@ export const Product = ({ product }: ProductProps) => {
         onClick={handleAddToCart} 
         disabled={isButtonDisabled} 
         className={`mt-3 w-full px-4 py-1 rounded ${
-          isButtonDisabled ? "bg-gray-400" : "bg-green-500 hover:bg-green-600 text-white"
+          isButtonDisabled ? 'bg-gray-400' : 'bg-green-500 hover:bg-green-600 text-white'
         }`}
       >
         Agregar al carrito
       </button>
 
-      {/* utilizar librería sonner */}
+      {showPopup && (
+        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-green-500 text-white text-sm p-3 rounded-lg shadow-lg z-50 w-4/5 text-center">
+          Producto agregado al carrito ✅
+        </div>
+      )}
     </div>
   );
-};
+}

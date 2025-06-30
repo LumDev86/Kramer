@@ -1,5 +1,5 @@
-export interface CategoryProps {
-  to: string;
-  label: string;
-  img: string;
+export interface CategoryInterface {
+  id: string;
+  name: string;
+  image: string;
 }
