@@ -1,7 +1,7 @@
-import { CartItemRepository } from "../repositories/CartItemRepository";
-import { ProductRepository } from "../repositories/ProductRepository";
+import { CartItemRepository } from "@repositories/cart/CartItemRepository";
+import { ProductRepository } from "@repositories/product/ProductRepository";
 import { Repository } from "typeorm";
-import { CartItem } from "../entities/CartItem";
+import { CartItem } from "@entities/CartItem";
 
 export class CartService {
   private cartRepository: Repository<CartItem>;

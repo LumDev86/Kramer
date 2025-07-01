@@ -1,69 +1,15 @@
 import { Router } from "express";
-import { CategoryController } from "../controllers/CategoryController";
+import { CategoryController } from "@controllers/category/CategoryController";
 
-const categoryRouter = Router();
+const adminCategoryRouter = Router();
 const categoryController = new CategoryController();
 
 /**
  * @swagger
  * tags:
- *   name: Categories
+ *   name: Categories ADMIN
  *   description: Endpoints para gestionar categorías
  */
-
-/**
- * @swagger
- * /api/categories:
- *   get:
- *     summary: Obtener todas las categorías
- *     tags: [Categories]
- *     responses:
- *       200:
- *         description: Lista de categorías
- */
-categoryRouter.get("/", categoryController.getAll);
-
-/**
- * @swagger
- * /api/categories/{name}/products:
- *   get:
- *     summary: Obtener productos por nombre de categoría
- *     tags: [Categories]
- *     parameters:
- *       - in: path
- *         name: name
- *         required: true
- *         schema:
- *           type: string
- *         description: Nombre de la categoría
- *     responses:
- *       200:
- *         description: Lista de productos
- *       400:
- *         description: Categoría no encontrada
- */
-categoryRouter.get("/:name/products", categoryController.getProductsByCategoryName);
-
-/**
- * @swagger
- * /api/categories/{id}:
- *   get:
- *     summary: Obtener una categoría por ID
- *     tags: [Categories]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: ID de la categoría
- *     responses:
- *       200:
- *         description: Categoría encontrada
- *       404:
- *         description: Categoría no encontrada
- */
-categoryRouter.get("/:id", categoryController.getById);
 
 /**
  * @swagger
@@ -91,7 +37,7 @@ categoryRouter.get("/:id", categoryController.getById);
  *       400:
  *         description: Datos inválidos
  */
-categoryRouter.post("/", categoryController.create);
+adminCategoryRouter.post("/", categoryController.create);
 
 /**
  * @swagger
@@ -121,7 +67,7 @@ categoryRouter.post("/", categoryController.create);
  *       400:
  *         description: Error al actualizar
  */
-categoryRouter.put("/:id", categoryController.update);
+adminCategoryRouter.put("/:id", categoryController.update);
 
 /**
  * @swagger
@@ -142,6 +88,6 @@ categoryRouter.put("/:id", categoryController.update);
  *       404:
  *         description: Categoría no encontrada
  */
-categoryRouter.delete("/:id", categoryController.delete);
+adminCategoryRouter.delete("/:id", categoryController.delete);
 
-export default categoryRouter;
+export default adminCategoryRouter;

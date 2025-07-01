@@ -1,5 +1,5 @@
-import { Category } from "../entities/Category";
-import { ProductStatus } from "../enums/ProductStatus";
+import { Category } from "@entities/Category";
+import { ProductStatus } from "@enums/ProductStatus";
 
 export class ProductDto {
     name: string;

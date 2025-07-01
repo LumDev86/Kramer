@@ -4,9 +4,9 @@
 // Tarea pendiente: antes de borrar la categoría, obtener los productos relacionados y eliminar sus imágenes de Cloudinary.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-import { CategoryRepository } from "../repositories/CategoryRepository";
-import { CategoryDto } from "../dto/CategoryDto";
-import { ProductRepository } from "../repositories/ProductRepository";
+import { CategoryRepository } from "@repositories/category/CategoryRepository";
+import { CategoryDto } from "@dto/category/CategoryDto";
+import { ProductRepository } from "@repositories/product/ProductRepository";
 
 export class CategoryService {
     async getAll(page: number = 1, limit: number = 10) {

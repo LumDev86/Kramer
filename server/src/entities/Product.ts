@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, Index } from "typeorm";
 import { Category } from "./Category";
 import { Promotion } from "./Promotion";
-import { ProductStatus } from "../enums/ProductStatus";
+import { ProductStatus } from "@enums/ProductStatus";
 
 @Entity()
 export class Product {

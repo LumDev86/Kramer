@@ -1,5 +1,5 @@
 import server from "./server";
-import { AppDataSource } from "./config/dbConfig";
+import { AppDataSource } from "@config/dbConfig";
 
 let keepAliveInterval: NodeJS.Timeout | null = null;
 

@@ -1,12 +1,12 @@
-import upload from "../middleware/cloudinaryMulter";
+import upload from "@middlewares/cloudinaryMulter";
 import validator from "validator";
-import { ProductDto } from "../dto/ProductDto";
-import { ProductRepository } from "../repositories/ProductRepository";
-import { CategoryRepository } from "../repositories/CategoryRepository";
-import { PromotionRepository } from "../repositories/PromotionRepository";
-import { buildProductFilters, buildProductSort } from "../utils/productQueryFilter";
+import { ProductDto } from "@dto/product/ProductDto";
+import { ProductRepository } from "@repositories/product/ProductRepository";
+import { CategoryRepository } from "@repositories/category/CategoryRepository";
+import { PromotionRepository } from "@repositories/promotion/PromotionRepository";
+import { buildProductFilters, buildProductSort } from "@utils/productQueryFilter";
 import { RequestHandler } from "express";
-import cloudinary from "../config/cloudinary";
+import cloudinary from "@config/cloudinary";
 
 export class ProductService {
 
