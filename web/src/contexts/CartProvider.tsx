@@ -13,11 +13,11 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
   };
 
-  const removeFromCart = (id: number) => {
+  const removeFromCart = (id: string) => {
     setCart(prevCart => prevCart.filter(item => item.id !== id));
   };
 
-  const updateCartItem = (id: number, quantity: number) => {
+  const updateCartItem = (id: string, quantity: number) => {
     if (quantity <= 0) {
       removeFromCart(id);
     } else {

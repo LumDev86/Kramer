@@ -12,14 +12,14 @@ export interface CartContextType {
   cart: CartProduct[];
   total: number;
   addToCart: (item: CartProduct) => void;
-  updateCartItem: (id: number, quantity: number) => void;
-  removeFromCart: (id: number) => void;
+  updateCartItem: (id: string, quantity: number) => void;
+  removeFromCart: (id: string) => void;
 }
 
 export interface CartItemProps {
   item: CartProduct;
-  updateCartItem: (id: number, quantity: number) => void;
-  removeFromCart: (id: number) => void;
+  updateCartItem: (id: string, quantity: number) => void;
+  removeFromCart: (id: string) => void;
 }
 
 /*
