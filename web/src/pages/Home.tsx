@@ -5,7 +5,9 @@ import { useEffect, useState } from 'react';
 import { CategoryInterface } from '../interfaces/category';
 import { categoriesService } from '../services/categoryServices';
 
-export const Home = () => {
+
+
+export default function Home() {
   const [getCategory, setGetCategory] = useState<CategoryInterface[]>()
   const [loading, setLoading] = useState<boolean>(false)
 

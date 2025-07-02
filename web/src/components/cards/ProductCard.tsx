@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ProductProps } from '../../interfaces/product';
 import { useCart } from '../../hooks/useCart';
 
-export const Product = ({ product }: ProductProps) => {
+export const ProductCard = ({ product }: ProductProps) => {
   const [showPopup, setShowPopup] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const { addToCart } = useCart(); // Obtenemos la función para agregar productos al carrito
