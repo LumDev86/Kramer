@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import ShopLayout from '../layouts/ShopLayout';
 
-// Lazy-loaded pages
 const Home = lazy(() => import('../pages/Home'));
 const Category = lazy(() => import('../pages/Category'));
 const Cart = lazy(() => import('../pages/Cart'));
@@ -10,6 +9,7 @@ const NotFound = lazy(() => import('../pages/NotFound'));
 
 export const AppRoutes = () => {
   return (
+    // TODO cambiar por loader circular
     <Suspense fallback={<div>Cargando...</div>}>
       <Routes>
         <Route path='/' element={<ShopLayout />}>

@@ -1,4 +1,4 @@
-export interface ProductInterface {
+export interface Product {
   id: string;
   name: string;
   price: number;
@@ -11,5 +11,10 @@ export interface ProductInterface {
 }
 
 export interface ProductProps {
-  product: ProductInterface;
+  product: Product;
+}
+
+export interface ProductsProps {
+  category: string;
+  search: string;
 }
