@@ -7,16 +7,16 @@ const productController = new ProductController();
 /**
  * @swagger
  * tags:
- *   name: Products
- *   description: Endpoints para obtener productos
+ *   name: User - Products
+ *   description: Endpoints para obtener productos disponibles
  */
 
 /**
  * @swagger
- * /api/products:
+ * /api/user/products:
  *   get:
  *     summary: Obtener todos los productos
- *     tags: [Products]
+ *     tags: [User - Products]
  *     parameters:
  *       - in: query
  *         name: page
@@ -58,10 +58,10 @@ userProductRouter.get("/", productController.getAll);
 
 /**
  * @swagger
- * /api/products/{id}:
+ * /api/user/products/{id}:
  *   get:
  *     summary: Obtener un producto por ID
- *     tags: [Products]
+ *     tags: [User - Products]
  *     parameters:
  *       - in: path
  *         name: id

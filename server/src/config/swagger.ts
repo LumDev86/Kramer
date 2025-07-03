@@ -23,7 +23,11 @@ const options: swaggerJSDoc.Options = {
       },
     ],
   },
-  apis: ["./src/routers/*.ts", "./src/dto/*.ts"], // Ajustá la ruta si es diferente
+  apis: [
+    "./src/routers/**/*.ts",
+    "./src/controllers/**/*.ts",
+    "./src/dto/*.ts"
+  ],
 };
 
 const swaggerSpec = swaggerJSDoc(options);

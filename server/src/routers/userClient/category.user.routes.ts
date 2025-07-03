@@ -8,16 +8,16 @@ const categoryController = new CategoryController();
 /**
  * @swagger
  * tags:
- *   name: Categories USER
- *   description: Endpoints para obtener categorías
+ *   name: User - Categories
+ *   description: Endpoints para visualizar categorías de productos
  */
 
 /**
  * @swagger
- * /api/categories:
+ * /api/user/categories:
  *   get:
  *     summary: Obtener todas las categorías
- *     tags: [Categories]
+ *     tags: [User - Categories]
  *     responses:
  *       200:
  *         description: Lista de categorías
@@ -28,10 +28,10 @@ userCategoryRouter.get("/", categoryController.getAll);
 
 /**
  * @swagger
- * /api/categories/{name}/products:
+ * /api/user/categories/{name}/products:
  *   get:
  *     summary: Obtener productos por nombre de categoría
- *     tags: [Categories]
+ *     tags: [User - Categories]
  *     parameters:
  *       - in: path
  *         name: name
@@ -52,10 +52,10 @@ userCategoryRouter.get("/:name/products", categoryController.getProductsByCatego
 
 /**
  * @swagger
- * /api/categories/{id}:
+ * /api/user/categories/{id}:
  *   get:
  *     summary: Obtener una categoría por ID
- *     tags: [Categories]
+ *     tags: [User - Categories]
  *     parameters:
  *       - in: path
  *         name: id

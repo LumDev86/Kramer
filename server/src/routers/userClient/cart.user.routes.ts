@@ -7,16 +7,16 @@ const cartController = new CartController();
 /**
  * @swagger
  * tags:
- *   name: Cart
- *   description: Endpoints para manejar el carrito de compras
+ *   name: User - Cart
+ *   description: Endpoints para manejar el carrito de compras del usuario
  */
 
 /**
  * @swagger
- * /api/cart/{sessionId}:
+ * /api/user/cart/{sessionId}:
  *   get:
  *     summary: Obtener todos los productos del carrito por sessionId
- *     tags: [Cart]
+ *     tags: [User - Cart]
  *     parameters:
  *       - in: path
  *         name: sessionId
@@ -32,10 +32,10 @@ cartRouter.get("/:sessionId", cartController.getItems.bind(cartController));
 
 /**
  * @swagger
- * /api/cart/{sessionId}/items:
+ * /api/user/cart/{sessionId}/items:
  *   post:
  *     summary: Agregar un producto al carrito
- *     tags: [Cart]
+ *     tags: [User - Cart]
  *     parameters:
  *       - in: path
  *         name: sessionId
@@ -65,10 +65,10 @@ cartRouter.post("/:sessionId/items", cartController.addItem.bind(cartController)
 
 /**
  * @swagger
- * /api/cart/{sessionId}/items/{cartItemId}:
+ * /api/user/cart/{sessionId}/items/{cartItemId}:
  *   put:
  *     summary: Actualizar la cantidad de un producto en el carrito
- *     tags: [Cart]
+ *     tags: [User - Cart]
  *     parameters:
  *       - in: path
  *         name: sessionId
@@ -103,10 +103,10 @@ cartRouter.put("/:sessionId/items/:cartItemId", cartController.updateItem.bind(c
 
 /**
  * @swagger
- * /api/cart/{sessionId}/items/{cartItemId}:
+ * /api/user/cart/{sessionId}/items/{cartItemId}:
  *   delete:
  *     summary: Eliminar un producto del carrito
- *     tags: [Cart]
+ *     tags: [User - Cart]
  *     parameters:
  *       - in: path
  *         name: sessionId
@@ -126,10 +126,10 @@ cartRouter.delete("/:sessionId/items/:cartItemId", cartController.removeItem.bin
 
 /**
  * @swagger
- * /api/cart/{sessionId}:
- *   delete:
+ * /api/user/cart/{sessionId}:
+user/ *   delete:
  *     summary: Vaciar todo el carrito de una sesión
- *     tags: [Cart]
+ *     tags: [User - Cart]
  *     parameters:
  *       - in: path
  *         name: sessionId
