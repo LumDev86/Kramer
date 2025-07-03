@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ProductService } from "@services/productService";
+import { ProductService } from "@/services/user/product.user.service";
 
 const productService = new ProductService();
 
@@ -28,6 +28,7 @@ export class ProductController {
     }
   }
 
+
   async getById(req: Request, res: Response) {
     try {
       res.json(await productService.getById(req.params.id));
@@ -36,6 +37,7 @@ export class ProductController {
     }
   }
 
+  // Método para crear un nuevo producto Corresponde a la folder admin
   async create(req: Request, res: Response) {
     try {
       const newProduct = await productService.create(req.body, req.file); 
@@ -48,6 +50,7 @@ export class ProductController {
     }
   }
 
+  // Método para actualizar un producto Corresponde a la folder admin
   async update(req: Request, res: Response) {
     try {
       const result = await productService.update(req.params.id, req.body, req.file);
@@ -57,6 +60,7 @@ export class ProductController {
     }
   }
 
+  // Método para eliminar un producto Corresponde a la folder admin
   async delete(req: Request, res: Response) {
     try {
       res.status(200).json(await productService.delete(req.params.id));

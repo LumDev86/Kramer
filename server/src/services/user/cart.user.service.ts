@@ -1,5 +1,5 @@
-import { CartItemRepository } from "@repositories/cart/CartItemRepository";
-import { ProductRepository } from "@repositories/product/ProductRepository";
+import { CartItemRepository } from "@/repositories/CartItemRepository";
+import { ProductRepository } from "@/repositories/ProductRepository";
 import { Repository } from "typeorm";
 import { CartItem } from "@entities/CartItem";
 

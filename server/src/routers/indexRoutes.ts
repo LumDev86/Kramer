@@ -1,9 +1,9 @@
 import { Router } from "express";
-import userProductRouter from "@/routers/user/userProductRoutes";
-import userCategoryRouter from "@/routers/user/userCategoryRoutes";
-import adminProductRouter from "@/routers/admin/adminProductRoutes";
-import adminCategoryRouter from "@/routers/admin/adminCategoryRoutes";
-import cartRouter from "@routes/cart/cartRoutes";
+import userProductRouter from "@/routers/user/product.user.routes";
+import userCategoryRouter from "@/routers/user/category.user.routes";
+// import adminProductRouter from "@/routers/admin/product.admin.routes";
+// import adminCategoryRouter from "@/routers/admin/category.admin.routes";
+import cartRouter from "@/routers/user/cart.user.routes";
 
 const router = Router();
 
@@ -15,7 +15,7 @@ router.use("/user/categories", userCategoryRouter);
 router.use("/user/products", userProductRouter);
 
 // Rutas para admins
-router.use("/admin/categories", adminCategoryRouter);
-router.use("/admin/products", adminProductRouter);
+// router.use("/admin/categories", adminCategoryRouter);
+// router.use("/admin/products", adminProductRouter);
 
 export default router;

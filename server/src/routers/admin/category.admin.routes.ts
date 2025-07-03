@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { CategoryController } from "@controllers/category/CategoryController";
+// import { CategoryController } from "@/controllers/user/category.user.controller";
 
-const adminCategoryRouter = Router();
-const categoryController = new CategoryController();
+// const adminCategoryRouter = Router();
+// const categoryController = new CategoryController();
 
 /**
  * @swagger
@@ -37,7 +37,7 @@ const categoryController = new CategoryController();
  *       400:
  *         description: Datos inválidos
  */
-adminCategoryRouter.post("/", categoryController.create);
+// adminCategoryRouter.post("/", categoryController.create);
 
 /**
  * @swagger
@@ -67,7 +67,7 @@ adminCategoryRouter.post("/", categoryController.create);
  *       400:
  *         description: Error al actualizar
  */
-adminCategoryRouter.put("/:id", categoryController.update);
+// adminCategoryRouter.put("/:id", categoryController.update);
 
 /**
  * @swagger
@@ -88,6 +88,7 @@ adminCategoryRouter.put("/:id", categoryController.update);
  *       404:
  *         description: Categoría no encontrada
  */
-adminCategoryRouter.delete("/:id", categoryController.delete);
+// adminCategoryRouter.delete("/:id", categoryController.delete);
 
-export default adminCategoryRouter;
+// export default adminCategoryRouter;
+

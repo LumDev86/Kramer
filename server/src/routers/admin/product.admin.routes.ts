@@ -1,9 +1,9 @@
-import { Router } from "express";
-import { ProductController } from "@controllers/product/productController";
-import { ProductService } from "@services/productService";
+// import { Router } from "express";
+// import { ProductController } from "@/controllers/user/product.user.controller";
+// import { ProductService } from "@/services/user/product.user.service";
 
-const adminProductRouter = Router();
-const productController = new ProductController();
+// const adminProductRouter = Router();
+// const productController = new ProductController();
 
 /**
  * @swagger
@@ -61,7 +61,7 @@ const productController = new ProductController();
  *       400:
  *         description: Datos inválidos
  */
-adminProductRouter.post("/", ProductService.uploadImage ,productController.create);
+// adminProductRouter.post("/", ProductService.uploadImage ,productController.create);
 
 /**
  * @swagger
@@ -111,7 +111,7 @@ adminProductRouter.post("/", ProductService.uploadImage ,productController.creat
  *       400:
  *         description: Error al actualizar
  */
-adminProductRouter.put("/:id", ProductService.uploadImage, productController.update);
+// adminProductRouter.put("/:id", ProductService.uploadImage, productController.update);
 
 /**
  * @swagger
@@ -132,7 +132,7 @@ adminProductRouter.put("/:id", ProductService.uploadImage, productController.upd
  *       404:
  *         description: Producto no encontrado
  */
-adminProductRouter.delete("/:id", productController.delete);
+// adminProductRouter.delete("/:id", productController.delete);
 
-export default adminProductRouter;
+// export default adminProductRouter;
 
