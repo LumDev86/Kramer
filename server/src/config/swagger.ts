@@ -12,6 +12,28 @@ const options: swaggerJSDoc.Options = {
       version: "1.0.0",
       description: "API documentation for the E-Commerce project",
     },
+    tags: [
+      {
+        name: "User - Products",
+        description: "Rutas para productos visibles para usuarios finales",
+      },
+      {
+        name: "User - Categories",
+        description: "Rutas para visualizar categorías de productos",
+      },
+      {
+        name: "User - Cart",
+        description: "Rutas del carrito de compras del usuario",
+      },
+      {
+        name: "Admin",
+        description: "Rutas para el panel administrativo",
+      },
+      {
+        name: "CRM",
+        description: "Rutas para gestión de clientes, ventas y otras áreas del CRM",
+      },
+    ],
     servers: [
       {
         url: config.PORT_SERVER_PRODUCTION,
