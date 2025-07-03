@@ -1,5 +1,5 @@
 import { useCart } from "../hooks/useCart";
-import CartProductCard from "../components/cards/CartProductCard";
+import CartItem from "../components/cards/CartItem";
 import { ShoppingCart } from "lucide-react";
 import { CartProduct } from "../interfaces/cart";
 
@@ -13,7 +13,8 @@ export default function Cart() {
         id: ct.id,
         name: ct.name,
         price: ct.price,
-        quantity: ct.quantity
+        quantity: ct.quantity,
+        cartItemId: ct.cartItemId
       })
     });
     console.log({
@@ -35,11 +36,10 @@ export default function Cart() {
       <section className="flex flex-col gap-4">
         {
           cart.map((pr, i) => (
-            <CartProductCard
+            <CartItem
               key={i}
               {...pr}
               quantity={pr.quantity ?? 1}
-              product={pr}
             />
           ))
         }

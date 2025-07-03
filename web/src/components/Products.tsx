@@ -15,7 +15,7 @@ export const Products = ({
   );
 
   if (isLoading) return <Loader />;
-  if (error) return <p className="text-red-500">Error cargando la información</p>;
+  if (error) return <p className="text-red-500 text-center">Error cargando la información</p>;
 
   return (
     <>

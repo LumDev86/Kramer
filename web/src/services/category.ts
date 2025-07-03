@@ -10,7 +10,7 @@ const getAllCategories = async (): Promise<Category[]> => {
     return response.data.categories;
   } catch (error) {
     const axiosError = error as AxiosError;
-    console.error("[getAllCategories] Error fetching data:", axiosError.response ?? axiosError.message);
+    console.error("[getAllCategories] Error fetching data:", axiosError.response?.data ?? axiosError.message);
     throw error;
   }
 };
@@ -21,7 +21,7 @@ const getProductsByCategory = async (category: string): Promise<Product[]> => {
     return response.data;
   } catch (error) {
     const axiosError = error as AxiosError;
-    console.error("[getProductsByCategory] Error fetching data:", axiosError.response ?? axiosError.message);
+    console.error("[getProductsByCategory] Error fetching data:", axiosError.response?.data ?? axiosError.message);
     throw error;
   }
 };
