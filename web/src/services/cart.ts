@@ -2,10 +2,11 @@ import axios, { AxiosError } from "axios";
 import { AddProductToCart } from "../interfaces/cart";
 
 const apiUrl = import.meta.env.VITE_API_URL;
+const prefijo = `${apiUrl}/api/user`
 
 const addProductToCart = async (product: AddProductToCart, sessionId: string) => {
   try {
-    const response = await axios.post(`${apiUrl}/api/cart/${sessionId}/items`, product);
+    const response = await axios.post(`${prefijo}/cart/${sessionId}/items`, product);
     return response.data;
   } catch (error) {
     const axiosError = error as AxiosError;
@@ -16,7 +17,7 @@ const addProductToCart = async (product: AddProductToCart, sessionId: string) =>
 
 const updateProductFromCart = async (sessionId: string, cartItemId: string, quantity: number) => {
   try {
-    const response = await axios.put(`${apiUrl}/api/cart/${sessionId}/items/${cartItemId}`, { quantity });
+    const response = await axios.put(`${prefijo}/cart/${sessionId}/items/${cartItemId}`, { quantity });
     return response.data;
   } catch(error) {
     const axiosError = error as AxiosError;
@@ -27,7 +28,7 @@ const updateProductFromCart = async (sessionId: string, cartItemId: string, quan
 
 const removeProductFromCart = async (sessionId: string, cartItemId: string) => {
   try {
-    await axios.delete(`${apiUrl}/api/cart/${sessionId}/items/${cartItemId}`);
+    await axios.delete(`${prefijo}/cart/${sessionId}/items/${cartItemId}`);
   } catch(error) {
     const axiosError = error as AxiosError;
     console.error("[updateProductFromCart] Error fetching data:", axiosError.response?.data ?? axiosError.message);
