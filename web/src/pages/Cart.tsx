@@ -1,28 +1,11 @@
 import { useCart } from "../hooks/useCart";
 import CartItem from "../components/cards/CartItem";
 import { ShoppingCart } from "lucide-react";
-import { CartProduct } from "../interfaces/cart";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
+  const navigate = useNavigate();
   const { cart, total } = useCart();
-
-  const sendData = () => {
-    const products: CartProduct[] = [];
-    cart.forEach(ct => {
-      products.push({
-        id: ct.id,
-        name: ct.name,
-        price: ct.price,
-        quantity: ct.quantity,
-        cartItemId: ct.cartItemId
-      })
-    });
-    console.log({
-      products,
-      totalPrice: total,
-      totalShipment: 1.9
-    })
-  }
 
   return (
     <section className='font-outfit flex flex-col gap-8 my-[10px]'>
@@ -49,7 +32,7 @@ export default function Cart() {
         <p>Envío: $1.99</p>
         <p className="text-right text-2xl">Total: ${(total + 1.99).toFixed(2)}</p>
       </div>
-      <button onClick={sendData} className="flex items-center justify-center gap-2 bg-[#8DE68A] text-[#242424] rounded-full py-2">
+      <button onClick={()=>navigate('/checkout')} className="flex items-center justify-center gap-2 bg-[#8DE68A] text-[#242424] rounded-full py-2">
         <ShoppingCart color="#242424" className="bg-transparent"/>
         Proceder al pago
       </button>

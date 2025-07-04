@@ -13,6 +13,7 @@
     "test:ui": "vitest --ui"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.1.1",
     "@tanstack/react-query": "^5.81.5",
     "axios": "^1.10.0",
     "lucide-react": "^0.475.0",
