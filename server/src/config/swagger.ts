@@ -26,6 +26,10 @@ const options: swaggerJSDoc.Options = {
         description: "Rutas del carrito de compras del usuario",
       },
       {
+        name: "User - Checkout",
+        description: "Endpoints relacionados con el proceso de checkout de usuarios",
+      },
+      {
         name: "Admin",
         description: "Rutas para el panel administrativo",
       },
