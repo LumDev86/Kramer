@@ -1,4 +1,4 @@
-import { DataSource, Repository } from "typeorm";
+import { Repository } from "typeorm";
 import { CartItem } from "@entities/CartItem";
 import { AppDataSource } from "@config/dbConfig";
 

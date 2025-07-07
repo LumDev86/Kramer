@@ -47,5 +47,3 @@ export class Product {
 }
 
 
-// Diagnosticar la base de datos.
-

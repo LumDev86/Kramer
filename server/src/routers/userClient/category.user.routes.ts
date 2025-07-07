@@ -47,9 +47,6 @@ userCategoryRouter.get("/", categoryController.getAll);
  */
 userCategoryRouter.get("/:name/products", categoryController.getProductsByCategoryName);
 
-
-
-
 /**
  * @swagger
  * /api/user/categories/{id}:
@@ -71,5 +68,6 @@ userCategoryRouter.get("/:name/products", categoryController.getProductsByCatego
  */
 userCategoryRouter.get("/:id", categoryController.getById);
 
+userCategoryRouter.post("/", categoryController.create);
 
 export default userCategoryRouter;

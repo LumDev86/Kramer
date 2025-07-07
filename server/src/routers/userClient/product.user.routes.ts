@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { ProductController } from "@/controllers/user/product.user.controller";
+import upload from "@/middleware/cloudinaryMulter";
 
 const userProductRouter = Router();
 const productController = new ProductController();
@@ -76,6 +77,9 @@ userProductRouter.get("/", productController.getAll);
  *         description: Producto no encontrado
  */
 userProductRouter.get("/:id", productController.getById);
+
+
+userProductRouter.post("/", upload.single("image"), productController.create);
 
 
 export default userProductRouter;
