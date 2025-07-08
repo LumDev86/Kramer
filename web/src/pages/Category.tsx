@@ -29,9 +29,9 @@ const Category = () => {
       />
       <section id="filter-Bar">
         <SearchInput
-          placeholder="Buscar por nombre o marca"
-          search={search}
-          setSearch={setSearch}
+          placeholder="Busca producto o marca"
+          value={search}
+          onChange={setSearch} 
         />
         <CategorySelect 
           category={category} 
