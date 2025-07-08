@@ -3,15 +3,17 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import CheckoutForm from "../components/CheckoutForm";
-import { removeSessionId } from "../utils/sessionId";
+import { generateSessionId, removeSessionId } from "../utils/sessionId";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { checkoutSchema } from "../schemas/checkout";
 import type { z } from "zod";
+import { useCreateCheckout } from "../hooks/useCreateCheckout";
 
 export type CheckoutFormSchema = z.infer<typeof checkoutSchema>;
 
 export default function Checkout() {
-  const { total, cart, clearCart } = useCart()
+  const { mutate } = useCreateCheckout();
+  const { total, clearCart } = useCart()
   const navigate = useNavigate();
 
   const {
@@ -25,23 +27,30 @@ export default function Checkout() {
   const paymentMethod = watch("paymentMethod")
 
   const onSubmit = (data: CheckoutFormSchema) => {
-    console.log(cart)
-    const { alias, cvu, titular, ...rest } = data;
+    const { alias, cbu, accountHolderName, ...rest } = data;
     const payload = {
       ...rest,
-      products: cart,
-      totalProducts: total,
-      totalShipment: 1.99,
-      total: total + 1.99,
+      sessionId: generateSessionId(),
       ...(data.paymentMethod === "mercado_pago"
-        ? { mercado_pago: { alias, cvu, titular } }
+        ? { alias, cbu, accountHolderName }
         : null)
     };
 
-    clearCart();
-    removeSessionId();
-    console.log(payload);
-    navigate('/')
+    mutate(
+      payload,
+      {
+        onSuccess: (data) => {
+          clearCart();
+          removeSessionId();
+          navigate('/')
+
+          console.log("response del checkout desde el backend:",data)
+        },
+        onError: () => {
+          console.error("Error al enviar los datos del checkout")
+        }
+      }
+    )
   };
 
   return (

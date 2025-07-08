@@ -35,7 +35,7 @@ export default function CheckoutForm({ register, errors, paymentMethod }: Checko
                 id={option.id}
                 type="radio"
                 value={option.value}
-                {...register("paymentMethod", { required: true })}
+                {...register("paymentMethod")}
                 className="h-6 w-6 accent-black cursor-pointer"
               />
               <label htmlFor={option.id} className="font-medium text-lg cursor-pointer">{option.label}</label>

@@ -2,7 +2,7 @@ const personalFields = [
   { id: "email", type: "email", placeholder: "Correo" },
   { id: "address", type: "text", placeholder: "Domicilio" },
   { id: "fullName", type: "text", placeholder: "Nombre Completo" },
-  { id: "phone", type: "number", placeholder: "Número de Teléfono" }
+  { id: "phoneNumber", type: "text", placeholder: "Número de Teléfono" }
 ] as const;
 
 const paymentOptions = [
@@ -19,18 +19,18 @@ const mercadoPagoFields = [
     defaultValue: "kioscokramer.mp",
   },
   {
-    id: "cvu",
+    id: "cbu",
     type: "text",
     label: "CVU",
     placeholder: "CVU",
     defaultValue: "0000003100045871234567",
   },
   {
-    id: "titular",
+    id: "accountHolderName",
     type: "text",
     label: "Titular",
     placeholder: "Titular",
-    defaultValue: "Kramer Comercio S.A",
+    defaultValue: "Lucas Segovia",
   },
 ] as const;
 
