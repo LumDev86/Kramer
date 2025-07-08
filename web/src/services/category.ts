@@ -6,7 +6,7 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 const getAllCategories = async (): Promise<Category[]> => {
   try {
-    const response = await axios.get<{ categories: Category[] }>(`${apiUrl}/api/categories`);
+    const response = await axios.get<{ categories: Category[] }>(`${apiUrl}/api/user/categories`);
     return response.data.categories;
   } catch (error) {
     const axiosError = error as AxiosError;
@@ -17,7 +17,7 @@ const getAllCategories = async (): Promise<Category[]> => {
 
 const getProductsByCategory = async (category: string): Promise<Product[]> => {
   try {
-    const response = await axios.get<Product[]>(`${apiUrl}/api/categories/${category}/products`);
+    const response = await axios.get<Product[]>(`${apiUrl}/api/user/categories/${category}/products`);
     return response.data;
   } catch (error) {
     const axiosError = error as AxiosError;
