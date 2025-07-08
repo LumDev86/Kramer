@@ -5,6 +5,7 @@ import ShopLayout from '../layouts/ShopLayout';
 const Home = lazy(() => import('../pages/Home'));
 const Category = lazy(() => import('../pages/Category'));
 const Cart = lazy(() => import('../pages/Cart'));
+const Checkout = lazy(() => import('../pages/Checkout'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 
 export const AppRoutes = () => {
@@ -16,6 +17,7 @@ export const AppRoutes = () => {
           <Route index element={<Home />} />
           <Route path='categoria/:category' element={<Category />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/checkout' element={<Checkout />} />
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>

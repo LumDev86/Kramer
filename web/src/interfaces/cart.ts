@@ -3,9 +3,10 @@ import { Dispatch, SetStateAction } from "react";
 export interface CartProduct {
   id: string;
   name: string;
-  price: number;
+  price: string;
   image?: string;
-  quantity?: number;
+  quantity: number;
+  cartItemId: string;
 }
 
 export interface CartContextType {
@@ -14,6 +15,7 @@ export interface CartContextType {
   addToCart: (item: CartProduct) => void;
   updateCartItem: (id: string, quantity: number) => void;
   removeFromCart: (id: string) => void;
+  clearCart: () => void;
 }
 
 export interface CartItemProps {
@@ -22,6 +24,8 @@ export interface CartItemProps {
   removeFromCart: (id: string) => void;
 }
 
+export type AddProductToCart = Pick<CartProduct, "id" | "quantity">;
+export type UpdateProductFromCart = Pick<CartProduct, "cartItemId" | "quantity">;
 /*
 export interface CartModalProps {
   cart: CartProduct[];

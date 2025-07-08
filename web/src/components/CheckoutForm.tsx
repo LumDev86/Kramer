@@ -1,78 +1,74 @@
-/*import React, { useState } from "react";
-import { CheckoutFormProps } from "../interfaces/interfaces";
+import { UseFormRegister, FieldErrors } from 'react-hook-form'
+import CheckoutInput from './CheckoutInput'
+import { CheckoutFormSchema } from '../pages/Checkout'
+import { inputs } from '../utils/inputs'
 
-const CheckoutForm: React.FC<CheckoutFormProps> = ({ total, onSubmit, goBack }) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    paymentMethod: "efectivo",
-    address: "",
-    phone: ""
-  });
+interface CheckoutFormProps {
+  register: UseFormRegister<CheckoutFormSchema>
+  errors: FieldErrors<CheckoutFormSchema>
+  paymentMethod: string
+}
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSubmit(formData);
-  };
-
+export default function CheckoutForm({ register, errors, paymentMethod }: CheckoutFormProps) {
   return (
-    <div>
-      <h2 className="text-xl font-bold mb-4">Datos de Envío</h2>
-      <p className="font-bold text-lg">Total: ${total.toFixed(2)}</p>
-      <form onSubmit={handleSubmit} className="space-y-3">
-        <input
-          type="text"
-          name="name"
-          placeholder="Nombre y Apellido"
-          value={formData.name}
-          onChange={handleChange}
-          className="w-full p-2 border rounded"
-          required
-        />
-        <select
-          name="paymentMethod"
-          value={formData.paymentMethod}
-          onChange={handleChange}
-          className="w-full p-2 border rounded"
-        >
-          <option value="efectivo">Efectivo</option>
-          <option value="mercado_pago">Mercado Pago</option>
-        </select>
-        {formData.paymentMethod === "mercado_pago" && (
-          <div className="p-2 bg-gray-100 rounded">
-            <p><strong>Alias:</strong> alias.mp</p>
-            <p><strong>Titular:</strong> Juan Pérez</p>
-            <p><strong>CVU:</strong> 0000003100055555555555</p>
-          </div>
-        )}
-        <input
-          type="text"
-          name="address"
-          placeholder="Domicilio"
-          value={formData.address}
-          onChange={handleChange}
-          className="w-full p-2 border rounded"
-          required
-        />
-        <input
-          type="text"
-          name="phone"
-          placeholder="Número de Teléfono"
-          value={formData.phone}
-          onChange={handleChange}
-          className="w-full p-2 border rounded"
-          required
-        />
-        <button type="submit" className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
-          Confirmar Compra
-        </button>
-      </form>
-      <button onClick={goBack} className="mt-3 text-blue-500 underline">Volver</button>
-    </div>
-  );
-};
+    <>
+      <div className="flex flex-col gap-4">
+        <h2 className="text-2xl font-bold">Datos personales</h2>
+        {inputs.personalFields.map((field) => (
+          <CheckoutInput
+            key={field.id}
+            id={field.id}
+            type={field.type}
+            placeholder={field.placeholder}
+            register={register}
+            errors={errors}
+          />
+        ))}
+      </div>
+      <div className="flex flex-col gap-4">
+        <h2 className="text-2xl font-bold">Pago</h2>
 
-export default CheckoutForm;*/
+        {inputs.paymentOptions.map((option) => (
+          <div key={option.id} className="flex flex-col gap-2">
+            <div className="relative flex items-center gap-2">
+              <input
+                id={option.id}
+                type="radio"
+                value={option.value}
+                {...register("paymentMethod", { required: true })}
+                className="h-6 w-6 accent-black cursor-pointer"
+              />
+              <label htmlFor={option.id} className="font-medium text-lg cursor-pointer">{option.label}</label>
+            </div>
+
+            {paymentMethod === "cash" && option.value === "cash" && (
+              <p className="text-lg font-medium pl-8">
+                Nota: Si hay promociones futuras podrás recibirlas por WhatsApp o email.
+              </p>
+            )}
+
+            {paymentMethod === "mercado_pago" && option.value === "mercado_pago" && (
+              <div className="flex flex-col gap-4 pl-8">
+                {inputs.mercadoPagoFields.map((field) => (
+                  <CheckoutInput
+                    key={field.id}
+                    id={field.id}
+                    type={field.type}
+                    label={field.label}
+                    placeholder={field.placeholder}
+                    defaultValue={field.defaultValue}
+                    register={register}
+                    errors={errors}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+        {errors.paymentMethod && (
+          <p className="text-red-500 text-sm pt-1">Debes seleccionar un método de pago</p>
+        )}
+      </div>
+    </>
+  )
+}
