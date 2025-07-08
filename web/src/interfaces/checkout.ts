@@ -2,13 +2,14 @@ export interface CheckoutProps {
   email: string;
   address: string;
   fullName: string;
-  phone: number;
+  phoneNumber: string;
   paymentMethod: string;
   alias?: string;
-  cvu?: string;
-  titular?: string;
+  cbu?: string;
+  accountHolderName?: string;
 }
 
+export type CheckoutSubmit = CheckoutProps & {sessionId: string}; 
 // export interface CheckoutProps {
 //   total: number;
 //   onSubmit: (
