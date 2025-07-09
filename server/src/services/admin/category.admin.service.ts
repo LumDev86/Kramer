@@ -1,9 +1,3 @@
-// ⚠️ IMPORTANTE:
-// Al eliminar una categoría, los productos asociados se borran automáticamente (por onDelete: "CASCADE").
-// Sin embargo, si esos productos tienen imágenes en Cloudinary, las imágenes NO se eliminan automáticamente.
-// Tarea pendiente: antes de borrar la categoría, obtener los productos relacionados y eliminar sus imágenes de Cloudinary.
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 import { CategoryRepository } from "@/repositories/CategoryRepository";
 import { CategoryDto } from "@/dto/CategoryDto";
 

@@ -2,7 +2,7 @@
 import { CheckoutFormRepository } from "@/repositories/CheckoutFormRepository";
 import { CartItemRepository } from "@/repositories/CartItemRepository";
 import { CreateCheckoutDto } from "@/dto/CheckoutDto";
-import { PaymentMethod } from "@enums/PaymentMethod"; // ajusta el path según tu proyecto
+import { PaymentMethod } from "@enums/PaymentMethod";
 
 export class CheckoutService {
   async createCheckout(data: CreateCheckoutDto) {
