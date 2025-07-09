@@ -35,26 +35,26 @@ const checkoutController = new CheckoutController();
  *               paymentMethod:
  *                 type: string
  *                 enum: [cash, mercado_pago]
- *                 example: cash
+ *                 example: mercado_pago
  *               sessionId:
  *                 type: string
  *                 example: abc123
  *               monto:
  *                 type: number
  *                 example: 5000
- *                 description: Requerido solo si el método de pago es "cash"
+ *                 description: Monto que entregará el cliente. Requerido solo si el método de pago es "cash".
  *               cbu:
  *                 type: string
  *                 example: "0000003100098765432101"
- *                 description: Requerido solo si el método de pago es "mercado_pago"
+ *                 description: CBU del comercio donde el cliente debe realizar la transferencia. Solo para "mercado_pago".
  *               alias:
  *                 type: string
  *                 example: "kramer.store.mp"
- *                 description: Requerido solo si el método de pago es "mercado_pago"
+ *                 description: Alias de la cuenta del comercio para pagos vía Mercado Pago. Solo para "mercado_pago".
  *               accountHolderName:
  *                 type: string
- *                 example: Lucas Segovia
- *                 description: Requerido solo si el método de pago es "mercado_pago"
+ *                 example: Kramer Store
+ *                 description: Titular de la cuenta del comercio. Solo para pagos por "mercado_pago".
  *     responses:
  *       201:
  *         description: Pedido creado exitosamente
