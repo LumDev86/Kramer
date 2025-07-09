@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { BannerCarousel } from "../components/BannerCarousel";
 import { SearchInput } from "../components/SearchInput";
 import { Categories } from "../components/Categories";
-import { Suggestions } from "../components/Suggestions";
+import { Promotions } from "../components/Promotions";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const Home = () => {
         onSearch={handleSearch}
       />
       <Categories />
-      <Suggestions />
+      <Promotions />
     </div>
   );
 };

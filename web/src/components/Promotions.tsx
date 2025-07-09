@@ -4,7 +4,7 @@ import { Product } from "./cards/Product";
 // import { Product as Loader } from "./loaders/Product";
 import { suggestions } from "../utils/mocks";
 
-export const Suggestions = () => {
+export const Promotions = () => {
   // const { data = [], isLoading, error } = ();
 
   // if (isLoading) return <Loader />;
@@ -12,7 +12,7 @@ export const Suggestions = () => {
 
   return (
    <section>
-      <h2 className="font-bold text-2xl pb-4">Recomendados</h2>
+      <h2 className="font-bold text-2xl pb-4">Promociones</h2>
       <Swiper
         slidesPerView={2.3}
         spaceBetween={15}
@@ -21,20 +21,20 @@ export const Suggestions = () => {
         className="mySwiper"
         breakpoints={{
           768: {
-            slidesPerView: 2.8,
-            spaceBetween: 20,
+            slidesPerView: 4.8,
+            spaceBetween: 25,
           },
           919: {
-            slidesPerView: 3.5,
-            spaceBetween: 20,
+            slidesPerView: 5.5,
+            spaceBetween: 25,
           },
           1024: {
-            slidesPerView: 3.8,
-            spaceBetween: 20,
+            slidesPerView: 5.3,
+            spaceBetween: 25,
           },
           1200: {
-            slidesPerView: 4.8,
-            spaceBetween: 20,
+            slidesPerView: 6.5,
+            spaceBetween: 25,
           }
         }}>
         {

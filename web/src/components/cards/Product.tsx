@@ -2,7 +2,7 @@ import { ProductProps } from "../../interfaces/product";
 import { useCart } from "../../hooks/useCart";
 import { useAddProductToCart } from "../../hooks/useAddProductToCart";
 import { toast } from "sonner";
-import { ShoppingCart, Check } from "lucide-react";
+import { ShoppingCart, SquareCheck } from "lucide-react";
 
 export const Product = ({ product }: ProductProps) => {
   const { addToCart } = useCart();
@@ -33,20 +33,28 @@ export const Product = ({ product }: ProductProps) => {
   };
 
   return (
-    <div className="font-outfit gap-3 flex flex-col">
-      <div className="bg-[#6EC3F64D] h-[134px] relative rounded-lg cursor-pointer flex flex-col 
-      justify-center items-center font-outfit gap-3">
-        <img src={product.image} alt={product.name} />
+    <div className="flex flex-col gap-[10px]">
+      <div className="bg-[#6EC3F64D] rounded-2xl cursor-pointer">
+        <img src={product.image} alt={product.name} className="h-28 object-contain mx-auto p-1" />
       </div>
-      <h3 className="text-lg font-semibold">{product.name}</h3>
+      <h3 className="text-lg font-medium">{product.name}</h3>
       <p className="text-2xl font-medium">${product.price}</p>
       <button
         onClick={handleAddToCart}
         disabled={isPending}
-        className={`w-full flex items-center justify-center gap-2 text-lg rounded-full py-2 
-          ${isPending ? "bg-[#8de68aa3] text-[#242424a3]" : "bg-[#8de68a] hover:bg-green-60 text-[#242424]"}`}
-      >
-        {isPending ? (<Check color="#242424a3" />) : (<ShoppingCart fill="#242424" />)} Agregar
+        className={`flex items-center justify-center gap-2 text-sm rounded-full py-2 
+        ${isPending ? "bg-[#C6F3C4] text-[#A0A0A0]" : "bg-[#8de68a] hover:bg-green-60"}`}>
+        {
+          isPending ? (
+            <>
+              <SquareCheck stroke="none" size={18} /> Agregado
+            </>
+          ) : (
+            <>
+              <ShoppingCart fill="currentColor" size={18} /> Agregar
+            </>
+          )
+        } 
       </button>
     </div>
   );

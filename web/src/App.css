@@ -13,3 +13,11 @@ input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.lucide-square-check rect {
+  fill: #A0A0A0;  
+}
+
+.lucide-square-check path {
+  stroke: #FDFBFF;
+}
