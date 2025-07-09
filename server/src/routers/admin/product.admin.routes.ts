@@ -35,11 +35,7 @@ const productAdminController = new ProductAdminController();
  *               image:
  *                 type: string
  *                 format: binary
- *               status:
- *                 type: boolean
  *               category:
- *                 type: string
- *               promotionId:
  *                 type: string
  *     responses:
  *       201:
