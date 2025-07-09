@@ -6,13 +6,6 @@ const checkoutController = new CheckoutController();
 
 /**
  * @swagger
- * tags:
- *   name: User - Checkout
- *   description: Endpoints relacionados con el proceso de checkout de usuarios
- */
-
-/**
- * @swagger
  * /api/user/checkout:
  *   post:
  *     summary: Crear un nuevo pedido (checkout) con los productos del carrito
@@ -42,18 +35,26 @@ const checkoutController = new CheckoutController();
  *               paymentMethod:
  *                 type: string
  *                 enum: [cash, mercado_pago]
+ *                 example: cash
  *               sessionId:
  *                 type: string
  *                 example: abc123
+ *               monto:
+ *                 type: number
+ *                 example: 5000
+ *                 description: Requerido solo si el método de pago es "cash"
  *               cbu:
  *                 type: string
  *                 example: "0000003100098765432101"
+ *                 description: Requerido solo si el método de pago es "mercado_pago"
  *               alias:
  *                 type: string
  *                 example: "kramer.store.mp"
+ *                 description: Requerido solo si el método de pago es "mercado_pago"
  *               accountHolderName:
  *                 type: string
  *                 example: Lucas Segovia
+ *                 description: Requerido solo si el método de pago es "mercado_pago"
  *     responses:
  *       201:
  *         description: Pedido creado exitosamente
