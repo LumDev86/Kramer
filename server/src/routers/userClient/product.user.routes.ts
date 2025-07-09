@@ -78,9 +78,5 @@ userProductRouter.get("/", productController.getAll);
  */
 userProductRouter.get("/:id", productController.getById);
 
-
-userProductRouter.post("/", upload.single("image"), productController.create);
-
-
 export default userProductRouter;
 

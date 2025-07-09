@@ -1,13 +1,126 @@
 import { Router } from "express";
-import { ProductController } from "@/controllers/user/product.user.controller";
-import { ProductService } from "@/services/user/product.user.service";
+import { ProductAdminController } from "@/controllers/admin/product.admin.controller";
+import { ProductAdminService } from "@/services/admin/product.admin.service";
 
 const adminProductRouter = Router();
-const productController = new ProductController();
+const productAdminController = new ProductAdminController();
 
-adminProductRouter.post("/", ProductService.uploadImage ,productController.create);
-adminProductRouter.put("/:id", ProductService.uploadImage, productController.update);
-adminProductRouter.delete("/:id", productController.delete);
+/**
+ * @swagger
+ * /api/admin/products:
+ *   post:
+ *     summary: Crear un nuevo producto
+ *     tags: [Admin]
+ *     consumes:
+ *       - multipart/form-data
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               brand:
+ *                 type: string
+ *               weight:
+ *                 type: number
+ *               price:
+ *                 type: number
+ *               stock:
+ *                 type: integer
+ *               description:
+ *                 type: string
+ *               image:
+ *                 type: string
+ *                 format: binary
+ *               status:
+ *                 type: boolean
+ *               category:
+ *                 type: string
+ *               promotionId:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Producto creado exitosamente
+ *       400:
+ *         description: Error al crear el producto
+ */
+adminProductRouter.post("/", ProductAdminService.uploadImage ,productAdminController.create);
+
+/**
+ * @swagger
+ * /api/admin/products/{id}:
+ *   put:
+ *     summary: Actualizar un producto existente
+ *     tags: [Admin]
+ *     consumes:
+ *       - multipart/form-data
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID del producto a actualizar
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               brand:
+ *                 type: string
+ *               weight:
+ *                 type: number
+ *               price:
+ *                 type: number
+ *               stock:
+ *                 type: integer
+ *               description:
+ *                 type: string
+ *               image:
+ *                 type: string
+ *                 format: binary
+ *               status:
+ *                 type: boolean
+ *               categoryId:
+ *                 type: string
+ *               promotionId:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Producto actualizado correctamente
+ *       400:
+ *         description: Error al actualizar el producto
+ */
+adminProductRouter.put("/:id", ProductAdminService.uploadImage, productAdminController.update);
+
+/**
+ * @swagger
+ * /api/admin/products/{id}:
+ *   delete:
+ *     summary: Eliminar un producto
+ *     tags: [Admin]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID del producto a eliminar
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Producto eliminado correctamente
+ *       404:
+ *         description: Producto no encontrado
+ */
+adminProductRouter.delete("/:id", productAdminController.delete);
 
 export default adminProductRouter;
+
 

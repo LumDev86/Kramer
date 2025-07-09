@@ -17,5 +17,6 @@ export const AppDataSource = new DataSource({
   synchronize: true,
   dropSchema: false, // Cambia a false en producción
   logging: true,
+  ssl: config.SSL_DATABASE ? { rejectUnauthorized: false } : undefined,
   entities: [Category, Product, CartItem, Promotion, CheckoutForm], 
 });

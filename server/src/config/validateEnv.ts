@@ -15,6 +15,7 @@ export const config = {
   USER_NAME_DATABASE: getEnvVar("DB_USER"),
   PASSWORD_DATABASE: getEnvVar("DB_PASSWORD"),
   NAME_DATABASE: getEnvVar("DB_NAME"),
+  SSL_DATABASE: getEnvVar("SSL_DATABASE") === "true",
 
   // Variables de entorno para el servidor Local y de Producción
   PORT_SERVER_PRODUCTION: getEnvVar("URL_PRODUCCION"),

@@ -68,6 +68,4 @@ userCategoryRouter.get("/:name/products", categoryController.getProductsByCatego
  */
 userCategoryRouter.get("/:id", categoryController.getById);
 
-userCategoryRouter.post("/", categoryController.create);
-
 export default userCategoryRouter;
