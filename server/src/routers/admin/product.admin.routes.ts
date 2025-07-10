@@ -7,7 +7,7 @@ const productAdminController = new ProductAdminController();
 
 /**
  * @swagger
- * /api/admin/products:
+ * /:
  *   post:
  *     summary: Crear un nuevo producto
  *     tags: [Admin]
@@ -47,7 +47,7 @@ adminProductRouter.post("/", ProductAdminService.uploadImage ,productAdminContro
 
 /**
  * @swagger
- * /api/admin/products/{id}:
+ * /{id}:
  *   put:
  *     summary: Actualizar un producto existente
  *     tags: [Admin]
@@ -98,7 +98,7 @@ adminProductRouter.put("/:id", ProductAdminService.uploadImage, productAdminCont
 
 /**
  * @swagger
- * /api/admin/products/{id}:
+ * /{id}:
  *   delete:
  *     summary: Eliminar un producto
  *     tags: [Admin]

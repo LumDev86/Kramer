@@ -14,27 +14,27 @@ const options: swaggerJSDoc.Options = {
     },
     tags: [
       {
-        name: "User - Products",
+        name: "User - Products || Ruta base: /api/products",
         description: "Rutas para productos visibles para usuarios finales",
       },
       {
-        name: "User - Categories",
+        name: "User - Categories || Ruta base: /api/categories",
         description: "Rutas para visualizar categorías de productos",
       },
       {
-        name: "User - Cart",
+        name: "User - Cart || Ruta base: /api/cart",
         description: "Rutas del carrito de compras del usuario",
       },
       {
-        name: "User - Checkout",
+        name: "User - Checkout || Ruta base: /api/checkout",
         description: "Endpoints relacionados con el proceso de checkout de usuarios",
       },
       {
-        name: "Admin",
+        name: "Admin || Ruta base: /api/admin",
         description: "Rutas para el panel administrativo",
       },
       {
-        name: "CRM",
+        name: "CRM || Ruta base: /api/crm",
         description: "Rutas para gestión de clientes, ventas y otras áreas del CRM",
       },
     ],

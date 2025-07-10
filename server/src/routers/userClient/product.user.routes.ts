@@ -14,7 +14,7 @@ const productController = new ProductController();
 
 /**
  * @swagger
- * /api/user/products:
+ * /:
  *   get:
  *     summary: Obtener todos los productos
  *     tags: [User - Products]
@@ -59,7 +59,7 @@ userProductRouter.get("/", productController.getAll);
 
 /**
  * @swagger
- * /api/user/products/{id}:
+ * /{id}:
  *   get:
  *     summary: Obtener un producto por ID
  *     tags: [User - Products]
