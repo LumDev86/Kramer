@@ -98,7 +98,7 @@ adminProductRouter.put("/:id", ProductAdminService.uploadImage, productAdminCont
 
 /**
  * @swagger
- * api/admin/products/{id}:
+ * /api/admin/products/{id}:
  *   delete:
  *     summary: Eliminar un producto
  *     tags: [Admin]

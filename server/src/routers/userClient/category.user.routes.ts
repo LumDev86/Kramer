@@ -14,7 +14,7 @@ const categoryController = new CategoryController();
 
 /**
  * @swagger
- * api/user/categries:
+ * /api/user/categries:
  *   get:
  *     summary: Obtener todas las categorías
  *     tags: [User - Categories]
@@ -28,7 +28,7 @@ userCategoryRouter.get("/", categoryController.getAll);
 
 /**
  * @swagger
- * api/user/{name}/products:
+ * /api/user/{name}/products:
  *   get:
  *     summary: Obtener productos por nombre de categoría
  *     tags: [User - Categories]
@@ -49,7 +49,7 @@ userCategoryRouter.get("/:name/products", categoryController.getProductsByCatego
 
 /**
  * @swagger
- * api/user/categories/{id}:
+ * /api/user/categories/{id}:
  *   get:
  *     summary: Obtener una categoría por ID
  *     tags: [User - Categories]

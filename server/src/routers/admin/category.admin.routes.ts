@@ -7,7 +7,7 @@ const categoryAdminController = new CategoryAdminController();
 
 /**
  * @swagger
- * api/admin/categories:
+ * /api/admin/categories:
  *   post:
  *     summary: Crear una nueva categoría
  *     tags: [Admin]
@@ -38,7 +38,7 @@ adminCategoryRouter.post("/", categoryAdminController.create);
 
 /**
  * @swagger
- * api/admin/categories/{id}:
+ * /api/admin/categories/{id}:
  *   put:
  *     summary: Actualizar una categoría existente (solo nombre)
  *     tags: [Admin]
@@ -73,7 +73,7 @@ adminCategoryRouter.put("/:id", categoryAdminController.update);
 
 /**
  * @swagger
- * api/admin/categories/{id}:
+ * /api/admin/categories/{id}:
  *   delete:
  *     summary: Eliminar una categoría
  *     tags: [Admin]
