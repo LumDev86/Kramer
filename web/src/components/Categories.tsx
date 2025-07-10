@@ -21,20 +21,20 @@ export const Categories = () => {
         className="mySwiper"
         breakpoints={{
           768: {
-            slidesPerView: 2.8,
-            spaceBetween: 20,
+            slidesPerView: 4.8,
+            spaceBetween: 25,
           },
           919: {
-            slidesPerView: 3.5,
-            spaceBetween: 20,
+            slidesPerView: 5.5,
+            spaceBetween: 25,
           },
           1024: {
-            slidesPerView: 3.8,
-            spaceBetween: 20,
+            slidesPerView: 5.3,
+            spaceBetween: 25,
           },
           1200: {
-            slidesPerView: 4.8,
-            spaceBetween: 20,
+            slidesPerView: 6.5,
+            spaceBetween: 25,
           }
         }}>
         {
