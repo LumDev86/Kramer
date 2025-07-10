@@ -14,7 +14,7 @@ const categoryController = new CategoryController();
 
 /**
  * @swagger
- * /api/user/categries:
+ * /api/user/categories:
  *   get:
  *     summary: Obtener todas las categorías
  *     tags: [User - Categories]
