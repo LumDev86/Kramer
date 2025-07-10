@@ -6,7 +6,7 @@ const checkoutController = new CheckoutController();
 
 /**
  * @swagger
- * /:
+ * api/user/checkout:
  *   post:
  *     summary: Crear un nuevo pedido (checkout) con los productos del carrito
  *     tags: [User - Checkout]

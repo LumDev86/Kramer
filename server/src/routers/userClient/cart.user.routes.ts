@@ -13,7 +13,7 @@ const cartController = new CartController();
 
 /**
  * @swagger
- * /{sessionId}:
+ * api/user/cart/{sessionId}:
  *   get:
  *     summary: Obtener todos los productos del carrito por sessionId
  *     tags: [User - Cart]
@@ -32,7 +32,7 @@ cartRouter.get("/:sessionId", cartController.getItems.bind(cartController));
 
 /**
  * @swagger
- * /{sessionId}/items:
+ * api/user/cart/{sessionId}/items:
  *   post:
  *     summary: Agregar un producto al carrito
  *     tags: [User - Cart]
@@ -65,7 +65,7 @@ cartRouter.post("/:sessionId/items", cartController.addItem.bind(cartController)
 
 /**
  * @swagger
- * /{sessionId}/items/{cartItemId}:
+ * api/user/cart/{sessionId}/items/{cartItemId}:
  *   put:
  *     summary: Actualizar la cantidad de un producto en el carrito
  *     tags: [User - Cart]
@@ -103,7 +103,7 @@ cartRouter.put("/:sessionId/items/:cartItemId", cartController.updateItem.bind(c
 
 /**
  * @swagger
- * /{sessionId}/items/{cartItemId}:
+ * api/user/cart/{sessionId}/items/{cartItemId}:
  *   delete:
  *     summary: Eliminar un producto del carrito
  *     tags: [User - Cart]
@@ -126,7 +126,7 @@ cartRouter.delete("/:sessionId/items/:cartItemId", cartController.removeItem.bin
 
 /**
  * @swagger
- * /{sessionId}:
+ * api/user/cart/{sessionId}:
 user/ *   delete:
  *     summary: Vaciar todo el carrito de una sesión
  *     tags: [User - Cart]
