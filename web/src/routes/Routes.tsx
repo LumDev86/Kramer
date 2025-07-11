@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import ShopLayout from '../layouts/ShopLayout';
+import Logo from '../assets/logos/logo.webp';
 
 const Home = lazy(() => import('../pages/Home'));
 const Category = lazy(() => import('../pages/Category'));
@@ -10,8 +11,18 @@ const NotFound = lazy(() => import('../pages/NotFound'));
 
 export const AppRoutes = () => {
   return (
-    // TODO cambiar por loader circular
-    <Suspense fallback={<div>Cargando...</div>}>
+    <Suspense
+      fallback={
+        <div className="flex flex-col items-center justify-center h-screen w-screen">
+          <img
+            src={Logo}
+            alt="Cargando..."
+            className="w-[88px] h-[44px] md:h-14 md:w-[104px] lg:h-16 lg:w-[112px] 
+            xl:h-20 xl:w-[120px] object-contain animate-pulse"
+          />
+          <p className="mt-4">Cargando...</p>
+        </div>
+      }>
       <Routes>
         <Route path='/' element={<ShopLayout />}>
           <Route index element={<Home />} />
