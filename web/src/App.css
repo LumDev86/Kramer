@@ -4,10 +4,20 @@
 
 body {
   background-color: #FDFBFF;
+  color: #242424;
+  font-family: 'Outfit', sans-serif;
 }
 
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.lucide-square-check rect {
+  fill: #A0A0A0;  
+}
+
+.lucide-square-check path {
+  stroke: #FDFBFF;
 }

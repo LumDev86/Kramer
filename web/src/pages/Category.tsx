@@ -4,7 +4,6 @@ import { CategoryBanner } from "../components/CategoryBanner";
 import { SearchInput } from "../components/SearchInput";
 import { CategorySelect } from "../components/CategorySelect";
 import { Products } from "../components/Products";
-import { Toaster } from "sonner";
 import { useCategories } from "../hooks/useCategories";
 
 const Category = () => {
@@ -29,9 +28,9 @@ const Category = () => {
       />
       <section id="filter-Bar">
         <SearchInput
-          placeholder="Buscar por nombre o marca"
-          search={search}
-          setSearch={setSearch}
+          placeholder="Busca producto o marca"
+          value={search}
+          onChange={setSearch} 
         />
         <CategorySelect 
           category={category} 
@@ -44,7 +43,6 @@ const Category = () => {
         category={category!}
         search={search} 
       />  
-      <Toaster position="top-center" /> 
     </div>
   );
 };

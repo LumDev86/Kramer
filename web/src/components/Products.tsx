@@ -30,7 +30,7 @@ export const Products = ({
           </section>
         ) : (
           <div className="w-full py-8 flex justify-center items-center">
-            <p className="text-gray-500 text-center">
+            <p>
               { search
                 ? `No hay productos que coincidan con "${search}".`
                 : "No hay productos para mostrar."

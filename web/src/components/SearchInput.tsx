@@ -1,32 +1,45 @@
-import { Dispatch, SetStateAction } from "react";
 import { Search } from "lucide-react";
+import { useSearchHandler } from "../hooks/useSearchHandler";
 
-interface SearchProps {
+interface SearchInputProps {
   placeholder: string;
-  search: string;
-  setSearch: Dispatch<SetStateAction<string>>;
-};
+  value?: string;
+  onChange?: (value: string) => void;
+  onSearch?: (value: string) => void;
+}
 
 export const SearchInput = ({
   placeholder,
-  search,
-  setSearch
-}: SearchProps) => {
+  value,
+  onChange,
+  onSearch,
+}: SearchInputProps) => {
+
+  const {
+    currentValue,
+    handleInputChange,
+    handleKeyDown,
+    handleSearch,
+  } = useSearchHandler({ value, onChange, onSearch });
+
   return (
     <div className="relative flex justify-between">
       <input
         type="text"
         placeholder={placeholder}
-        className="w-full px-5 py-4 pr-20 border-4 rounded-2xl placeholder:text-[#1D1D1F] 
-        text-[#1D1D1F] border-[#E8E8E8] outline-none text-lg font-[400] outline outline-1"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        className="w-full h-[56px] border-4 rounded-[28px] placeholder:text-[#242424] 
+        border-[#E8E8E8] text-lg outline-none pl-5"
+        value={currentValue}
+        onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
       />
-      <div className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer p-2 
-        rounded-md inline-flex">
-        <Search size={32} color="#242424" />
-      </div>
+      <button
+        type="button"
+        className="absolute right-6 top-1/2 -translate-y-1/2 cursor-pointer"
+        onClick={handleSearch}
+        aria-label="Buscador">
+        <Search size={18} />
+      </button>
     </div>
   );
 };
- 
