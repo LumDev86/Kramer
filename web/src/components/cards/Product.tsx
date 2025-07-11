@@ -1,8 +1,8 @@
+import { toast } from "sonner";
+import { ShoppingCart } from "lucide-react";
 import { ProductProps } from "../../interfaces/product";
 import { useCart } from "../../hooks/useCart";
 import { useAddProductToCart } from "../../hooks/useAddProductToCart";
-import { toast } from "sonner";
-import { ShoppingCart, SquareCheck } from "lucide-react";
 
 export const Product = ({ product }: ProductProps) => {
   const { addToCart } = useCart();
@@ -23,10 +23,10 @@ export const Product = ({ product }: ProductProps) => {
             cartItemId: id
           });
 
-          toast.success("Producto agregado al carrito ✅");
+          toast.success("Producto agregado al carrito");
         },
         onError: () => {
-          toast.error("Error al agregar al carrito ❌");
+          toast.error("Error al agregar al carrito");
         },
       }
     )
@@ -46,15 +46,14 @@ export const Product = ({ product }: ProductProps) => {
         ${isPending ? "bg-[#C6F3C4] text-[#A0A0A0]" : "bg-[#8de68a] hover:bg-green-60"}`}>
         {
           isPending ? (
-            <>
-              <SquareCheck stroke="none" size={18} /> Agregado
-            </>
+            "Agregando..."
           ) : (
             <>
-              <ShoppingCart fill="currentColor" size={18} /> Agregar
+              <ShoppingCart fill="currentColor" size={18} />
+              Agregar
             </>
           )
-        } 
+        }
       </button>
     </div>
   );

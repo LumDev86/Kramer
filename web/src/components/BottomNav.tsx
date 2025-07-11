@@ -24,8 +24,8 @@ export const BottomNav = () => {
                 <Icon size={20} />
                 {
                   hasCounter && cart.length > 0 && (
-                    <span className="absolute -top-4 right-0 text-lg font-extrabold"
-                      style={{WebkitTextStroke: "1.5px #242424", WebkitTextFillColor: "#F6C06E"}}>
+                    <span className="bg-[#242424] text-[#FDFBFF] text-xs absolute rounded-full
+                      h-[23px] w-[23px] flex justify-center items-center top-[-10px] right-[-10px]">
                       {cart.length}
                     </span>
                   )

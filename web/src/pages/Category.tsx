@@ -4,7 +4,6 @@ import { CategoryBanner } from "../components/CategoryBanner";
 import { SearchInput } from "../components/SearchInput";
 import { CategorySelect } from "../components/CategorySelect";
 import { Products } from "../components/Products";
-import { Toaster } from "sonner";
 import { useCategories } from "../hooks/useCategories";
 
 const Category = () => {
@@ -44,7 +43,6 @@ const Category = () => {
         category={category!}
         search={search} 
       />  
-      <Toaster position="top-center" /> 
     </div>
   );
 };
