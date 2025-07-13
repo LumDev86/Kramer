@@ -4,8 +4,8 @@ import { config } from "./validateEnv";
 import { Category } from "@entities/Category";
 import { Product } from "@entities/Product";
 import { CartItem } from "@entities/CartItem";
-import { Promotion } from "@entities/Promotion"; // Importa la entidad Promotion si es necesario
-import { CheckoutForm } from "@/entities/CheckoutForm"; // Importa la entidad User si es necesario
+import { Promotion } from "@entities/Promotion"; 
+import { CheckoutForm } from "@/entities/CheckoutForm"; 
 
 export const AppDataSource = new DataSource({
   type: "mysql",
