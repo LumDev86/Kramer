@@ -93,7 +93,7 @@ export class ProductAdminService{
         // Comparar campos modificados
         const modifiedFields: string[] = [];
 
-        // Aquí chequeamos manualmente los campos que pueden cambiar (más importante)
+        // Aquí chequeamos manualmente los campos que pueden cambiar
         const fieldsToCheck = [
             "name",
             "brand",
