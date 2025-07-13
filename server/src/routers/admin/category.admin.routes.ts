@@ -4,13 +4,19 @@ import { CategoryAdminController } from "@/controllers/admin/category.admin.cont
 const adminCategoryRouter = Router();
 const categoryAdminController = new CategoryAdminController();
 
+/**
+ * @swagger
+ * tags:
+ *   name: Admin - Categories
+ *   description: Gestión de categorías por parte del administrador
+ */
 
 /**
  * @swagger
  * /api/admin/categories:
  *   post:
  *     summary: Crear una nueva categoría
- *     tags: [Admin]
+ *     tags: [Admin - Categories]
  *     requestBody:
  *       required: true
  *       content:

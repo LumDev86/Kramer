@@ -7,10 +7,17 @@ const productAdminController = new ProductAdminController();
 
 /**
  * @swagger
+ * tags:
+ *   name: Admin - Products
+ *   description: Gestión de productos por parte del administrador
+ */
+
+/**
+ * @swagger
  * /api/admin/products:
  *   post:
  *     summary: Crear un nuevo producto
- *     tags: [Admin]
+ *     tags: [Admin - Products]
  *     consumes:
  *       - multipart/form-data
  *     requestBody:
