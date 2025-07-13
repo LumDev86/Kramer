@@ -16,8 +16,8 @@ const router = Router();
 router.use("/user/cart", cartRouter);
 router.use("/user/categories", userCategoryRouter);
 router.use("/user/products", userProductRouter);
-router.use("/user/checkout", checkoutRouter); // Assuming checkout is handled in the cart routes
-router.use("/user/promotions", userPromotionRouter); // Assuming promotions are handled in the product routes
+router.use("/user/checkout", checkoutRouter); 
+router.use("/user/promotions", userPromotionRouter); 
 
 // Rutas para admins
 router.use("/admin/categories", adminCategoryRouter);
