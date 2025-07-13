@@ -47,7 +47,7 @@ adminCategoryRouter.post("/", categoryAdminController.create);
  * /api/admin/categories/{id}:
  *   put:
  *     summary: Actualizar una categoría existente (solo nombre)
- *     tags: [Admin]
+ *     tags: [Admin - Categories]
  *     parameters:
  *       - in: path
  *         name: id
@@ -82,7 +82,7 @@ adminCategoryRouter.put("/:id", categoryAdminController.update);
  * /api/admin/categories/{id}:
  *   delete:
  *     summary: Eliminar una categoría
- *     tags: [Admin]
+ *     tags: [Admin - Categories]
  *     parameters:
  *       - in: path
  *         name: id

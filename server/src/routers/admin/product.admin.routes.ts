@@ -57,7 +57,7 @@ adminProductRouter.post("/", ProductAdminService.uploadImage ,productAdminContro
  * /api/admin/products/{id}:
  *   put:
  *     summary: Actualizar un producto existente
- *     tags: [Admin]
+ *     tags: [Admin - Products]
  *     consumes:
  *       - multipart/form-data
  *     parameters:
@@ -108,7 +108,7 @@ adminProductRouter.put("/:id", ProductAdminService.uploadImage, productAdminCont
  * /api/admin/products/{id}:
  *   delete:
  *     summary: Eliminar un producto
- *     tags: [Admin]
+ *     tags: [Admin - Products]
  *     parameters:
  *       - in: path
  *         name: id
