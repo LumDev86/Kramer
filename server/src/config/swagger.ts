@@ -30,14 +30,27 @@ const options: swaggerJSDoc.Options = {
         description: "Endpoints relacionados con el proceso de checkout de usuarios",
       },
       {
-        name: "Admin",
-        description: "Rutas para el panel administrativo",
+        name: "User - Promotions",
+        description: "Promociones visibles para los usuarios finales",
+      },
+      {
+        name: "Admin - Products",
+        description: "Gestión de productos por parte del administrador",
+      },
+      {
+        name: "Admin - Categories",
+        description: "Gestión de categorías por parte del administrador",
+      },
+      {
+        name: "Admin - Promotions",
+        description: "Gestión de promociones por parte del administrador",
       },
       {
         name: "CRM",
         description: "Rutas para gestión de clientes, ventas y otras áreas del CRM",
       },
     ],
+
     servers: [
       {
         url: config.PORT_SERVER_PRODUCTION,
