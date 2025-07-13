@@ -60,9 +60,24 @@ adminPromotionRouter.post("/", controller.create);
  *         application/json:
  *           schema:
  *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *               type:
+ *                 type: string
+ *               data:
+ *                 type: object
+ *               productIds:
+ *                 type: array
+ *                 items:
+ *                   type: string
  *     responses:
  *       200:
  *         description: Promoción actualizada
+ *       404:
+ *         description: Promoción no encontrada
  */
 adminPromotionRouter.put("/:id", controller.update);
 
@@ -81,7 +96,10 @@ adminPromotionRouter.put("/:id", controller.update);
  *     responses:
  *       200:
  *         description: Promoción eliminada
+ *       404:
+ *         description: Promoción no encontrada
  */
 adminPromotionRouter.delete("/:id", controller.delete);
 
 export default adminPromotionRouter;
+

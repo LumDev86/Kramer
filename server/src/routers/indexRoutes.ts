@@ -10,8 +10,6 @@ import adminPromotionRouter from "@/routers/admin/promotion.admin.routes";
 
 const router = Router();
 
-
-
 // Rutas para usuarios finales
 router.use("/user/cart", cartRouter);
 router.use("/user/categories", userCategoryRouter);
