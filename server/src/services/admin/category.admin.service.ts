@@ -2,7 +2,6 @@ import { CategoryRepository } from "@/repositories/CategoryRepository";
 import { CategoryDto } from "@/dto/CategoryDto";
 
 export class CategoryAdminService {
-
     async create(data: CategoryDto) {
         if (!data.name || data.name.trim() === "") {
             throw new Error("El nombre de la categoría es obligatorio.");
@@ -18,8 +17,8 @@ export class CategoryAdminService {
             });
 
             return await CategoryRepository.save(category);
-        } catch (error: any) {
-            throw new Error(error.message || "Error al crear la categoría.");
+        } catch {
+            throw new Error("Error al crear la categoría.");
         }
     }
 
@@ -32,7 +31,7 @@ export class CategoryAdminService {
             
             category.name = data.name;
             return await CategoryRepository.save(category);
-        } catch (error) {
+        } catch {
             throw new Error("Error al actualizar la categoría.");
         }
     }
@@ -44,9 +43,9 @@ export class CategoryAdminService {
             
             await CategoryRepository.delete(id);
             return { message: "Categoría eliminada correctamente." };
-        } catch (error) {
+        } catch {
             throw new Error("Error al eliminar la categoría.");
         }
     }
-
-}    
+}
+ 

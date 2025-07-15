@@ -1,4 +1,3 @@
-import upload from "@middlewares/cloudinaryMulter";
 import { ProductRepository } from "@/repositories/ProductRepository";
 import { buildProductFilters, buildProductSort } from "@utils/productQueryFilter";
 

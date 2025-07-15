@@ -1,4 +1,3 @@
-import { Promotion } from "@/entities/Promotion";
 import { PromotionRepository } from "@/repositories/PromotionRepository";
 
 export class PromotionService {

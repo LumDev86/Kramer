@@ -1,58 +1,53 @@
 import { ProductDto } from "@/dto/ProductDto";
 import { ProductRepository } from "@/repositories/ProductRepository";
 import { CategoryRepository } from "@/repositories/CategoryRepository";
-import { PromotionRepository } from "@/repositories/PromotionRepository";
 import upload from "@middlewares/cloudinaryMulter";
 import validator from "validator";
 import cloudinary from "@config/cloudinary";
 import { RequestHandler } from "express";
 
-export class ProductAdminService{
-
+export class ProductAdminService {
     static uploadImage = upload.single("image") as RequestHandler;
 
     async create(data: ProductDto, file?: Express.Multer.File) {
-    const category = await CategoryRepository.findOne({ where: { name: data.category as unknown as string } });
-    const promotion = data.promotionId ? await PromotionRepository.findOne({ where: { id: data.promotionId } }) : undefined;
+        const category = await CategoryRepository.findOne({ where: { name: data.category as unknown as string } });
 
-    if (!category) throw new Error("La categoría especificada no existe.");
+        if (!category) throw new Error("La categoría especificada no existe.");
 
-    let imageUrl: string | undefined;
-    let publicId: string | undefined;
+        let imageUrl: string | undefined;
+        let publicId: string | undefined;
 
-    if (file) {
-      imageUrl = file.path;
-      publicId = file.filename; 
-    } else if (data.image) {
-      if (!validator.isURL(data.image)) throw new Error("URL de imagen inválida.");
-      imageUrl = data.image;
+        if (file) {
+            imageUrl = file.path;
+            publicId = file.filename;
+        } else if (data.image) {
+            if (!validator.isURL(data.image)) throw new Error("URL de imagen inválida.");
+            imageUrl = data.image;
+        }
+
+        const product = ProductRepository.create({ 
+            ...data,
+            image: imageUrl,
+            imagePublicId: publicId,
+            category,
+            promotion: undefined, // no se usa, por eso se deja fijo
+        });
+
+        return await ProductRepository.save(product);
     }
 
-    const product = ProductRepository.create({ 
-      ...data,
-      image: imageUrl,
-      imagePublicId: publicId, 
-      category,
-      promotion : undefined
-    });
-
-    return await ProductRepository.save(product);
-  }
-
-    async update( id: string, data: Partial<ProductDto> & { categoryId?: string | null }, file?: Express.Multer.File ) {
+    async update(id: string, data: Partial<ProductDto> & { categoryId?: string | null }, file?: Express.Multer.File) {
         const product = await ProductRepository.findOne({
             where: { id },
             relations: ["category", "promotion"],
         });
         if (!product) throw new Error("Producto no encontrado.");
 
-        // Guardamos una copia para comparar después
         const originalProduct = { ...product };
 
         let imageUrl = product.image;
         let publicId = product.imagePublicId;
 
-        // Manejo de imagen
         if (file) {
             if (publicId) {
                 try {
@@ -69,31 +64,23 @@ export class ProductAdminService{
             publicId = undefined;
         }
 
-        // Manejo de categoría
         if (data.categoryId !== undefined) {
             if (data.categoryId === null) {
                 product.category = null;
             } else {
-                const newCategory = await CategoryRepository.findOne({
-                where: { id: data.categoryId },
-                });
+                const newCategory = await CategoryRepository.findOne({ where: { id: data.categoryId } });
                 if (!newCategory) throw new Error("La categoría especificada no existe.");
                 product.category = newCategory;
             }
         }
 
-        // Otros campos
         Object.assign(product, data);
         product.image = imageUrl;
         product.imagePublicId = publicId;
 
-        // Guardar producto con cambios
         await ProductRepository.save(product);
 
-        // Comparar campos modificados
         const modifiedFields: string[] = [];
-
-        // Aquí chequeamos manualmente los campos que pueden cambiar
         const fieldsToCheck = [
             "name",
             "brand",
@@ -107,20 +94,18 @@ export class ProductAdminService{
         ];
 
         for (const field of fieldsToCheck) {
-            // @ts-ignore
+            // @ts-expect-error: dynamic field comparison
             if (product[field] !== originalProduct[field]) {
                 modifiedFields.push(field);
             }
         }
 
-        // También revisar cambio en categoría
         const originalCategoryId = originalProduct.category ? originalProduct.category.id : null;
         const newCategoryId = product.category ? product.category.id : null;
         if (originalCategoryId !== newCategoryId) {
             modifiedFields.push("category");
         }
 
-        // Revisar cambio en promoción (opcional)
         const originalPromotionId = originalProduct.promotion ? originalProduct.promotion.id : null;
         const newPromotionId = product.promotion ? product.promotion.id : null;
         if (originalPromotionId !== newPromotionId) {
@@ -128,8 +113,8 @@ export class ProductAdminService{
         }
 
         return {
-        message: "Producto actualizado correctamente.",
-        modifiedFields,
+            message: "Producto actualizado correctamente.",
+            modifiedFields,
             product: {
                 ...product,
                 image: product.image ? `IMAGE_${product.id}` : null,
@@ -152,5 +137,4 @@ export class ProductAdminService{
         await ProductRepository.delete(id);
         return { message: "Producto eliminado correctamente." };
     }
-
 }

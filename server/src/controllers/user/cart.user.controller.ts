@@ -4,58 +4,64 @@ import { CartService } from "@/services/user/cart.user.service";
 const cartService = new CartService();
 
 export class CartController {
-  async getItems(req: Request, res: Response) {
+  async getItems(req: Request, res: Response): Promise<Response> {
     try {
       const sessionId = req.params.sessionId;
       const items = await cartService.getCartItems(sessionId);
-      res.json(items);
-    } catch (error: any) {
-      res.status(500).json({ error: error.message });
+      return res.json(items);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Unknown error";
+      return res.status(500).json({ error: message });
     }
   }
 
-  async addItem(req: Request, res: Response) {
+  async addItem(req: Request, res: Response): Promise<Response> {
     try {
       const sessionId = req.params.sessionId;
       const { productId, quantity } = req.body;
       const item = await cartService.addItem(sessionId, productId, quantity);
-      res.status(201).json(item);
-    } catch (error: any) {
-      res.status(400).json({ error: error.message });
+      return res.status(201).json(item);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Unknown error";
+      return res.status(400).json({ error: message });
     }
   }
 
-  async updateItem(req: Request, res: Response) {
+  async updateItem(req: Request, res: Response): Promise<Response> {
     try {
       const sessionId = req.params.sessionId;
       const cartItemId = req.params.cartItemId;
       const { quantity } = req.body;
       const item = await cartService.updateItem(sessionId, cartItemId, quantity);
-      res.json(item);
-    } catch (error: any) {
-      res.status(400).json({ error: error.message });
+      return res.json(item);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Unknown error";
+      return res.status(400).json({ error: message });
     }
   }
 
-  async removeItem(req: Request, res: Response) {
+  async removeItem(req: Request, res: Response): Promise<Response> {
     try {
       const sessionId = req.params.sessionId;
       const cartItemId = req.params.cartItemId;
       const result = await cartService.removeItem(sessionId, cartItemId);
-      res.json(result);
-    } catch (error: any) {
-      res.status(404).json({ error: error.message });
+      return res.json(result);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Unknown error";
+      return res.status(404).json({ error: message });
     }
   }
 
-  async clearCart(req: Request, res: Response) {
+  async clearCart(req: Request, res: Response): Promise<Response> {
     try {
       const sessionId = req.params.sessionId;
       const result = await cartService.clearCart(sessionId);
-      res.json(result);
-    } catch (error: any) {
-      res.status(500).json({ error: error.message });
+      return res.json(result);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Unknown error";
+      return res.status(500).json({ error: message });
     }
   }
 }
+
 
