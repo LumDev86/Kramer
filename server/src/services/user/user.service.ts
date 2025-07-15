@@ -17,13 +17,9 @@ export default class UserService {
     userData: UserLoginFields
   ): Promise<{ token: string }> {
     try {
-      console.log("Login attempt with data:", userData);
-
       const userFound = await UserRepository.find({
         where: { email: userData.email },
       });
-
-      console.log("User found:", userFound);
 
       if (!userFound || userFound.length === 0) {
         throw new HttpError(
