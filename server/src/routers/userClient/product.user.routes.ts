@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { ProductController } from "@/controllers/user/product.user.controller";
-import upload from "@/middleware/cloudinaryMulter";
 
 const userProductRouter = Router();
 const productController = new ProductController();

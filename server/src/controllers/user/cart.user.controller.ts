@@ -19,6 +19,7 @@ export class CartController {
     try {
       const sessionId = req.params.sessionId;
       const { productId, quantity } = req.body;
+      console.log(`Adding item to cart: sessionId=${sessionId}, productId=${productId}, quantity=${quantity}`);
       const item = await cartService.addItem(sessionId, productId, quantity);
       return res.status(201).json(item);
     } catch (error: unknown) {
