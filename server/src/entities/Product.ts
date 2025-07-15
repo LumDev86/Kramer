@@ -1,7 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, Index } from "typeorm";
 import { Category } from "./Category";
 import { Promotion } from "./Promotion";
-import { ProductStatus } from "../enums/ProductStatus";
+import { ProductStatus } from "@enums/ProductStatus";
 
 @Entity()
 export class Product {
@@ -29,12 +29,16 @@ export class Product {
   @Column({ type: "varchar", length: 255, nullable: true })
   image?: string;
 
+  @Column({ type: "varchar", length: 255, nullable: true })
+  imagePublicId?: string;
+
   @Column({ type: "enum", enum: ProductStatus, default: ProductStatus.ACTIVE, })
   status: ProductStatus;
 
-  @ManyToOne(() => Category, (category) => category.products, { nullable: false, onDelete: "CASCADE" })
+  @ManyToOne(() => Category, (category) => category.products, { nullable: true, onDelete: "SET NULL" })
   @JoinColumn({ name: "categoryId" })
-  category: Category;
+  @Index()
+  category: Category | null;
 
   @ManyToOne(() => Promotion, (promotion) => promotion.products, { nullable: true, onDelete: "SET NULL" })
   @JoinColumn({ name: "promotionId" })

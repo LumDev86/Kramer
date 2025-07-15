@@ -12,6 +12,45 @@ const options: swaggerJSDoc.Options = {
       version: "1.0.0",
       description: "API documentation for the E-Commerce project",
     },
+    tags: [
+      {
+        name: "User - Products",
+        description: "Rutas para productos visibles para usuarios finales",
+      },
+      {
+        name: "User - Categories",
+        description: "Rutas para visualizar categorías de productos",
+      },
+      {
+        name: "User - Cart",
+        description: "Rutas del carrito de compras del usuario",
+      },
+      {
+        name: "User - Checkout",
+        description: "Endpoints relacionados con el proceso de checkout de usuarios",
+      },
+      {
+        name: "User - Promotions",
+        description: "Promociones visibles para los usuarios finales",
+      },
+      {
+        name: "Admin - Products",
+        description: "Gestión de productos por parte del administrador",
+      },
+      {
+        name: "Admin - Categories",
+        description: "Gestión de categorías por parte del administrador",
+      },
+      {
+        name: "Admin - Promotions",
+        description: "Gestión de promociones por parte del administrador",
+      },
+      {
+        name: "CRM",
+        description: "Rutas para gestión de clientes, ventas y otras áreas del CRM",
+      },
+    ],
+
     servers: [
       {
         url: config.PORT_SERVER_PRODUCTION,
@@ -23,7 +62,11 @@ const options: swaggerJSDoc.Options = {
       },
     ],
   },
-  apis: ["./src/routers/*.ts", "./src/dto/*.ts"], // Ajustá la ruta si es diferente
+  apis: [
+    "./src/routers/**/*.ts",
+    "./src/controllers/**/*.ts",
+    "./src/dto/*.ts"
+  ],
 };
 
 const swaggerSpec = swaggerJSDoc(options);

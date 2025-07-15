@@ -1,10 +1,12 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { config } from "./validateEnv";
-import { Category } from "../entities/Category";
-import { Product } from "../entities/Product";
-import { CartItem } from "../entities/CartItem";
-import { Promotion } from "../entities/Promotion"; // Importa la entidad Promotion si es necesario
+import { Category } from "@entities/Category";
+import { Product } from "@entities/Product";
+import { CartItem } from "@entities/CartItem";
+import { Promotion } from "@entities/Promotion"; 
+import { CheckoutForm } from "@/entities/CheckoutForm"; 
+import { User } from "@/entities/User";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -16,5 +18,6 @@ export const AppDataSource = new DataSource({
   synchronize: true,
   dropSchema: false, // Cambia a false en producción
   logging: true,
-  entities: [Category, Product, CartItem, Promotion],
+  ssl: config.SSL_DATABASE ? { rejectUnauthorized: false } : undefined,
+  entities: [Category, Product, CartItem, Promotion, CheckoutForm, User], 
 });

@@ -1,9 +1,9 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
-import router from "./routers/indexRoutes";
+import router from "@routes/indexRoutes";
 import dotenv from "dotenv";
-import { setupSwagger } from "./config/swagger";
+import { setupSwagger } from "@config/swagger";
 
 dotenv.config();
 

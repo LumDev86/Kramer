@@ -15,7 +15,7 @@ export const BannerCarousel = () => {
       pagination={{ clickable: true }}
       className="h-[218px] md:h-[300px] lg:h-[400px] xl:h-[370px] rounded-2xl w-[100%]">
       <SwiperSlide key="extra-slide">
-        <div className="grid grid-cols-2 h-[218px] md:h-[300px] lg:h-[400px] xl:h-[370px] rounded-2xl flex items-center"
+        <div className="grid grid-cols-2 h-[218px] md:h-[300px] lg:h-[400px] xl:h-[370px] rounded-2xl"
           style={{background: "linear-gradient(324.58deg, #FDF0E6 15.81%, #D9F3FF 80.16%)"}}>
           <div className="relative flex justify-center">
             <img 

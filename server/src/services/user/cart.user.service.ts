@@ -1,7 +1,7 @@
-import { CartItemRepository } from "../repositories/CartItemRepository";
-import { ProductRepository } from "../repositories/ProductRepository";
+import { CartItemRepository } from "@/repositories/CartItemRepository";
+import { ProductRepository } from "@/repositories/ProductRepository";
 import { Repository } from "typeorm";
-import { CartItem } from "../entities/CartItem";
+import { CartItem } from "@entities/CartItem";
 
 export class CartService {
   private cartRepository: Repository<CartItem>;
@@ -34,9 +34,12 @@ export class CartService {
 
   async addItem(sessionId: string, productId: string, quantity: number = 1) {
     if (quantity < 1) throw new Error("Quantity must be at least 1");
+    if (!productId) throw new Error("ProductId is required");
 
     const product = await ProductRepository.findOne({ where: { id: productId } });
     if (!product) throw new Error("Product not found");
+
+    console.log(`Adding item to cart: product=`, product);
 
     let cartItem = await this.cartRepository.findOne({
       where: { sessionId, product: { id: productId } },
