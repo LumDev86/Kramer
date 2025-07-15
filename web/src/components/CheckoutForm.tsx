@@ -48,19 +48,15 @@ export default function CheckoutForm({ register, errors, paymentMethod }: Checko
             )}
 
             {paymentMethod === "mercado_pago" && option.value === "mercado_pago" && (
-              <div className="flex flex-col gap-4 pl-8">
-                {inputs.mercadoPagoFields.map((field) => (
-                  <CheckoutInput
-                    key={field.id}
-                    id={field.id}
-                    type={field.type}
-                    label={field.label}
-                    placeholder={field.placeholder}
-                    defaultValue={field.defaultValue}
-                    register={register}
-                    errors={errors}
-                  />
-                ))}
+              <div className="p-[5px] bg-gradient-to-b from-[#D9F3FF] to-[#FDF0E6] rounded-[21px]">
+                <div className="bg-[#FDFBFF] rounded-[21px] flex flex-col py-4 pl-4 gap-2">
+                  {inputs.mercadoPagoFields.map((field, i) => (
+                    <div key={i} className="flex flex-col">
+                      <p className='text-lg font-bold'>{field.label}</p>
+                      <p className='text-lg'>{field.defaultValue}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </div>
