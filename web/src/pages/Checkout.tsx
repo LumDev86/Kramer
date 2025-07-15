@@ -27,15 +27,20 @@ export default function Checkout() {
   const paymentMethod = watch("paymentMethod")
 
   const onSubmit = (data: CheckoutFormSchema) => {
-    const { alias, cbu, accountHolderName, ...rest } = data;
+    const { paymentMethod } = data;
     const payload = {
-      ...rest,
+      ...data,
       sessionId: generateSessionId(),
-      ...(data.paymentMethod === "mercado_pago"
-        ? { alias, cbu, accountHolderName }
-        : null)
-    };
-
+      total: total + 1.99,
+      ...(paymentMethod === "mercado_pago"
+        ? { 
+            alias: "kioscokramer.mp", 
+            cbu: "0000003100045871234567", 
+            accountHolderName: "Lucas Segovia"
+          }
+        : null
+      )
+    }
     mutate(
       payload,
       {
