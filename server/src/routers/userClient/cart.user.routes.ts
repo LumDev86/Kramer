@@ -32,7 +32,7 @@ cartRouter.get("/:sessionId", cartController.getItems.bind(cartController));
 
 /**
  * @swagger
- * api/user/cart/{sessionId}/items:
+ * /api/user/cart/{sessionId}/items:
  *   post:
  *     summary: Agregar un producto al carrito
  *     tags: [User - Cart]
