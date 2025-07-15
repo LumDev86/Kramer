@@ -1,9 +1,9 @@
 /**
- * Constructs an API response object with a success flag and optional payload.
+ * Construye un objeto de respuesta para la API con un indicador de éxito y un payload opcional.
  *
- * @param success - Indicates whether the API request was successful.
- * @param payload - The data returned from the API request, if any.
- * @returns An object with `success` and `payload` properties.
+ * @param success - Indica si la solicitud a la API fue exitosa.
+ * @param payload - Los datos devueltos por la solicitud a la API, si los hay.
+ * @returns Un objeto con las propiedades `success` y `payload`.
  */
 const apiResponse = (success: boolean, payload: object | null): object => {
     return {
