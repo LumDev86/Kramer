@@ -12,24 +12,15 @@ const paymentOptions = [
 
 const mercadoPagoFields = [
   {
-    id: "alias",
-    type: "text",
     label: "Alias",
-    placeholder: "Alias",
     defaultValue: "kioscokramer.mp",
   },
   {
-    id: "cbu",
-    type: "text",
     label: "CVU",
-    placeholder: "CVU",
     defaultValue: "0000003100045871234567",
   },
   {
-    id: "accountHolderName",
-    type: "text",
     label: "Titular",
-    placeholder: "Titular",
     defaultValue: "Lucas Segovia",
   },
 ] as const;

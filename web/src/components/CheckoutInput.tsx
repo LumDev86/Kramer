@@ -1,17 +1,24 @@
-import { FieldErrors, UseFormRegister } from "react-hook-form"
-import { CheckoutFormSchema } from "../pages/Checkout"
+import { FieldErrors, UseFormRegister, FieldValues, Path } from "react-hook-form"
 
-interface CheckoutInputProps {
-  id: keyof CheckoutFormSchema
+interface FormInputProps<T extends FieldValues> {
+  id: Path<T>;
   type: string
-  placeholder: string
+  placeholder?: string
   defaultValue?: string
   label?: string
-  register: UseFormRegister<CheckoutFormSchema>
-  errors: FieldErrors<CheckoutFormSchema>
+  register: UseFormRegister<T>;
+  errors: FieldErrors<T>;
 };
 
-export default function CheckoutInput({ id, type, placeholder, defaultValue, label, register, errors }: CheckoutInputProps) {
+export default function CheckoutInput<T extends FieldValues>({
+  id,
+  type,
+  placeholder,
+  defaultValue,
+  label,
+  register,
+  errors
+}: FormInputProps<T>) {
   return (
     <div className="flex flex-col gap-2">
       {label && <label htmlFor={id} className="text-lg">{label}</label>}
@@ -24,7 +31,11 @@ export default function CheckoutInput({ id, type, placeholder, defaultValue, lab
         text-[#1D1D1F] ${errors[id] ? "border-[#ef444472]" : "border-[#E8E8E8]"} outline-none text-lg font-[400] outline outline-1`}
         {...register(id)}
       />
-      {errors[id] && <p className="text-red-500 pt-1">{errors[id]?.message}</p>}
+      {errors[id] && (
+        <p className="text-red-500 pt-1">
+          {errors[id]?.message?.toString()}
+        </p>
+      )}
     </div>
   )
 }
