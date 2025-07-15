@@ -12,14 +12,19 @@ import { UserRepository } from "@/repositories/UserRepository";
 import { Roles } from "@enums/Roles";
 
 export default class UserService {
-  
+
   static async loginUser(
     userData: UserLoginFields
   ): Promise<{ token: string }> {
     try {
+      console.log("Login attempt with data:", userData);
+
       const userFound = await UserRepository.find({
         where: { email: userData.email },
       });
+
+      console.log("User found:", userFound);
+
       if (!userFound || userFound.length === 0) {
         throw new HttpError(
           "Invalid credentials",
@@ -65,11 +70,7 @@ export default class UserService {
     }
   }
 
-  static async registerUser(userData: {
-    name: string;
-    email: string;
-    password: string;
-  }): Promise<{ token: string }> {
+  static async registerUser(userData: IUser): Promise<{ token: string }> {
     try {
       const existingUser = await UserRepository.findOne({
         where: { email: userData.email },

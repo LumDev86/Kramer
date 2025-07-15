@@ -7,6 +7,7 @@ import cartRouter from "@/routers/userClient/cart.user.routes";
 import checkoutRouter from "@/routers/userClient/checkout.user.routes";
 import userPromotionRouter from "@/routers/userClient/promotion.routes";
 import adminPromotionRouter from "@/routers/admin/promotion.admin.routes";
+import authRouter from "@/routers/admin/auth.admin.routes";
 
 const router = Router();
 
@@ -21,5 +22,6 @@ router.use("/user/promotions", userPromotionRouter);
 router.use("/admin/categories", adminCategoryRouter);
 router.use("/admin/products", adminProductRouter);
 router.use("/admin/promotions", adminPromotionRouter);
+router.use("/admin/auth", authRouter);
 
 export default router;

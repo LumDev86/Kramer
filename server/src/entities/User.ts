@@ -9,30 +9,27 @@ export class User {
   @Column({ type: "varchar", length: 100 })
   name: string;
 
-  @Column({ type: "string", unique: true })
+  @Column({ type: "varchar", length: 255, unique: true })
   email: string;
 
   @Column({ type: "varchar", length: 255 })
   password: string;
 
-  @Column({ default: true })
+  @Column({ type: "boolean", default: true })
   status: boolean;
-
-  @Column({ type: "string", nullable: true })
-  resetToken?: string;
-
-  @Column({ type: "number", nullable: true })
-  resetTokenExpires?: number;
-
-  @CreateDateColumn()
-  createdAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt?: Date;
-
-  @Column({ type: "string", nullable: true })
-  updatedBy?: string;
 
   @Column({ type: "enum", enum: Roles, default: Roles.ADMIN })
   role: Roles;
+
+  @Column({ type: "varchar", nullable: true })
+  resetToken?: string;
+
+  @Column({ type: "bigint", nullable: true })
+  resetTokenExpires?: number;
+
+  @Column({ type: "datetime", default: () => "CURRENT_TIMESTAMP" })
+  createdAt: Date;
+
+  @Column({ type: "datetime", nullable: true, onUpdate: "CURRENT_TIMESTAMP" })
+  updatedAt?: Date;
 }

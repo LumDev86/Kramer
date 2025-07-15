@@ -6,6 +6,7 @@ import { Product } from "@entities/Product";
 import { CartItem } from "@entities/CartItem";
 import { Promotion } from "@entities/Promotion"; 
 import { CheckoutForm } from "@/entities/CheckoutForm"; 
+import { User } from "@/entities/User";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -18,5 +19,5 @@ export const AppDataSource = new DataSource({
   dropSchema: false, // Cambia a false en producción
   logging: true,
   ssl: config.SSL_DATABASE ? { rejectUnauthorized: false } : undefined,
-  entities: [Category, Product, CartItem, Promotion, CheckoutForm], 
+  entities: [Category, Product, CartItem, Promotion, CheckoutForm, User], 
 });

@@ -33,6 +33,5 @@ export function mapUserEntityToIUser(userEntity: User): IUser {
     resetTokenExpires: userEntity.resetTokenExpires,
     createdAt: userEntity.createdAt,
     updatedAt: userEntity.updatedAt,
-    updatedBy: userEntity.updatedBy
   };
 }
