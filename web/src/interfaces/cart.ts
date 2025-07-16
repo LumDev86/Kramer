@@ -24,7 +24,7 @@ export interface CartItemProps {
   removeFromCart: (id: string) => void;
 }
 
-export type AddProductToCart = Pick<CartProduct, "id" | "quantity">;
+export type AddProductToCart = { productId: string; quantity: number };
 export type UpdateProductFromCart = Pick<CartProduct, "cartItemId" | "quantity">;
 /*
 export interface CartModalProps {

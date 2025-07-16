@@ -9,10 +9,12 @@ export const Product = ({ product }: ProductProps) => {
   const { mutate, isPending } = useAddProductToCart();
 
   const handleAddToCart = () => {
+    console.log("product id", product.id)
     mutate(
-      { id: product.id, quantity: 1 },
+      { productId: product.id, quantity: 1 },
       {
         onSuccess: (data) => {
+          console.log(data)
           const { id, product, quantity } = data;
           addToCart({
             id: product.id,
