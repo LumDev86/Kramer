@@ -55,13 +55,14 @@ export default class UserService {
       );
 
       return { token };
-    } catch (err: any) {
-      const error: HttpError = new HttpError(
-        err.description || err.message,
-        err.details || err.message,
-        err.status || HTTP_STATUS.SERVER_ERROR
-      );
-
+    } catch (err: unknown) {
+      const error: HttpError = err instanceof HttpError 
+        ? err 
+        : new HttpError(
+            (err instanceof Error) ? err.message : "Unknown error",
+            "UNKNOWN_ERROR",
+            HTTP_STATUS.SERVER_ERROR
+          );
       throw error;
     }
   }
@@ -104,12 +105,14 @@ export default class UserService {
       );
 
       return { token };
-    } catch (err: any) {
-      const error: HttpError = new HttpError(
-        err.description || err.message,
-        err.details || err.message,
-        err.status || HTTP_STATUS.SERVER_ERROR
-      );
+    } catch (err: unknown) {
+      const error: HttpError = err instanceof HttpError 
+        ? err 
+        : new HttpError(
+            (err instanceof Error) ? err.message : "Unknown error",
+            "UNKNOWN_ERROR",
+            HTTP_STATUS.SERVER_ERROR
+          );
       throw error;
     }
   }
@@ -206,12 +209,14 @@ export default class UserService {
       }
 
       return users;
-    } catch (err: any) {
-      const error: HttpError = new HttpError(
-        err.description || err.message,
-        err.details || err.message,
-        err.status || HTTP_STATUS.SERVER_ERROR
-      );
+    } catch (err: unknown) {
+      const error: HttpError = err instanceof HttpError 
+        ? err 
+        : new HttpError(
+            (err instanceof Error) ? err.message : "Unknown error",
+            "UNKNOWN_ERROR",
+            HTTP_STATUS.SERVER_ERROR
+          );
       throw error;
     }
   }
