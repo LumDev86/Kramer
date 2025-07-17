@@ -1,5 +1,5 @@
 
-# 🧾 Documentación General – Kramer
+# 🧾 Documentación General – Kramer e-commerce
 
 ## 📌 Descripción del Proyecto
 
@@ -19,7 +19,7 @@
 | Backend      | Node.js, Express, TypeScript            |
 | Base de datos| MySQL                                   |
 | ORM          | TypeORM                                 |
-| Deploy       | Vercel (Frontend), Railway / Render (API) |
+| Deploy       | Vercel (Frontend), AivenDB / Render (API) |
 | Otros        | Swagger (documentación API), ESLint     |
 
 ---
@@ -74,13 +74,13 @@ Puedes verlos accediendo a:
 GET /api-docs
 ```
 
-(Ejemplo: `https://kramer-backend-production.up.railway.app/api-docs`)
+(Swagger: `https://kramer-8p5a.onrender.com/api-docs/`)
 
 ---
 
 ## 👨‍💻 Equipo de desarrollo
 
-Este proyecto fue desarrollado por un equipo multidisciplinario como parte de un trabajo colaborativo de formación.  
+Este proyecto fue desarrollado por un equipo multidisciplinario como parte de un trabajo colaborativo.  
 Aporta conocimientos en frontend, backend, diseño UX/UI, base de datos, testing, buenas prácticas y control de versiones.
 
 | Rol             | Nombre y apellido       | Git-Hub/Linkedin    |
