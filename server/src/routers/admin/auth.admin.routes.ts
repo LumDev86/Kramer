@@ -12,13 +12,24 @@ const authRouter = Router();
  *   description: Autenticación de administradores
  */
 
-authRouter.post("/login", AuthController.login);
+authRouter.post(
+    "/login", 
+    AuthController.login
+);
 
 
-authRouter.post("/register", schemaValidator(RegisterSchema, null),AuthController.register);
+authRouter.post(
+    "/register", 
+    schemaValidator(RegisterSchema, null),
+    AuthController.register
+);
 
 
-authRouter.patch("/updatePassword", schemaValidator(LoginSchema, null), AuthController.updatePassword);
+authRouter.patch(
+    "/updatePassword", 
+    schemaValidator(LoginSchema, null), 
+    AuthController.updatePassword
+);
 
 
 export default authRouter;  
