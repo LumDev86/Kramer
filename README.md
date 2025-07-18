@@ -87,10 +87,10 @@ Aporta conocimientos en frontend, backend, diseño UX/UI, base de datos, testing
     <tr>
         <!-- Lucas Matias Segovia -->
         <td align="center">
-            <img src="https://imgur.com/a/6qeXVDk" width="80" style="border-radius:50%;"/><br>
+            <img src="https://avatars.githubusercontent.com/u/103163670?s=400&u=6566c6a4a745c4e7cb83a6b12c4cf8a1e9a6a93b&v=4" width="80" style="border-radius:50%;"/><br>
             <b>Lucas Matias Segovia</b><br>
             Project Manager<br>
-            <a href="https://github.com/LumDev86"><img src="https://cdn-icons-png.flaticon.com/512/3291/3291695.png" width="20"/></a>
+            <a href="https://github.com/LumDev86"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="20"/></a>
             <a href="https://www.linkedin.com/in/lumseg/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"/></a>
         </td>
         <!-- Maria Gabriela Alarcon -->
@@ -98,7 +98,7 @@ Aporta conocimientos en frontend, backend, diseño UX/UI, base de datos, testing
             <img src="https://media.licdn.com/dms/image/v2/C4E03AQGnVa3inxOmAQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1554412765696?e=1755734400&v=beta&t=nGRymspIUigLy7x-iGQbBhaS_UW0r_nKx4W4szHixZk" width="80" style="border-radius:50%;"/><br>
             <b>Maria Gabriela Alarcon</b><br>
             Frontend<br>
-            <a href="https://github.com/mariagaa993"><img src="https://cdn-icons-png.flaticon.com/512/3291/3291695.png" width="20"/></a>
+            <a href="https://github.com/mariagaa993"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="20"/></a>
             <a href="https://www.linkedin.com/in/mariagaa993/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"/></a>
         </td>
         <!-- Emmanuel Cruz -->
@@ -106,7 +106,7 @@ Aporta conocimientos en frontend, backend, diseño UX/UI, base de datos, testing
             <img src="https://media.licdn.com/dms/image/v2/D4D03AQEh3qip2ECK3A/profile-displayphoto-shrink_800_800/B4DZSqPxV.G4Ac-/0/1738023049321?e=1755734400&v=beta&t=q-ZjKQf157O9zdLNtxmMKhCjCNwwRbGPC6vMgZdU82o" width="80" style="border-radius:50%;"/><br>
             <b>Emmanuel Cruz</b><br>
             Frontend<br>
-            <a href="https://github.com/emmanuel-cruz-dev"><img src="https://cdn-icons-png.flaticon.com/512/3291/3291695.png" width="20"/></a>
+            <a href="https://github.com/emmanuel-cruz-dev"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="20"/></a>
             <a href="https://www.linkedin.com/in/emmanuel-cruz-dev/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"/></a>
         </td>
     </tr>
@@ -116,7 +116,7 @@ Aporta conocimientos en frontend, backend, diseño UX/UI, base de datos, testing
             <img src="https://media.licdn.com/dms/image/v2/D4D03AQEojFev9UN4KA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1732571934481?e=1755734400&v=beta&t=cYL3JIW2qfJfEYUuE1yhLFmDunxOa47E29RvwMto59U" width="80" style="border-radius:50%;"/><br>
             <b>Juan Ramirez</b><br>
             Frontend<br>
-            <a href="https://github.com/juanRCoder"><img src="https://cdn-icons-png.flaticon.com/512/3291/3291695.png" width="20"/></a>
+            <a href="https://github.com/juanRCoder"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="20"/></a>
             <a href="https://www.linkedin.com/in/juan-ramirez-490b84271/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"/></a>
         </td>
         <!-- Jose M. Candia -->
@@ -124,15 +124,15 @@ Aporta conocimientos en frontend, backend, diseño UX/UI, base de datos, testing
             <img src="https://media.licdn.com/dms/image/v2/D4D35AQEaA_20gYJCeQ/profile-framedphoto-shrink_800_800/B4DZan06M5G4Ag-/0/1746572387401?e=1753466400&v=beta&t=Ah_VvVPxVxBxLPr28CTLbg0P41rJUf4yxUUpYJLFrRk" width="80" style="border-radius:50%;"/><br>
             <b>Jose M. Candia</b><br>
             Backend<br>
-            <a href="https://github.com/joss-dev"><img src="https://cdn-icons-png.flaticon.com/512/3291/3291695.png" width="20"/></a>
+            <a href="https://github.com/joss-dev"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="20"/></a>
             <a href="https://www.linkedin.com/in/josecandia/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"/></a>
         </td>
         <!-- Lucas Matias Segovia (Backend) -->
         <td align="center">
-            <img src="https://imgur.com/a/6qeXVDk" width="80" style="border-radius:50%;"/><br>
+            <img src="https://avatars.githubusercontent.com/u/103163670?s=400&u=6566c6a4a745c4e7cb83a6b12c4cf8a1e9a6a93b&v=4" width="80" style="border-radius:50%;"/><br>
             <b>Lucas Matias Segovia</b><br>
             Backend<br>
-            <a href="https://github.com/LumDev86"><img src="https://cdn-icons-png.flaticon.com/512/3291/3291695.png" width="20"/></a>
+            <a href="https://github.com/LumDev86"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="20"/></a>
             <a href="https://www.linkedin.com/in/lumseg/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"/></a>
         </td>
     </tr>
@@ -158,7 +158,7 @@ Aporta conocimientos en frontend, backend, diseño UX/UI, base de datos, testing
             <img src="https://media.licdn.com/dms/image/v2/D4D35AQGS6BD1MoykxQ/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1711154322516?e=1753466400&v=beta&t=zHYl12wm-3E4g-OeI2joyOla_Hh5xf-bxY_w107-YB0" width="80" style="border-radius:50%;"/><br>
             <b>Martina Asad</b><br>
             Testing<br>
-            <a href="https://github.com/MartinaAsad"><img src="https://cdn-icons-png.flaticon.com/512/3291/3291695.png" width="20"/></a>
+            <a href="https://github.com/MartinaAsad"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="20"/></a>
             <a href="https://www.linkedin.com/in/martina-asad/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"/></a>
         </td>
     </tr>
