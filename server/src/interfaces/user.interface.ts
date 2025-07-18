@@ -12,7 +12,6 @@ export interface IUser{
     resetTokenExpires?: number;
     createdAt: Date;
     updatedAt?: Date;
-    updatedBy?: string;
 }
 
 export interface UserLoginFields {

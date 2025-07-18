@@ -1,6 +1,8 @@
 import { Router } from "express";
 import { ProductAdminController } from "@/controllers/admin/product.admin.controller";
 import { ProductAdminService } from "@/services/admin/product.admin.service";
+import  schemaValidator  from "@middlewares/globalValidate";
+import { ProductSchema, UpdateProductSchema } from "@/validations/product.validation";
 
 const adminProductRouter = Router();
 const productAdminController = new ProductAdminController();
@@ -50,7 +52,12 @@ const productAdminController = new ProductAdminController();
  *       400:
  *         description: Error al crear el producto
  */
-adminProductRouter.post("/", ProductAdminService.uploadImage ,productAdminController.create);
+adminProductRouter.post(
+    "/",
+    schemaValidator(ProductSchema, null), 
+    ProductAdminService.uploadImage,
+    productAdminController.create
+);
 
 /**
  * @swagger
@@ -101,7 +108,12 @@ adminProductRouter.post("/", ProductAdminService.uploadImage ,productAdminContro
  *       400:
  *         description: Error al actualizar el producto
  */
-adminProductRouter.put("/:id", ProductAdminService.uploadImage, productAdminController.update);
+adminProductRouter.put(
+    "/:id",
+    schemaValidator(UpdateProductSchema, null), 
+    ProductAdminService.uploadImage,
+    productAdminController.update
+);
 
 /**
  * @swagger
@@ -122,7 +134,10 @@ adminProductRouter.put("/:id", ProductAdminService.uploadImage, productAdminCont
  *       404:
  *         description: Producto no encontrado
  */
-adminProductRouter.delete("/:id", productAdminController.delete);
+adminProductRouter.delete(
+    "/:id", 
+    productAdminController.delete
+);
 
 export default adminProductRouter;
 

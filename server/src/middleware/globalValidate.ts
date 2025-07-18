@@ -1,10 +1,10 @@
 import { Response, Request, NextFunction } from "express";
-import { AnyZodObject, ZodTypeAny, ZodError } from "zod";
+import { ZodObject, ZodTypeAny, ZodError } from "zod";
 import HTTP_STATUS from "@enums/HtppStatus";
 import apiResponse from "../utils/apiResponse.utils";
 
 const schemaValidator = (
-    schema: AnyZodObject | null,
+    schema: ZodObject<Record<string, ZodTypeAny>> | null,
     paramsSchema: ZodTypeAny | null
 ) => {
     return async (
