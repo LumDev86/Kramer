@@ -89,7 +89,7 @@ Aporta conocimientos en frontend, backend, diseño UX/UI, base de datos, testing
         <td align="center">
             <img src="https://avatars.githubusercontent.com/u/103163670?s=400&u=6566c6a4a745c4e7cb83a6b12c4cf8a1e9a6a93b&v=4" width="80" style="border-radius:50%;"/><br>
             <b>Lucas Matias Segovia</b><br>
-            Project Manager<br>
+            Project Manager<br>Backend<br>
             <a href="https://github.com/LumDev86"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="20"/></a>
             <a href="https://www.linkedin.com/in/lumseg/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"/></a>
         </td>
@@ -126,14 +126,6 @@ Aporta conocimientos en frontend, backend, diseño UX/UI, base de datos, testing
             Backend<br>
             <a href="https://github.com/joss-dev"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="20"/></a>
             <a href="https://www.linkedin.com/in/josecandia/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"/></a>
-        </td>
-        <!-- Lucas Matias Segovia (Backend) -->
-        <td align="center">
-            <img src="https://avatars.githubusercontent.com/u/103163670?s=400&u=6566c6a4a745c4e7cb83a6b12c4cf8a1e9a6a93b&v=4" width="80" style="border-radius:50%;"/><br>
-            <b>Lucas Matias Segovia</b><br>
-            Backend<br>
-            <a href="https://github.com/LumDev86"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="20"/></a>
-            <a href="https://www.linkedin.com/in/lumseg/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"/></a>
         </td>
     </tr>
     <tr>
