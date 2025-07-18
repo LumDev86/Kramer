@@ -27,7 +27,7 @@ export const AppRoutes = () => {
           <Route path='checkout' element={<Checkout />} />
         </Route>
 
-        <Route path='/admin' element={<AdminLayout />}>
+        <Route path='/auth' element={<AdminLayout />}>
           <Route index element={<Auth />} />
         </Route>
 
