@@ -4,6 +4,12 @@ const authRegisterField = [
   { id: "password", type: "password", placeholder: "Contraseña" },
 ] as const;
 
+const authLoginField = [
+  { id: "email", type: "email", placeholder: "Correo" },
+  { id: "password", type: "password", placeholder: "Contraseña" },
+] as const;
+
 export const auth = {
   authRegisterField,
+  authLoginField
 };
