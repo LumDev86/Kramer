@@ -83,18 +83,86 @@ GET /api-docs
 Este proyecto fue desarrollado por un equipo multidisciplinario como parte de un trabajo colaborativo.  
 Aporta conocimientos en frontend, backend, diseño UX/UI, base de datos, testing, buenas prácticas y control de versiones.
 
-| Rol             | Nombre y apellido       | Git-Hub/Linkedin    |
-|-----------------|-------------------------|---------------------|
-| Project Manager | Lucas Matias Segovia    | [Git-Hub](https://github.com/LumDev86) / [Linkedin](https://www.linkedin.com/in/lumseg/) |
-| Frontend        | Maria Gabriela Alarcon  | [Git-Hub](https://github.com/mariagaa993) / [Linkedin](https://www.linkedin.com/in/mariagaa993/) |
-| Frontend        | Emmanuel Cruz           | [Git-Hub](https://github.com/emmanuel-cruz-dev) / [Linkedin](https://www.linkedin.com/in/emmanuel-cruz-dev/) |
-| Frontend        | Juan Ramirez            | [Git-Hub](https://github.com/juanRCoder) / [Linkedin](https://www.linkedin.com/in/juan-ramirez-490b84271/) |
-| Backend         | Jose M. Candia          | [Git-Hub](https://github.com/joss-dev) / [Linkedin](https://www.linkedin.com/in/josecandia/) |
-| Backend         | Lucas Matias Segovia    | [Git-Hub](https://github.com/LumDev86) / [Linkedin](https://www.linkedin.com/in/lumseg/) | 
-| Diseño UX/UI    | RichardGarciaOrdaz      | [Git-Hub](https://github.com/) / [Linkedin](https://www.linkedin.com/in/) |
-| Diseño UX/UI    | Carla Valentina         | [Git-Hub](https://github.com/) / [Linkedin](https://www.linkedin.com/in/) |
-| Testing         | Martina Asad            | [Git-Hub](https://github.com/MartinaAsad) / [Linkedin](https://www.linkedin.com/in/martina-asad/) |
-
+<table>
+    <tr>
+        <!-- Lucas Matias Segovia -->
+        <td align="center">
+            <img src="https://media.licdn.com/media/AAYQAQSOAAgAAQAAAAAAAB-zrMZEDXI2T62PSuT6kpB6qg.png" width="80" style="border-radius:50%;"/><br>
+            <b>Lucas Matias Segovia</b><br>
+            Project Manager<br>
+            <a href="https://github.com/LumDev86"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="20"/></a>
+            <a href="https://www.linkedin.com/in/lumseg/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"/></a>
+        </td>
+        <!-- Maria Gabriela Alarcon -->
+        <td align="center">
+            <img src="https://media.licdn.com/dms/image/v2/C4E03AQGnVa3inxOmAQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1554412765696?e=1755734400&v=beta&t=nGRymspIUigLy7x-iGQbBhaS_UW0r_nKx4W4szHixZk" width="80" style="border-radius:50%;"/><br>
+            <b>Maria Gabriela Alarcon</b><br>
+            Frontend<br>
+            <a href="https://github.com/mariagaa993"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="20"/></a>
+            <a href="https://www.linkedin.com/in/mariagaa993/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"/></a>
+        </td>
+        <!-- Emmanuel Cruz -->
+        <td align="center">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQEh3qip2ECK3A/profile-displayphoto-shrink_800_800/B4DZSqPxV.G4Ac-/0/1738023049321?e=1755734400&v=beta&t=q-ZjKQf157O9zdLNtxmMKhCjCNwwRbGPC6vMgZdU82o" width="80" style="border-radius:50%;"/><br>
+            <b>Emmanuel Cruz</b><br>
+            Frontend<br>
+            <a href="https://github.com/emmanuel-cruz-dev"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="20"/></a>
+            <a href="https://www.linkedin.com/in/emmanuel-cruz-dev/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"/></a>
+        </td>
+    </tr>
+    <tr>
+        <!-- Juan Ramirez -->
+        <td align="center">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQEojFev9UN4KA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1732571934481?e=1755734400&v=beta&t=cYL3JIW2qfJfEYUuE1yhLFmDunxOa47E29RvwMto59U" width="80" style="border-radius:50%;"/><br>
+            <b>Juan Ramirez</b><br>
+            Frontend<br>
+            <a href="https://github.com/juanRCoder"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="20"/></a>
+            <a href="https://www.linkedin.com/in/juan-ramirez-490b84271/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"/></a>
+        </td>
+        <!-- Jose M. Candia -->
+        <td align="center">
+            <img src="https://media.licdn.com/dms/image/v2/D4D35AQEaA_20gYJCeQ/profile-framedphoto-shrink_800_800/B4DZan06M5G4Ag-/0/1746572387401?e=1753466400&v=beta&t=Ah_VvVPxVxBxLPr28CTLbg0P41rJUf4yxUUpYJLFrRk" width="80" style="border-radius:50%;"/><br>
+            <b>Jose M. Candia</b><br>
+            Backend<br>
+            <a href="https://github.com/joss-dev"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="20"/></a>
+            <a href="https://www.linkedin.com/in/josecandia/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"/></a>
+        </td>
+        <!-- Lucas Matias Segovia (Backend duplicado si corresponde) -->
+        <td align="center">
+            <img src="https://media.licdn.com/media/AAYQAQSOAAgAAQAAAAAAAB-zrMZEDXI2T62PSuT6kpB6qg.png" width="80" style="border-radius:50%;"/><br>
+            <b>Lucas Matias Segovia</b><br>
+            Backend<br>
+            <a href="https://github.com/LumDev86"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="20"/></a>
+            <a href="https://www.linkedin.com/in/lumseg/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"/></a>
+        </td>
+    </tr>
+    <tr>
+        <!-- Richard Garcia Ordaz -->
+        <td align="center">
+            <img src="https://media.licdn.com/dms/image/v2/D5603AQEIfYgMbxVoUQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1724638689379?e=1755734400&v=beta&t=MtjDJ1h8Y_R_k75M5j1_M2M9ARaCJXHRvokf_D2iWlU" width="80" style="border-radius:50%;"/><br>
+            <b>Richard Garcia Ordaz</b><br>
+            Diseño UX/UI<br>
+            <a href="https://www.linkedin.com/in/richard-garcia-ordaz/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"/></a>
+            <a href="https://richardgarciaux.com/"><img src="https://cdn-icons-png.flaticon.com/512/841/841364.png" width="20"/></a>
+        </td>
+        <!-- Carla Valentina -->
+        <td align="center">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQEmzSTWKbsU5A/profile-displayphoto-shrink_800_800/B4DZdaxagTGUAk-/0/1749574592938?e=1755734400&v=beta&t=JjFBROgleccp66zA-4Dtd71LY8V7t9lFRLSGX8nC6Lo" width="80" style="border-radius:50%;"/><br>
+            <b>Carla Valentina</b><br>
+            Diseño UX/UI<br>
+            <a href="http://linkedin.com/in/carla-valentina-barbaresi"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"/></a>
+            <a href="https://www.behance.net/carlavalen2531"><img src="https://cdn-icons-png.flaticon.com/512/145/145799.png" width="20"/></a>
+        </td>
+        <!-- Martina Asad -->
+        <td align="center">
+            <img src="https://media.licdn.com/dms/image/v2/D4D35AQGS6BD1MoykxQ/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1711154322516?e=1753466400&v=beta&t=zHYl12wm-3E4g-OeI2joyOla_Hh5xf-bxY_w107-YB0" width="80" style="border-radius:50%;"/><br>
+            <b>Martina Asad</b><br>
+            Testing<br>
+            <a href="https://github.com/MartinaAsad"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="20"/></a>
+            <a href="https://www.linkedin.com/in/martina-asad/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"/></a>
+        </td>
+    </tr>
+</table>
 ---
 
 ## 📬 Feedback
