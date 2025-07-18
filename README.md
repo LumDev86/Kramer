@@ -83,7 +83,7 @@ GET /api-docs
 Este proyecto fue desarrollado por un equipo multidisciplinario como parte de un trabajo colaborativo.  
 Aporta conocimientos en frontend, backend, diseño UX/UI, base de datos, testing, buenas prácticas y control de versiones.
 
-<table>
+<table style="margin: 0 auto; text-align: center; border-collapse: collapse;">
     <tr>
         <!-- Lucas Matias Segovia -->
         <td align="center">
