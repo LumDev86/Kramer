@@ -27,7 +27,7 @@ export default function CheckoutInput<T extends FieldValues>({
         type={type}
         placeholder={placeholder}
         defaultValue={defaultValue}
-        className={`w-full px-5 py-4 pr-20 border-4 rounded-2xl placeholder:text-[#1d1d1fb7] 
+        className={`w-full px-5 py-3 pr-20 border-4 rounded-2xl placeholder:text-[#1d1d1fb7] 
         text-[#1D1D1F] ${errors[id] ? "border-[#ef444472]" : "border-[#E8E8E8]"} outline-none text-lg font-[400] outline outline-1`}
         {...register(id)}
       />

@@ -1,14 +1,16 @@
 import { z } from "zod"
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { authFormSchema } from "../schemas/auth";
-import CheckoutInput from "../components/CheckoutInput";
-import { auth } from "../utils/auth";
+import { authFormSchema } from "../../schemas/auth";
+import CheckoutInput from "../../components/CheckoutInput";
+import { inputs } from "../../utils/inputs";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export type AuthFormSchema = z.infer<typeof authFormSchema>;
 
 export default function Auth() {
+  const navigate = useNavigate();
   const [toggleAuth, setToggleAuth] = useState<string>('register')
   const isRegister = toggleAuth === 'register';
 
@@ -24,17 +26,18 @@ export default function Auth() {
   const onSubmit = (data: AuthFormSchema) => {
     console.log("data", data)
     reset()
+    navigate('/auth/dashboard')
   }
 
   const handleAuthentication = () => {
     setToggleAuth(isRegister ? 'login' : 'register');
   }
   return (
-    <section>
+    <section className="px-4 py-3">
       <h3 className="text-2xl font-bold">Panel Administrativo</h3>
       <h2 className="text-xl font-semibold pt-5">{isRegister ? 'Registro' : 'Login'}</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 pt-2.5">
-        {(isRegister ? auth.authRegisterField : auth.authLoginField).map((field) => (
+        {(isRegister ? inputs.authRegisterField : inputs.authLoginField).map((field) => (
           <CheckoutInput
             key={field.id}
             id={field.id}
