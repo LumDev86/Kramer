@@ -20,7 +20,7 @@ export default function CheckoutInput<T extends FieldValues>({
   errors
 }: FormInputProps<T>) {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-1">
       {label && <label htmlFor={id} className="text-lg">{label}</label>}
       <input
         id={id}

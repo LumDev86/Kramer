@@ -13,6 +13,7 @@ export interface CategorySelectProps {
   isValidCategory: boolean;
   categories: Category[];
   onSelect: (name: string) => void;
+  navigateOnSelect?: boolean;
 }
 
 export interface CategoryBannerProps {

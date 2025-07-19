@@ -4,17 +4,26 @@ import { ChevronDown } from "lucide-react";
 import { CategorySelectProps } from "../interfaces/category";
 import { useClickOutside } from "../hooks/useOnClickOutside";
 
-export const CategorySelect = ({ 
-  category, 
+export const CategorySelect = ({
+  category,
   isValidCategory,
-  categories, 
-  onSelect 
+  categories,
+  onSelect,
+  navigateOnSelect = true
 }: CategorySelectProps) => {
   
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   useClickOutside(ref, () => setOpen(false));
+
+  const handleCategorySelect = (name: string) => {
+    onSelect(name);
+    setOpen(false);
+    if (navigateOnSelect) {
+      navigate(`/categoria/${name}`);
+    }
+  }
 
   return (
     <div ref={ref} className="relative w-full font-outfit pt-4">
@@ -41,11 +50,7 @@ export const CategorySelect = ({
                     role="option"
                     className={`w-full text-left px-4 py-2 cursor-pointer hover:bg-[#6EC3F680] 
                     ${cat.name === category ? "bg-blue-200" : ""}`}
-                    onClick={() => {
-                      onSelect(cat.name);
-                      setOpen(false);
-                      navigate(`/categoria/${cat.name}`);
-                    }}>
+                    onClick={() => handleCategorySelect(cat.name)}>
                     {cat.name}
                   </button>
                 </li>

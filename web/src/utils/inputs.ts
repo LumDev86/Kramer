@@ -42,7 +42,6 @@ const addProductFields = [
   { id: "weight", type: "text", placeholder: "Peso" },
   { id: "stock", type: "number", placeholder: "Cantidad en Stock" },
   { id: "price", type: "number", placeholder: "Precio" },
-  { id: "description", type: "text", placeholder: "Descripción" }
 ] as const;
 
 export const inputs = {
@@ -51,5 +50,5 @@ export const inputs = {
   mercadoPagoFields,
   authRegisterField,
   authLoginField,
-  addProductFields
+  addProductFields,
 };
