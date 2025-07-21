@@ -22,14 +22,17 @@ export const ProductSchema = z.object({
     .min(1, "La descripción es obligatoria"),
 
   price: z
-    .number("El precio debe ser un número")
-    .positive("El precio debe ser mayor a 0")
-    .max(9999999999.99, "El precio es demasiado alto"),
-
+    .string()
+    .transform((val) => Number(val))
+    .refine((val) => !isNaN(val) && val >= 0, {
+      message: "Precio inválido",
+    }),
   stock: z
-    .number("El stock debe ser un número")
-    .int("El stock debe ser un número entero")
-    .nonnegative("El stock no puede ser negativo"),
+    .string()
+    .transform((val) => Number(val))
+    .refine((val) => Number.isInteger(val) && val >= 0, {
+      message: "Stock inválido",
+    }),
 
   image: z
     .url("La URL de la imagen no es válida")

@@ -54,8 +54,8 @@ const productAdminController = new ProductAdminController();
  */
 adminProductRouter.post(
     "/",
-    schemaValidator(ProductSchema, null), 
     ProductAdminService.uploadImage,
+    schemaValidator(ProductSchema, null), 
     productAdminController.create
 );
 
@@ -110,8 +110,8 @@ adminProductRouter.post(
  */
 adminProductRouter.put(
     "/:id",
-    schemaValidator(UpdateProductSchema, null), 
     ProductAdminService.uploadImage,
+    schemaValidator(UpdateProductSchema, null), 
     productAdminController.update
 );
 
