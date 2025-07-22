@@ -3,12 +3,12 @@ import React from 'react'
 
 interface ImageUploadProps {
   preview: string | null;
-  setPreview: (image: string | null) => void;
   fileRef: React.RefObject<HTMLInputElement | null>;
   handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onRemoveImage: () => void;
 }
 
-export const ImageProductUpload = ({ preview, setPreview, fileRef, handleFileChange }: ImageUploadProps) => {
+export const ImageProductUpload = ({ preview, fileRef, handleFileChange, onRemoveImage }: ImageUploadProps) => {
   return (
     <>
       <div
@@ -24,7 +24,7 @@ export const ImageProductUpload = ({ preview, setPreview, fileRef, handleFileCha
           </div>
         )}
       </div>
-      {preview && <button onClick={() => setPreview(null)} className="border border-gray-300 text-black py-1 text-center w-full rounded-md mt-2">Remover imagen</button>}
+      {preview && <button onClick={onRemoveImage} className="border border-gray-300 text-black py-1 text-center w-full rounded-md mt-2">Remover imagen</button>}
       <input
         type="file"
         ref={fileRef}

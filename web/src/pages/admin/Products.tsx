@@ -62,6 +62,12 @@ export default function Products() {
     }
   };
 
+  const handleRemoveImage = () => {
+    setPreview(null);
+    setValue("image", null);
+    if (fileRef.current) fileRef.current.value = "";
+  };
+
   return (
     <section className="px-4 py-3 font-outfit">
       <h3 className="text-[32px] font-bold">Productos</h3>
@@ -79,9 +85,9 @@ export default function Products() {
           <div className="flex-1">
             <ImageProductUpload
               preview={preview}
-              setPreview={setPreview}
               fileRef={fileRef}
               handleFileChange={handleFileChange}
+              onRemoveImage={handleRemoveImage}
             />
             <CategorySelect
               category={watch("category")}
