@@ -21,6 +21,21 @@ const createProduct = async (newProduct: FormData) => {
   }
 };
 
+export const getProductById = async (id: string) => {
+  try {
+    const response = await axios.get(`${prefijo}/user/products/${id}`);
+    return response.data;
+  } catch(error) {
+    const axiosError = error as AxiosError;
+    console.error(
+      "[getProductById] Error fetching data:",
+      axiosError.response?.data ?? axiosError.message
+    );
+    throw error;
+  }
+}
+
 export const productServices = {
   createProduct,
+  getProductById
 };

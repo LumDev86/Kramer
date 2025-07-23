@@ -1,7 +1,7 @@
 import { UseFormRegister, FieldErrors } from 'react-hook-form'
 import { inputs } from "../../utils/inputs"
-import { ProductFormSchema } from '../../pages/admin/Products'
 import CheckoutInput from "../CheckoutInput"
+import { ProductFormSchema } from '../../schemas/product'
 
 interface ProductFormProps {
   register: UseFormRegister<ProductFormSchema>
