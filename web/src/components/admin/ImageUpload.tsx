@@ -6,9 +6,10 @@ interface ImageUploadProps {
   fileRef: React.RefObject<HTMLInputElement | null>;
   handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onRemoveImage: () => void;
+  alt: string
 }
 
-export const ImageProductUpload = ({ preview, fileRef, handleFileChange, onRemoveImage }: ImageUploadProps) => {
+export const ImageUpload = ({ preview, fileRef, handleFileChange, onRemoveImage, alt }: ImageUploadProps) => {
   return (
     <>
       <div
@@ -16,7 +17,7 @@ export const ImageProductUpload = ({ preview, fileRef, handleFileChange, onRemov
         className="w-full h-72 border-4 border-[#E8E8E8] border-dashed flex items-center justify-center cursor-pointer"
       >
         {preview ? (
-          <img src={preview} alt="preview" className="object-cover h-full p-5" />
+          <img src={preview} alt={alt} className="object-cover h-full p-5" />
         ) : (
           <div className="flex flex-col items-center justify-center">
             <Package color="#939191" size={52} />

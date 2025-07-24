@@ -10,3 +10,5 @@ export const productSchema = z.object({
   image: z.any().optional(),
   category: z.string().optional(),
 });
+
+export type ProductFormSchema = z.infer<typeof productSchema>;

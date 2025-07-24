@@ -39,7 +39,7 @@ const authLoginField = [
 const addProductFields = [
   { id: "name", type: "text", placeholder: "Nombre del Producto" },
   { id: "brand", type: "text", placeholder: "Marca" },
-  { id: "weight", type: "number", placeholder: "Peso" },
+  { id: "weight", type: "text", placeholder: "Peso" },
   { id: "stock", type: "number", placeholder: "Cantidad en Stock" },
   { id: "price", type: "number", placeholder: "Precio" },
 ] as const;
