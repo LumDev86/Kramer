@@ -3,11 +3,7 @@ import { ShoppingCart } from "lucide-react";
 import PromotionBadge from "../../assets/images/promotion-badge.avif";
 import { useCart } from "../../hooks/useCart";
 import { useAddProductToCart } from "../../hooks/useAddProductToCart";
-import { ProductWithDetails } from "../Promotions";
-
-export interface ProductPropsWithDetails {
-  product: ProductWithDetails;
-}
+import { ProductPropsWithDetails } from "../../interfaces/product";
 
 export const Product = ({ product }: ProductPropsWithDetails) => {
   const { addToCart } = useCart();
