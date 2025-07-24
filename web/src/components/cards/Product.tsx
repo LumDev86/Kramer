@@ -1,10 +1,15 @@
 import { toast } from "sonner";
 import { ShoppingCart } from "lucide-react";
-import { ProductProps } from "../../interfaces/product";
+import PromotionBadge from "../../assets/images/promotion-badge.avif";
 import { useCart } from "../../hooks/useCart";
 import { useAddProductToCart } from "../../hooks/useAddProductToCart";
+import { ProductWithDetails } from "../Promotions";
 
-export const Product = ({ product }: ProductProps) => {
+export interface ProductPropsWithDetails {
+  product: ProductWithDetails;
+}
+
+export const Product = ({ product }: ProductPropsWithDetails) => {
   const { addToCart } = useCart();
   const { mutate, isPending } = useAddProductToCart();
 
@@ -20,7 +25,7 @@ export const Product = ({ product }: ProductProps) => {
             price: product.price,
             image: product.image,
             quantity,
-            cartItemId: id
+            cartItemId: id,
           });
 
           toast.success("Producto agregado al carrito");
@@ -29,31 +34,50 @@ export const Product = ({ product }: ProductProps) => {
           toast.error("Error al agregar al carrito");
         },
       }
-    )
+    );
   };
 
   return (
     <div className="flex flex-col gap-[10px]">
-      <div className="bg-[#6EC3F64D] rounded-2xl cursor-pointer">
-        <img src={product.image} alt={product.name} className="h-28 object-contain mx-auto p-1" />
+      <div className="relative bg-[#6EC3F64D] rounded-2xl cursor-pointer">
+        {product.promotion && (
+          <figure className="absolute top-1 left-1 w-12 drop-shadow-md">
+            <img
+              className="object-cover w-full"
+              src={PromotionBadge}
+              alt={`Insignia de descuento del ${product.promotion.data.percent} por ciento`}
+              width={500}
+              height={500}
+              loading="lazy"
+            />
+          </figure>
+        )}
+        <img
+          src={product.image}
+          alt={product.name}
+          className="h-28 object-contain mx-auto p-1"
+        />
       </div>
       <h3 className="text-lg font-medium">{product.name}</h3>
       <p className="text-2xl font-medium">${product.price}</p>
       <button
         onClick={handleAddToCart}
         disabled={isPending}
-        className={`flex items-center justify-center gap-2 text-sm rounded-full py-2 
-        ${isPending ? "bg-[#C6F3C4] text-[#A0A0A0]" : "bg-[#8de68a] hover:bg-green-60"}`}>
-        {
-          isPending ? (
-            "Agregando..."
-          ) : (
-            <>
-              <ShoppingCart fill="currentColor" size={18} />
-              Agregar
-            </>
-          )
-        }
+        className={`flex items-center justify-center gap-2 text-sm rounded-full py-2
+        ${
+          isPending
+            ? "bg-[#C6F3C4] text-[#A0A0A0]"
+            : "bg-[#8de68a] hover:bg-green-60"
+        }`}
+      >
+        {isPending ? (
+          "Agregando..."
+        ) : (
+          <>
+            <ShoppingCart fill="currentColor" size={18} />
+            Agregar
+          </>
+        )}
       </button>
     </div>
   );
