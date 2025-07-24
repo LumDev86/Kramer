@@ -1,13 +1,6 @@
-import { UseFormRegister, FieldErrors } from 'react-hook-form'
+import { CheckoutFormProps } from '../interfaces/checkout'
 import CheckoutInput from './CheckoutInput'
-import { CheckoutFormSchema } from '../pages/Checkout'
 import { inputs } from '../utils/inputs'
-
-interface CheckoutFormProps {
-  register: UseFormRegister<CheckoutFormSchema>
-  errors: FieldErrors<CheckoutFormSchema>
-  paymentMethod: string
-}
 
 export default function CheckoutForm({ register, errors, paymentMethod }: CheckoutFormProps) {
   return (
