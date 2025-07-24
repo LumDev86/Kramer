@@ -1,3 +1,5 @@
+import { UseFormRegister, FieldErrors } from 'react-hook-form'
+import { CheckoutFormSchema } from '../pages/Checkout'
 export interface CheckoutProps {
   email: string;
   address: string;
@@ -22,3 +24,9 @@ export type CheckoutSubmit = CheckoutProps & {sessionId: string};
 //   ) => void;
 //   goBack: () => void;
 // }
+
+export interface CheckoutFormProps {
+  register: UseFormRegister<CheckoutFormSchema>
+  errors: FieldErrors<CheckoutFormSchema>
+  paymentMethod: string
+}

@@ -8,12 +8,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { checkoutSchema } from "../schemas/checkout";
 import type { z } from "zod";
 import { useCreateCheckout } from "../hooks/useCreateCheckout";
+import { sendCheckoutToWhatsApp } from "../utils/whatsapp";
 
 export type CheckoutFormSchema = z.infer<typeof checkoutSchema>;
 
 export default function Checkout() {
   const { mutate } = useCreateCheckout();
-  const { total, clearCart } = useCart()
+  const cartContext = useCart(); // ✅ usamos todo el contexto completo
+  const { total, clearCart } = cartContext;
   const navigate = useNavigate();
 
   const {
@@ -24,38 +26,38 @@ export default function Checkout() {
   } = useForm<CheckoutFormSchema>({
     resolver: zodResolver(checkoutSchema),
   });
-  const paymentMethod = watch("paymentMethod")
+
+  const paymentMethod = watch("paymentMethod");
 
   const onSubmit = (data: CheckoutFormSchema) => {
-    const { paymentMethod } = data;
     const payload = {
       ...data,
       sessionId: generateSessionId(),
       total: total + 1.99,
-      ...(paymentMethod === "mercado_pago"
-        ? { 
-            alias: "kioscokramer.mp", 
-            cbu: "0000003100045871234567", 
+      ...(data.paymentMethod === "mercado_pago"
+        ? {
+            alias: "kioscokramer.mp",
+            cbu: "0000003100045871234567",
             accountHolderName: "Lucas Segovia"
           }
         : null
       )
-    }
-    mutate(
-      payload,
-      {
-        onSuccess: (data) => {
-          clearCart();
-          removeSessionId();
-          navigate('/')
+    };
 
-          console.log("response del checkout desde el backend:",data)
-        },
-        onError: () => {
-          console.error("Error al enviar los datos del checkout")
-        }
+    mutate(payload, {
+      onSuccess: () => {
+        // ✅ Abre WhatsApp con datos del cliente y carrito
+        sendCheckoutToWhatsApp(payload, cartContext);
+
+        // Limpia carrito y redirige
+        clearCart();
+        removeSessionId();
+        navigate('/');
+      },
+      onError: () => {
+        console.error("Error al enviar los datos del checkout");
       }
-    )
+    });
   };
 
   return (
@@ -80,7 +82,7 @@ export default function Checkout() {
             <p>${total.toFixed(2)}</p>
           </div>
           <div className="flex justify-between text-lg font-medium">
-            <p>Envio</p>
+            <p>Envío</p>
             <p>$1.99</p>
           </div>
           <div className="flex justify-between text-2xl font-medium">
@@ -89,16 +91,23 @@ export default function Checkout() {
           </div>
         </div>
         <div className="flex gap-4">
-          <button type="button" onClick={() => navigate('/cart')} className="flex-1 px-4 flex items-center justify-center gap-2 bg-transparent text-[#242424] rounded-full py-2 border border-1 border-[#242424]">
+          <button
+            type="button"
+            onClick={() => navigate('/cart')}
+            className="flex-1 px-4 flex items-center justify-center gap-2 bg-transparent text-[#242424] rounded-full py-2 border border-1 border-[#242424]">
             <ArrowLeft color="#242424" className="bg-transparent" />
             Regresar al carrito
           </button>
-          <button type="submit" className="flex-1 px-4 flex items-center justify-center gap-2 bg-[#8DE68A] text-[#242424] rounded-full py-2">
+          <button
+            type="submit"
+            className="flex-1 px-4 flex items-center justify-center gap-2 bg-[#8DE68A] text-[#242424] rounded-full py-2">
             <ArrowRight color="#242424" className="bg-transparent" />
             Confirmar y pagar
           </button>
         </div>
       </form>
     </section>
-  )
+  );
 }
+
+
