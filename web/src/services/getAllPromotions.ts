@@ -1,12 +1,9 @@
 import axios, { type AxiosError } from "axios";
 import { Product } from "../interfaces/product";
+import { PromotionsResponse } from "../interfaces/promotion";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 const prefijo = `${apiUrl}/api/user`;
-
-interface PromotionsResponse {
-  products: Product[];
-}
 
 export const getAllPromotions = async (): Promise<Product[]> => {
   try {
