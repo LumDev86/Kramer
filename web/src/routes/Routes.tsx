@@ -32,11 +32,11 @@ export const AppRoutes = () => {
 
         <Route path="/admin">
           <Route index element={<Navigate to="auth" replace />} />
-          
+
           <Route path="auth" element={<AuthLayout />}>
             <Route index element={<Auth />} />
           </Route>
-          
+
           <Route element={<DashboardLayout />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="products" element={<Products />} />

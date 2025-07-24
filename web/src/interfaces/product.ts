@@ -1,3 +1,5 @@
+import { Category } from "./category";
+
 export interface Product {
   id: string;
   name: string;
@@ -18,3 +20,5 @@ export interface ProductsProps {
   category: string;
   search: string;
 }
+
+export type GetProductById = Product & {category: Category}

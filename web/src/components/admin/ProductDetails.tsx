@@ -1,20 +1,25 @@
-import { useRef, useState } from "react";
-import { toast } from "sonner";
+import { useCallback, useEffect } from "react";
 import { useCategories } from "../../hooks/useCategories";
-import { useCreateProduct } from "../../hooks/useCreateProduct";
 import { CategorySelect } from "../CategorySelect"
-import { ImageProductUpload } from "./ImageProductUpload"
+import { ImageUpload } from "./ImageUpload"
 import { ProductForm } from "./ProductForm"
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { ProductFormSchema, productSchema } from "../../schemas/product";
 import { ArrowLeft } from "lucide-react";
+import { useGetProductById } from "../../hooks/useGetProductById";
+import { useImageUpload } from "../../hooks/forms/useImageUpload";
+import { useProductForm } from "../../hooks/forms/useProductForm";
+import { useForm } from "react-hook-form";
+import { ProductFormSchema, productSchema } from "../../schemas/product";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-export const CreateProduct = ({setIsCreateProduct}: {setIsCreateProduct: (value: boolean) => void}) => {
-  const { mutate } = useCreateProduct();
+type ProductDetailsProps = {
+  setIsCreateProduct: (value: boolean) => void
+  mode: 'create' | 'edit'
+  id?: string
+}
+
+export const ProductDetails = ({ setIsCreateProduct, mode, id }: ProductDetailsProps) => {
+  const { data: product, isLoading } = useGetProductById(id ?? "");
   const { data: categories = [] } = useCategories();
-  const [preview, setPreview] = useState<string | null>(null);
-  const fileRef = useRef<HTMLInputElement>(null);
 
   const {
     register,
@@ -22,54 +27,53 @@ export const CreateProduct = ({setIsCreateProduct}: {setIsCreateProduct: (value:
     formState: { errors },
     reset,
     watch,
-    setValue
+    setValue,
   } = useForm<ProductFormSchema>({
     resolver: zodResolver(productSchema),
   });
 
-  const onSubmit = (data: ProductFormSchema) => {
-    const formData = new FormData();
+  const setImageValue = useCallback((_name: string, value: File | null) => {
+    setValue("image", value);
+  }, [setValue]);
 
-    for (const [key, value] of Object.entries(data)) {
-      if (key === "category") continue;
-      if (value !== undefined && value !== null) {
-        formData.append(key, String(value));
-      }
+  const { preview, setPreview, handleFileChange, handleRemoveImage, fileRef } = useImageUpload(setImageValue)
+  const { onSubmit } = useProductForm({ mode, id, handleRemoveImage, reset });
+
+
+  const isCreate = mode === "create"
+
+  useEffect(() => {
+    if (!isCreate && product) {
+      if (product.image) setPreview(product.image);
+      reset({
+        name: product.name,
+        brand: product.brand,
+        weight: product.weight,
+        stock: product.stock,
+        price: Number(product.price),
+        description: product.description,
+        image: product.image,
+        category: product.category.name
+      });
     }
-    formData.append("category", data.category ?? "");
-    mutate(formData, {
-      onSuccess: (data) => {
-        console.log(data)
-        toast.success(data.message);
+  }, [isCreate, product, reset, setPreview]);
 
-        reset();
-        setPreview(null);
-        if (fileRef.current) fileRef.current.value = "";
-      },
-      onError: (error) => {
-        toast.error(`Error al crear el producto: ${error.message}`);
-      },
-    });
+  useEffect(() => {
+    if (isCreate) {
+      reset();
+      handleRemoveImage();
+    }
+  }, [isCreate, handleRemoveImage, reset]);
+
+
+  if (!isCreate) {
+    if (isLoading) return <p>Cargando producto...</p>;
+    if (!product) return <p>Producto no encontrado</p>;
   }
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setPreview(URL.createObjectURL(file));
-      setValue("image", file);
-    }
-  };
-
-  const handleRemoveImage = () => {
-    setPreview(null);
-    setValue("image", null);
-    if (fileRef.current) fileRef.current.value = "";
-  };
-
 
   return (
     <div className="flex flex-col gap-3">
-      <h2 className="text-xl font-semibold mt-4">Agregar Producto</h2>
+      <h2 className="text-xl font-semibold mt-4">{isCreate ? "Crear" : "Editar"} Producto</h2>
       <section className="flex gap-3">
         <div className="flex-1">
           <form id="add-product-form" onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
@@ -80,8 +84,9 @@ export const CreateProduct = ({setIsCreateProduct}: {setIsCreateProduct: (value:
           </form>
         </div>
         <div className="flex-1">
-          <ImageProductUpload
+          <ImageUpload
             preview={preview}
+            alt={product?.name || "Sin nombre"}
             fileRef={fileRef}
             handleFileChange={handleFileChange}
             onRemoveImage={handleRemoveImage}
@@ -101,7 +106,7 @@ export const CreateProduct = ({setIsCreateProduct}: {setIsCreateProduct: (value:
           Regresar a productos
         </button>
         <button type="submit" form="add-product-form" className="flex-1 px-4 flex items-center justify-center gap-2 bg-[#8DE68A] text-[#242424] rounded-full py-2">
-          Agregar Producto
+          {isCreate ? "Crear" : "Editar"} Producto
         </button>
       </div>
     </div>

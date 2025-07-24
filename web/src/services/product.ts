@@ -25,7 +25,7 @@ export const getProductById = async (id: string) => {
   try {
     const response = await axios.get(`${prefijo}/user/products/${id}`);
     return response.data;
-  } catch(error) {
+  } catch (error) {
     const axiosError = error as AxiosError;
     console.error(
       "[getProductById] Error fetching data:",
@@ -33,9 +33,28 @@ export const getProductById = async (id: string) => {
     );
     throw error;
   }
-}
+};
+
+export const updateProduct = async (id: string, product: FormData) => {
+  try {
+    const response = await axios.put(`${prefijo}/admin/products/${id}`, product, {
+        headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
+    return response.data;
+  } catch (error) {
+    const axiosError = error as AxiosError;
+    console.error(
+      "[updateProduct] Error fetching data:",
+      axiosError.response?.data ?? axiosError.message
+    );
+    throw error;
+  }
+};
 
 export const productServices = {
   createProduct,
-  getProductById
+  getProductById,
+  updateProduct
 };
