@@ -28,5 +28,5 @@ export interface Promotion {
 
 export interface PromotionsProducts {
   product: Product;
-  promotion: PromotionsResponse;
+  promotion?: PromotionsResponse;
 }
