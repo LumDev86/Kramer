@@ -1,4 +1,5 @@
 import { Category } from "./category";
+import { Promotion } from "./promotion";
 
 export interface Product {
   id: string;
@@ -8,8 +9,8 @@ export interface Product {
   brand: string;
   weight: string;
   image: string;
-  stock?: number
-  status?: string
+  stock?: number;
+  status?: string;
 }
 
 export interface ProductProps {
@@ -21,4 +22,13 @@ export interface ProductsProps {
   search: string;
 }
 
-export type GetProductById = Product & {category: Category}
+export type GetProductById = Product & { category: Category };
+export interface ProductWithDetails extends Product {
+  imagePublicId?: string | null;
+  category?: Category;
+  promotion?: Promotion;
+}
+
+export interface ProductPropsWithDetails {
+  product: ProductWithDetails;
+}

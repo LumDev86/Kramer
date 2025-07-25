@@ -1,17 +1,51 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
 import { Product } from "./cards/Product";
-// import { Product as Loader } from "./loaders/Product";
-import { suggestions } from "../utils/mocks";
+import { usePromotions } from "../hooks/usePromotions";
+import { Product as Loader } from "./loaders/Product";
 
 export const Promotions = () => {
-  // const { data = [], isLoading, error } = ();
+  const { data: promotions, isLoading, isError } = usePromotions();
 
-  // if (isLoading) return <Loader />;
-  // if (error) return <p className="text-red-500">Error cargando la información</p>;
+  if (isLoading)
+    return (
+      <section>
+        <h2 className="font-bold text-2xl pb-4">Promociones</h2>
+        <main className="flex overflow-x-hidden">
+          <article className="min-w-72">
+            <Loader />
+          </article>
+          <article className="min-w-72">
+            <Loader />
+          </article>
+        </main>
+      </section>
+    );
+
+  if (isError) {
+    return (
+      <section>
+        <h2 className="font-bold text-2xl pb-4">Promociones</h2>
+        <article className="flex justify-center items-center h-32">
+          <p className="text-red-500">Error al cargar promociones.</p>
+        </article>
+      </section>
+    );
+  }
+
+  if (!promotions || promotions.length === 0) {
+    return (
+      <section>
+        <h2 className="font-bold text-2xl pb-4">Promociones</h2>
+        <article className="flex justify-center items-center h-32">
+          <p>No hay promociones disponibles.</p>
+        </article>
+      </section>
+    );
+  }
 
   return (
-   <section>
+    <section>
       <h2 className="font-bold text-2xl pb-4">Promociones</h2>
       <Swiper
         slidesPerView={2.3}
@@ -35,15 +69,14 @@ export const Promotions = () => {
           1200: {
             slidesPerView: 6.5,
             spaceBetween: 25,
-          }
-        }}>
-        {
-          suggestions.map(product => (
-            <SwiperSlide key={product.id}>
-              <Product product={product} />
-            </SwiperSlide>
-          ))
-        }
+          },
+        }}
+      >
+        {promotions.map((product) => (
+          <SwiperSlide key={product.id}>
+            <Product product={product} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </section>
   );
