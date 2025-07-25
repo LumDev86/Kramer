@@ -5,7 +5,7 @@ import { PromotionsResponse } from "../interfaces/promotion";
 const apiUrl = import.meta.env.VITE_API_URL;
 const prefijo = `${apiUrl}/api/user`;
 
-export const getAllPromotions = async (): Promise<Product[]> => {
+const getAllPromotions = async (): Promise<Product[]> => {
   try {
     const response = await axios.get<PromotionsResponse>(`${prefijo}/products`);
     return response.data.products;
@@ -17,4 +17,8 @@ export const getAllPromotions = async (): Promise<Product[]> => {
     );
     throw error;
   }
+};
+
+export const promotionService = {
+  getAllPromotions,
 };
