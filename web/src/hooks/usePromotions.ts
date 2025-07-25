@@ -1,23 +1,13 @@
-import { useEffect, useState } from "react";
-import { getAllPromotions } from "../services/getAllPromotions";
+import { useQuery } from "@tanstack/react-query";
 import { ProductWithDetails } from "../interfaces/product";
+import { promotionService } from "../services/promotions";
 
 export const usePromotions = () => {
-  const [promotions, setPromotions] = useState<ProductWithDetails[]>([]);
-
-  useEffect(() => {
-    const fetchPromotions = async () => {
-      try {
-        const data = await getAllPromotions();
-
-        setPromotions(data);
-      } catch (err) {
-        console.error("Error:", err);
-      }
-    };
-
-    fetchPromotions();
-  }, []);
-
-  return { promotions };
+  return useQuery<ProductWithDetails[], Error>({
+    queryKey: ["promotions"],
+    queryFn: promotionService.getAllPromotions,
+    staleTime: 1000 * 60 * 5,
+    retry: 1,
+    refetchOnWindowFocus: false,
+  });
 };
