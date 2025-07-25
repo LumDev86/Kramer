@@ -3,9 +3,9 @@ import { ShoppingCart } from "lucide-react";
 import PromotionBadge from "../../assets/images/promotion-badge.avif";
 import { useCart } from "../../hooks/useCart";
 import { useAddProductToCart } from "../../hooks/useAddProductToCart";
-import { ProductPropsWithDetails } from "../../interfaces/product";
+import { PromotionsProducts } from "../../interfaces/promotion";
 
-export const Product = ({ product }: ProductPropsWithDetails) => {
+export const Product = ({ product, promotion }: PromotionsProducts) => {
   const { addToCart } = useCart();
   const { mutate, isPending } = useAddProductToCart();
 
@@ -36,12 +36,12 @@ export const Product = ({ product }: ProductPropsWithDetails) => {
   return (
     <div className="flex flex-col gap-[10px]">
       <div className="relative bg-[#6EC3F64D] rounded-2xl cursor-pointer">
-        {product.promotion && (
+        {promotion?.data.percent && (
           <figure className="absolute top-1 left-1 w-12 drop-shadow-md">
             <img
               className="object-cover w-full"
               src={PromotionBadge}
-              alt={`Insignia de descuento del ${product.promotion.data.percent} por ciento`}
+              alt={`Insignia de descuento del ${promotion.data.percent} por ciento`}
               width={500}
               height={500}
               loading="lazy"

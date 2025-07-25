@@ -1,6 +1,14 @@
 import { Product } from "./product";
 
 export interface PromotionsResponse {
+  id: string;
+  title: string;
+  description: string;
+  type: string;
+  data: {
+    percent?: number;
+    [key: string]: unknown;
+  };
   products: Product[];
 }
 
@@ -16,4 +24,9 @@ export interface Promotion {
   description: string;
   type: string;
   data: PromotionData;
+}
+
+export interface PromotionsProducts {
+  product: Product;
+  promotion?: PromotionsResponse;
 }
