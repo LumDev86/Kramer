@@ -2,9 +2,47 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
 import { Product } from "./cards/Product";
 import { usePromotions } from "../hooks/usePromotions";
+import { Product as Loader } from "./loaders/Product";
 
 export const Promotions = () => {
-  const { promotions } = usePromotions();
+  const { data: promotions, isLoading, isError } = usePromotions();
+
+  if (isLoading)
+    return (
+      <section>
+        <h2 className="font-bold text-2xl pb-4">Promociones</h2>
+        <main className="flex overflow-x-hidden">
+          <article className="min-w-72">
+            <Loader />
+          </article>
+          <article className="min-w-72">
+            <Loader />
+          </article>
+        </main>
+      </section>
+    );
+
+  if (isError) {
+    return (
+      <section>
+        <h2 className="font-bold text-2xl pb-4">Promociones</h2>
+        <article className="flex justify-center items-center h-32">
+          <p className="text-red-500">Error al cargar promociones.</p>
+        </article>
+      </section>
+    );
+  }
+
+  if (!promotions || promotions.length === 0) {
+    return (
+      <section>
+        <h2 className="font-bold text-2xl pb-4">Promociones</h2>
+        <article className="flex justify-center items-center h-32">
+          <p>No hay promociones disponibles.</p>
+        </article>
+      </section>
+    );
+  }
 
   return (
     <section>
