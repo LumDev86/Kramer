@@ -33,7 +33,7 @@ export const Promotions = () => {
     );
   }
 
-  if (!promotions || promotions.length === 0) {
+  if (!promotions) {
     return (
       <section>
         <h2 className="font-bold text-2xl pb-4">Promociones</h2>
@@ -72,11 +72,13 @@ export const Promotions = () => {
           },
         }}
       >
-        {promotions.map((product) => (
-          <SwiperSlide key={product.id}>
-            <Product product={product} />
-          </SwiperSlide>
-        ))}
+        {promotions.map((promotion) =>
+          promotion.products.map((product) => (
+            <SwiperSlide key={product.id}>
+              <Product product={{ ...product }} promotion={promotion} />
+            </SwiperSlide>
+          ))
+        )}
       </Swiper>
     </section>
   );
