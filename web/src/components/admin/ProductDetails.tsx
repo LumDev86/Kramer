@@ -36,8 +36,13 @@ export const ProductDetails = ({ setIsCreateProduct, mode, id }: ProductDetailsP
     setValue("image", value);
   }, [setValue]);
 
+  const onSuccessExternal = () => {
+    setIsCreateProduct(false);
+  };
+
+
   const { preview, setPreview, handleFileChange, handleRemoveImage, fileRef } = useImageUpload(setImageValue)
-  const { onSubmit } = useProductForm({ mode, id, handleRemoveImage, reset });
+  const { onSubmit } = useProductForm({ mode, id, handleRemoveImage, reset, onSuccessExternal });
 
 
   const isCreate = mode === "create"
@@ -53,7 +58,8 @@ export const ProductDetails = ({ setIsCreateProduct, mode, id }: ProductDetailsP
         price: Number(product.price),
         description: product.description,
         image: product.image,
-        category: product.category.name
+        category: product.category.name,
+        categoryId: product.category.id
       });
     }
   }, [isCreate, product, reset, setPreview]);
@@ -64,7 +70,6 @@ export const ProductDetails = ({ setIsCreateProduct, mode, id }: ProductDetailsP
       handleRemoveImage();
     }
   }, [isCreate, handleRemoveImage, reset]);
-
 
   if (!isCreate) {
     if (isLoading) return <p>Cargando producto...</p>;

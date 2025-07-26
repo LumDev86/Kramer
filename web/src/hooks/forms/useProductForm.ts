@@ -9,9 +9,10 @@ type useProductFormProps = {
   id?: string,
   handleRemoveImage: () => void;
   reset: UseFormReset<ProductFormSchema>;
+  onSuccessExternal?: () => void;
 }
 
-export const useProductForm = ({ mode, id, handleRemoveImage, reset }: useProductFormProps) => {
+export const useProductForm = ({ mode, id, handleRemoveImage, reset, onSuccessExternal }: useProductFormProps) => {
   const { mutate: createProduct } = useCreateProduct();
   const { mutate: updateProduct } = useUpdateProduct();
 
@@ -21,18 +22,23 @@ export const useProductForm = ({ mode, id, handleRemoveImage, reset }: useProduc
     const formData = new FormData();
 
     for (const [key, value] of Object.entries(data)) {
-      if (key === "category") continue;
+      if (key === "category" || key === "categoryId") continue;
       if (value !== undefined && value !== null) {
-        formData.append(key, String(value));
+        formData.append(key, value);
       }
     }
-    formData.append("category", data.category ?? "");
+    if (isCreate) {
+      formData.append("category", data.category ?? "");
+    } else {
+      formData.append("categoryId", data.categoryId ?? "");
+    }
 
     const commonOptions = {
       onSuccess: (data: { message: string }) => {
         toast.success(data.message);
         reset();
         handleRemoveImage();
+        onSuccessExternal?.();
       },
       onError: (error: Error) => {
         const action = isCreate ? "crear" : "editar";

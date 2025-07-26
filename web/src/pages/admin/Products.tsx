@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ProductDetails } from "../../components/admin/ProductDetails";
 import { Plus } from "lucide-react";
 import { CategorySelect } from "../../components/CategorySelect";
@@ -11,7 +11,7 @@ export default function Products() {
   const [isCreateProduct, setIsCreateProduct] = useState<boolean>(false);
   const [selectCategory, setSelectedCategory] = useState<string>("Bebidas");
   const { data: categories = [] } = useCategories();
-  const { data: products = [], isLoading } = useProductsByCat(selectCategory);
+  const { data: products = [], isLoading, refetch } = useProductsByCat(selectCategory);
 
   const handleSelectCategory = (selectedCategory: string) => {
     setSelectedCategory(selectedCategory);
@@ -23,6 +23,15 @@ export default function Products() {
     setIsMode(mode);
     setIsId(id);
   };
+
+  useEffect(() => {
+    if (!isCreateProduct) {
+      setTimeout(() => {
+        refetch();
+      }, 0);
+    }
+  }, [isCreateProduct, refetch]);
+
 
   return (
     <section className="px-4 py-3 font-outfit">
