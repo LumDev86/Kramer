@@ -117,7 +117,6 @@ export class ProductAdminService {
             modifiedFields,
             product: {
                 ...product,
-                image: product.image ? `IMAGE_${product.id}` : null,
                 promotion: product.promotion ?? undefined,
             },
         };
