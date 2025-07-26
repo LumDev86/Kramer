@@ -24,7 +24,6 @@ export class ProductService {
 
     const sanitizedProducts = products.map(product => ({
       ...product,
-      image: product.image ? `IMAGE_${product.id}` : null,
       promotion: product.promotion ?? undefined,
     }));
 
