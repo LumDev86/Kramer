@@ -46,7 +46,6 @@ export class ProductService {
 
     return {
       ...product,
-      image: product.image ? `IMAGE_${product.id}` : null,
       promotion: product.promotion ?? undefined,
     };
   }
