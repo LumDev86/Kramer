@@ -21,7 +21,7 @@ const createProduct = async (newProduct: FormData) => {
   }
 };
 
-export const getProductById = async (id: string) => {
+const getProductById = async (id: string) => {
   try {
     const response = await axios.get(`${prefijo}/user/products/${id}`);
     return response.data;
@@ -35,7 +35,7 @@ export const getProductById = async (id: string) => {
   }
 };
 
-export const updateProduct = async (id: string, product: FormData) => {
+const updateProduct = async (id: string, product: FormData) => {
   try {
     const response = await axios.put(`${prefijo}/admin/products/${id}`, product, {
         headers: {
@@ -53,8 +53,22 @@ export const updateProduct = async (id: string, product: FormData) => {
   }
 };
 
+const deleteProduct = async (id: string) => {
+  try {
+    await axios.delete(`${prefijo}/admin/products/${id}`);
+  } catch (error) {
+    const axiosError = error as AxiosError;
+    console.error(
+      "[deleteProduct] Error fetching data:",
+      axiosError.response?.data ?? axiosError.message
+    );
+    throw error;
+  }
+};
+
 export const productServices = {
   createProduct,
   getProductById,
-  updateProduct
+  updateProduct,
+  deleteProduct,
 };

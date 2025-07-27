@@ -4,6 +4,8 @@ import { Plus } from "lucide-react";
 import { CategorySelect } from "../../components/CategorySelect";
 import { useCategories } from "../../hooks/useCategories";
 import { useProductsByCat } from "../../hooks/useProductsByCat";
+import { useDeleteProduct } from "../../hooks/useDeleteProduct";
+import { toast } from "sonner";
 
 export default function Products() {
   const [isId, setIsId] = useState<string>("")
@@ -12,6 +14,24 @@ export default function Products() {
   const [selectCategory, setSelectedCategory] = useState<string>("Bebidas");
   const { data: categories = [] } = useCategories();
   const { data: products = [], isLoading, refetch } = useProductsByCat(selectCategory);
+  const { mutate } = useDeleteProduct();
+
+  const handleDeleteProduct = (id: string) => {
+    const confirmDelete = window.confirm("¿Estás seguro de que quieres eliminar este producto?");
+    if (!confirmDelete) return;
+
+    mutate(id,
+      {
+        onSuccess: () => {
+          toast.success("producto eliminado")
+          refetch()
+        },
+        onError: (error) => {
+          toast.error(`error: ${error}`)
+          console.error(error)
+        }
+      })
+  }
 
   const handleSelectCategory = (selectedCategory: string) => {
     setSelectedCategory(selectedCategory);
@@ -59,9 +79,14 @@ export default function Products() {
                     <div key={pr.id} className="flex flex-col gap-2 outline-1 outline outline-[#E8E8E8] rounded-lg p-2">
                       <img src={pr.image} alt={pr.name} className="w-full h-40 object-contain rounded-md" />
                       <p>{pr.name ? pr.name : "Sin nombre"}</p>
-                      <button onClick={() => openProductDetails("edit", pr.id)} className="p-2 bg-[#8DE68A] rounded-md">
-                        Editar producto
-                      </button>
+                      <div className="flex justify-between gap-2">
+                        <button onClick={() => openProductDetails("edit", pr.id)} className="flex-1 p-2 bg-[#8DE68A] rounded-md">
+                          Editar producto
+                        </button>
+                        <button onClick={() => handleDeleteProduct(pr.id)} className="flex-1 p-2 bg-[#ea737d] rounded-md">
+                          Eliminar producto
+                        </button>
+                      </div>
                     </div>
                   ))
                 ) : (
