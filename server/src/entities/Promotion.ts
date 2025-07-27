@@ -16,7 +16,7 @@ export class Promotion {
   type?: string; // Ej: "descuento", "combo", "regalo", etc. (opcional)
 
   @Column({ type: "json", nullable: true })
-  data?: any; // Campo opcional para reglas específicas (ej: { percent: 20 })
+  data?: unknown; // Campo opcional para reglas específicas (ej: { percent: 20 })
 
   @OneToMany(() => Product, (product) => product.promotion)
   products: Product[];
