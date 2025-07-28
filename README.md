@@ -71,7 +71,7 @@ El proyecto incluye documentación Swagger que expone los endpoints disponibles.
 Puedes verlos accediendo a:
 
 ```
-[GET /api-docs](https://kramer-8p5a.onrender.com/api-docs/)
+[[GET ](https://kramer-8p5a.onrender.com/api-docs/]
 ```
 ---
 
