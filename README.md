@@ -121,7 +121,7 @@ Aporta conocimientos en frontend, backend, diseño UX/UI, base de datos, testing
         </td>
         <!-- Jose M. Candia -->
         <td align="center">
-            <img src="https://media.licdn.com/dms/image/v2/D4D35AQEaA_20gYJCeQ/profile-framedphoto-shrink_800_800/B4DZan06M5G4Ag-/0/1746572387401?e=1753466400&v=beta&t=Ah_VvVPxVxBxLPr28CTLbg0P41rJUf4yxUUpYJLFrRk" width="80" style="border-radius:50%;"/><br>
+            <img src="https://media.licdn.com/dms/image/v2/D4D35AQEaA_20gYJCeQ/profile-framedphoto-shrink_800_800/B4DZan06M5G4Ag-/0/1746572387401?e=1754337600&v=beta&t=MjwDTGv1ifeuOoFO1NwDarrblwHIgdsFhsti76c7ef4" width="80" style="border-radius:50%;"/><br>
             <b>Jose M. Candia</b><br>
             Backend<br>
             <a href="https://github.com/joss-dev"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="20"/></a>
@@ -155,7 +155,7 @@ Aporta conocimientos en frontend, backend, diseño UX/UI, base de datos, testing
         </td>
         <!-- Martina Asad -->
         <td align="center">
-            <img src="https://media.licdn.com/dms/image/v2/D4D35AQGS6BD1MoykxQ/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1711154322516?e=1754337600&v=beta&t=bjFIkJ1XoO2mGQt3HhOjE1lvdF6Wz-R-Yna-8cZG7yc;"/><br>
+            <img src="https://media.licdn.com/dms/image/v2/D4D35AQGS6BD1MoykxQ/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1711154322516?e=1754337600&v=beta&t=bjFIkJ1XoO2mGQt3HhOjE1lvdF6Wz-R-Yna-8cZG7yc" width="80" style="border-radius:50%;"/><br>
             <b>Martina Asad</b><br>
             Testing<br>
             <a href="https://github.com/MartinaAsad"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="20"/></a>
