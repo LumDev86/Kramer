@@ -139,7 +139,7 @@ Aporta conocimientos en frontend, backend, diseño UX/UI, base de datos, testing
     <tr>
         <!-- Richard Garcia Ordaz -->
         <td align="center">
-            <img src="https://media.licdn.com/dms/image/v2/D5603AQEIfYgMbxVoUQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1724638689379?e=1755734400&v=beta&t=MtjDJ1h8Y_R_k75M5j1_M2M9ARaCJXHRvokf_D2iWlU" width="80" style="border-radius:50%;"/><br>
+            <img src="https://media.licdn.com/dms/image/v2/D5603AQGkCSVcs9PbFg/profile-displayphoto-crop_800_800/B56Zg6biqpHMAI-/0/1753326955942?e=1756339200&v=beta&t=YPXyjmg8UFsMcEVYH_VQ0yciqULAJ3q6b5SOGFbZa6E;"/><br>
             <b>Richard Garcia Ordaz</b><br>
             Diseño UX/UI<br>
             <a href="https://www.linkedin.com/in/richard-garcia-ordaz/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"/></a>
@@ -155,7 +155,7 @@ Aporta conocimientos en frontend, backend, diseño UX/UI, base de datos, testing
         </td>
         <!-- Martina Asad -->
         <td align="center">
-            <img src="https://media.licdn.com/dms/image/v2/D4D35AQGS6BD1MoykxQ/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1711154322516?e=1753466400&v=beta&t=zHYl12wm-3E4g-OeI2joyOla_Hh5xf-bxY_w107-YB0" width="80" style="border-radius:50%;"/><br>
+            <img src="https://media.licdn.com/dms/image/v2/D4D35AQGS6BD1MoykxQ/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1711154322516?e=1754337600&v=beta&t=bjFIkJ1XoO2mGQt3HhOjE1lvdF6Wz-R-Yna-8cZG7yc;"/><br>
             <b>Martina Asad</b><br>
             Testing<br>
             <a href="https://github.com/MartinaAsad"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="20"/></a>
