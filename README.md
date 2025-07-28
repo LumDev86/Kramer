@@ -139,7 +139,7 @@ Aporta conocimientos en frontend, backend, diseño UX/UI, base de datos, testing
     <tr>
         <!-- Richard Garcia Ordaz -->
         <td align="center">
-            <img src="https://media.licdn.com/dms/image/v2/D5603AQGkCSVcs9PbFg/profile-displayphoto-crop_800_800/B56Zg6biqpHMAI-/0/1753326955942?e=1756339200&v=beta&t=YPXyjmg8UFsMcEVYH_VQ0yciqULAJ3q6b5SOGFbZa6E;"/><br>
+            <img src="[https://media.licdn.com/dms/image/v2/D5603AQGkCSVcs9PbFg/profile-displayphoto-crop_800_800/B56Zg6biqpHMAI-/0/1753326955942?e=1756339200&v=beta&t=YPXyjmg8UFsMcEVYH_VQ0yciqULAJ3q6b5SOGFbZa6E;](https://media.licdn.com/dms/image/v2/D5603AQGkCSVcs9PbFg/profile-displayphoto-crop_800_800/B56Zg6biqpHMAI-/0/1753326955942?e=1756339200&v=beta&t=YPXyjmg8UFsMcEVYH_VQ0yciqULAJ3q6b5SOGFbZa6E)"/><br>
             <b>Richard Garcia Ordaz</b><br>
             Diseño UX/UI<br>
             <a href="https://www.linkedin.com/in/richard-garcia-ordaz/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20"/></a>
