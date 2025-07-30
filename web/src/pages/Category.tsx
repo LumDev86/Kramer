@@ -8,7 +8,7 @@ import { ProductFilters } from "../components/ProductFilters";
 import { useCategories } from "../hooks/useCategories";
 import { useProductsByCat } from "../hooks/useProductsByCat";
 import { FilterState } from "../interfaces/product";
-import { priceRanges } from "../constants/productFilters";
+import { PRICE_RANGES } from "../constants/productFilters";
 
 const Category = () => {
   const { category } = useParams<{ category: string }>();
@@ -38,7 +38,7 @@ const Category = () => {
     );
 
     if (filters.priceRange) {
-      const range = priceRanges[filters.priceRange];
+      const range = PRICE_RANGES[filters.priceRange];
       if (range) {
         filtered = filtered.filter((product) => {
           const price =
