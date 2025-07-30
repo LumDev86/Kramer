@@ -20,6 +20,7 @@ export const config = {
   // Variables de entorno para el servidor Local y de Producción
   PORT_SERVER_PRODUCTION: getEnvVar("URL_PRODUCCION"),
   HOST_SERVER_LOCAL: getEnvVar("URL_LOCAL"),
+  HOST_PIXIAN: getEnvVar("URL_PIXIAN"),
 
   // Cloudinary
   CLOUDINARY_CLOUD_NAME: getEnvVar("CLOUDINARY_CLOUD_NAME"),

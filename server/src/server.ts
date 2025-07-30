@@ -13,7 +13,11 @@ setupSwagger(server);
 
 
 
-const allowedOrigins = [config.HOST_SERVER_LOCAL, config.PORT_SERVER_PRODUCTION];
+const allowedOrigins = [
+    config.HOST_SERVER_LOCAL,
+    config.PORT_SERVER_PRODUCTION,
+    config.HOST_PIXIAN
+];
 
 const corsOptions: cors.CorsOptions = {
   origin: function (origin, callback) {
