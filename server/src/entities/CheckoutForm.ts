@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, Index, } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, Index, CreateDateColumn, } from "typeorm";
 import { PaymentMethod } from "@enums/PaymentMethod";
 import { CartItem } from "./CartItem";
 
@@ -32,6 +32,9 @@ export class CheckoutForm {
 
   @Column({ type: "varchar", length: 255, nullable: true })
   accountHolderName?: string;
+
+  @CreateDateColumn()
+  createdAt: Date;
 
   // 🔁 Relación inversa
   @OneToMany(() => CartItem, (cartItem) => cartItem.checkoutForm)
