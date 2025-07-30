@@ -1,13 +1,8 @@
 import { Product } from "./cards/Product";
 import { Product as Loader } from "./loaders/Product";
-import { FilterState, ProductsProps } from "../interfaces/product";
+import { UpdatedProductsProps } from "../interfaces/product";
 import { useProductsByCat } from "../hooks/useProductsByCat";
-import { PRICE_RANGES } from "../constants/productFilters";
-
-interface UpdatedProductsProps extends ProductsProps {
-  filters: FilterState;
-  onResetFilters: () => void;
-}
+import { useFilteredProducts } from "../hooks/useFilteredProducts";
 
 export const Products = ({
   category,
@@ -16,43 +11,7 @@ export const Products = ({
   onResetFilters,
 }: UpdatedProductsProps) => {
   const { data: products = [], isLoading, error } = useProductsByCat(category);
-
-  const getFilteredProducts = () => {
-    if (!products) return [];
-
-    let filtered = products.filter((product) =>
-      product.name.toLowerCase().includes(search.toLowerCase())
-    );
-
-    // Filtrar por rango de precios
-    if (filters.priceRange && PRICE_RANGES[filters.priceRange]) {
-      const range = PRICE_RANGES[filters.priceRange];
-      filtered = filtered.filter((product) => {
-        const price =
-          typeof product.price === "string"
-            ? parseFloat(product.price.replace(/[^0-9.-]+/g, ""))
-            : product.price;
-        return price >= range.min && price <= range.max;
-      });
-    }
-
-    // Ordenar por tipo (funcionalidad futura)
-    switch (filters.sortBy) {
-      case "newest":
-        // Nuevos Productos
-        break;
-      case "promotions":
-        // Promociones
-        break;
-      case "bestsellers":
-        // Más vendidos
-        break;
-    }
-
-    return filtered;
-  };
-
-  const filteredProducts = getFilteredProducts();
+  const filteredProducts = useFilteredProducts(products, search, filters);
 
   if (isLoading) return <Loader />;
   if (error)
