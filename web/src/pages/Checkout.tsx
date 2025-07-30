@@ -52,7 +52,6 @@ export default function Checkout() {
         // Limpia carrito y redirige
         clearCart();
         removeSessionId();
-        navigate('/');
       },
       onError: () => {
         console.error("Error al enviar los datos del checkout");

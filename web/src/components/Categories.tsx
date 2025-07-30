@@ -8,7 +8,7 @@ export const Categories = () => {
   const { data = [], isLoading, error } = useCategories();
 
   if (isLoading) return <Loader />;
-  if (error) return <p className="text-red-500">Error cargando la información</p>;
+  if (error) return <p className="text-red-500">Error al obtener las categorias</p>;
 
   return (
     <section>

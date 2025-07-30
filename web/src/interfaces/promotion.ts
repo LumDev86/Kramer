@@ -7,26 +7,19 @@ export interface PromotionsResponse {
   type: string;
   data: {
     percent?: number;
-    [key: string]: unknown;
+    buy?: number;
+    pay?: number;
+    giftProductId?: string;
+    minQuantity?: number;
   };
   products: Product[];
-}
-
-export interface PromotionData {
-  percent?: number;
-  amount?: number;
-  freeShipping?: boolean;
-}
-
-export interface Promotion {
-  id: string;
-  title: string;
-  description: string;
-  type: string;
-  data: PromotionData;
 }
 
 export interface PromotionsProducts {
   product: Product;
   promotion?: PromotionsResponse;
 }
+
+export type CreatePromotion = Omit<PromotionsResponse, "id" | "products"> & {
+  productIds: string[];
+};
