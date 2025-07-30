@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { ChevronDown, Check } from "lucide-react";
 import { FilterState, PriceRangeId } from "../interfaces/product";
-import { priceRangesTags, sortOptions } from "../constants/productFilters";
+import { PRICE_RANGES_TAGS, SORT_OPTIONS } from "../constants/productFilters";
 
 interface ProductFiltersProps {
   filters: FilterState;
@@ -70,7 +70,7 @@ export const ProductFilters: FC<ProductFiltersProps> = ({
             border border-[#6EC3F680] rounded-[5px] text-gray-700 hover:bg-[#6EC3F680] transition-colors"
           >
             <span>
-              {sortOptions.find((opt) => opt.id === filters.sortBy)?.label}
+              {SORT_OPTIONS.find((opt) => opt.id === filters.sortBy)?.label}
             </span>
             <ChevronDown
               className={`w-4 h-4 ml-2 transition-transform ${
@@ -84,7 +84,7 @@ export const ProductFilters: FC<ProductFiltersProps> = ({
               className="absolute top-full left-0 right-0 mt-1 bg-white border border-[#6EC3F680]
             rounded-[5px] shadow-lg z-10"
             >
-              {sortOptions.map((option) => (
+              {SORT_OPTIONS.map((option) => (
                 <button
                   key={option.id}
                   onClick={() => handleSortChange(option.id)}
@@ -104,7 +104,7 @@ export const ProductFilters: FC<ProductFiltersProps> = ({
       </header>
 
       <article className="flex gap-3 mb-2">
-        {priceRangesTags.map((range) => (
+        {PRICE_RANGES_TAGS.map((range) => (
           <button
             key={range.id}
             onClick={() => handlePriceRangeChange(range.id)}
