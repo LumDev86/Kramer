@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { CategoryAdminController } from "@/controllers/admin/category.admin.controller";
+import { CategoryAdminService } from "@/services/admin/category.admin.service";
 
 const adminCategoryRouter = Router();
 const categoryAdminController = new CategoryAdminController();
@@ -20,33 +21,36 @@ const categoryAdminController = new CategoryAdminController();
  *     requestBody:
  *       required: true
  *       content:
- *         application/json:
+ *         multipart/form-data:
  *           schema:
  *             type: object
  *             required:
  *               - name
- *               - image
  *             properties:
  *               name:
  *                 type: string
  *                 example: "Bebidas"
  *               image:
  *                 type: string
- *                 format: uri
- *                 example: "https://res.cloudinary.com/demo/image/upload/v1620000000/bebidas.png"
+ *                 format: binary
+ *                 description: Imagen local para subir (archivo). Alternativamente puede enviarse un campo image en el body como URL en texto (pero no en multipart).
  *     responses:
  *       201:
  *         description: Categoría creada exitosamente
  *       400:
  *         description: Error al crear la categoría
  */
-adminCategoryRouter.post("/", categoryAdminController.create);
+adminCategoryRouter.post(
+  "/",
+  CategoryAdminService.uploadImage,
+  categoryAdminController.create
+);
 
 /**
  * @swagger
  * /api/admin/categories/{id}:
  *   put:
- *     summary: Actualizar una categoría existente (solo nombre)
+ *     summary: Actualizar una categoría existente (nombre e imagen)
  *     tags: [Admin - Categories]
  *     parameters:
  *       - in: path
@@ -58,7 +62,7 @@ adminCategoryRouter.post("/", categoryAdminController.create);
  *     requestBody:
  *       required: true
  *       content:
- *         application/json:
+ *         multipart/form-data:
  *           schema:
  *             type: object
  *             required:
@@ -67,6 +71,10 @@ adminCategoryRouter.post("/", categoryAdminController.create);
  *               name:
  *                 type: string
  *                 example: "Snacks"
+ *               image:
+ *                 type: string
+ *                 format: binary
+ *                 description: Imagen local para subir (archivo). Opcional.
  *     responses:
  *       200:
  *         description: Categoría actualizada correctamente
@@ -75,7 +83,11 @@ adminCategoryRouter.post("/", categoryAdminController.create);
  *       500:
  *         description: Error del servidor
  */
-adminCategoryRouter.put("/:id", categoryAdminController.update);
+adminCategoryRouter.put(
+  "/:id",
+  CategoryAdminService.uploadImage,
+  categoryAdminController.update
+);
 
 /**
  * @swagger
@@ -99,4 +111,5 @@ adminCategoryRouter.put("/:id", categoryAdminController.update);
 adminCategoryRouter.delete("/:id", categoryAdminController.delete);
 
 export default adminCategoryRouter;
+
 

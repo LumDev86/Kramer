@@ -26,14 +26,25 @@ const controller = new PromotionAdminController();
  *             properties:
  *               title:
  *                 type: string
+ *                 description: 'Título de la promoción (ej: "20% OFF", "Llevá 3 pagá 2")'
  *               description:
  *                 type: string
+ *                 description: Descripción detallada de la promoción
  *               type:
  *                 type: string
+ *                 description: 'Tipo de promoción (ej: "descuento", "combo", "regalo")'
  *               data:
  *                 type: object
+ *                 description: >
+ *                   Reglas específicas según el tipo de promoción. Ejemplos:
+ *                   - Descuento: { "percent": 20 }
+ *                   - Combo: { "buy": 3, "pay": 2 }
+ *                   - Regalo: { "giftProductId": "uuid-producto-regalo", "minQuantity": 1 }
+ *                 example:
+ *                   percent: 20
  *               productIds:
  *                 type: array
+ *                 description: IDs de productos a los que aplica la promoción
  *                 items:
  *                   type: string
  *     responses:
@@ -63,14 +74,26 @@ adminPromotionRouter.post("/", controller.create);
  *             properties:
  *               title:
  *                 type: string
+ *                 description: 'Título de la promoción (ej: "20% OFF", "Llevá 3 pagá 2")'
  *               description:
  *                 type: string
+ *                 description: Descripción detallada de la promoción
  *               type:
  *                 type: string
+ *                 description: 'Tipo de promoción (ej: "descuento", "combo", "regalo")'
  *               data:
  *                 type: object
+ *                 description: >
+ *                   Reglas específicas según el tipo de promoción. Ejemplos:
+ *                   - Descuento: { "percent": 20 }
+ *                   - Combo: { "buy": 3, "pay": 2 }
+ *                   - Regalo: { "giftProductId": "uuid-producto-regalo", "minQuantity": 1 }
+ *                 example:
+ *                   buy: 3
+ *                   pay: 2
  *               productIds:
  *                 type: array
+ *                 description: IDs de productos a los que aplica la promoción
  *                 items:
  *                   type: string
  *     responses:

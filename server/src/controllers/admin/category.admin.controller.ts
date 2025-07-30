@@ -6,7 +6,8 @@ const categoryAdminService = new CategoryAdminService();
 export class CategoryAdminController {
   async create(req: Request, res: Response): Promise<Response> {
     try {
-      const category = await categoryAdminService.create(req.body);
+      // Pasamos req.body y req.file al service
+      const category = await categoryAdminService.create(req.body, req.file);
       return res.status(201).json({
         message: "Categoría creada exitosamente.",
         category,
@@ -19,7 +20,8 @@ export class CategoryAdminController {
 
   async update(req: Request, res: Response): Promise<Response> {
     try {
-      const category = await categoryAdminService.update(req.params.id, req.body);
+      // Pasamos req.body y req.file al service
+      const category = await categoryAdminService.update(req.params.id, req.body, req.file);
       return res.json(category);
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : "Unknown error";
@@ -37,4 +39,5 @@ export class CategoryAdminController {
     }
   }
 }
+
 
