@@ -44,3 +44,8 @@ export interface ProductFiltersProps {
   onFiltersChange: (filters: FilterState) => void;
   resultsCount: number;
 }
+
+export interface UpdatedProductsProps extends ProductsProps {
+  filters: FilterState;
+  onResetFilters: () => void;
+}
