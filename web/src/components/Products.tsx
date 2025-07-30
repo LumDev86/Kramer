@@ -2,7 +2,7 @@ import { Product } from "./cards/Product";
 import { Product as Loader } from "./loaders/Product";
 import { FilterState, ProductsProps } from "../interfaces/product";
 import { useProductsByCat } from "../hooks/useProductsByCat";
-import { priceRanges } from "../constants/productFilters";
+import { PRICE_RANGES } from "../constants/productFilters";
 
 interface UpdatedProductsProps extends ProductsProps {
   filters: FilterState;
@@ -25,8 +25,8 @@ export const Products = ({
     );
 
     // Filtrar por rango de precios
-    if (filters.priceRange && priceRanges[filters.priceRange]) {
-      const range = priceRanges[filters.priceRange];
+    if (filters.priceRange && PRICE_RANGES[filters.priceRange]) {
+      const range = PRICE_RANGES[filters.priceRange];
       filtered = filtered.filter((product) => {
         const price =
           typeof product.price === "string"
