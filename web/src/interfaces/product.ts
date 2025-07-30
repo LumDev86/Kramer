@@ -38,3 +38,9 @@ export interface PriceRange {
   min: number;
   max: number;
 }
+
+export interface ProductFiltersProps {
+  filters: FilterState;
+  onFiltersChange: (filters: FilterState) => void;
+  resultsCount: number;
+}
