@@ -13,6 +13,8 @@ const NotFound = lazy(() => import('../pages/NotFound'));
 const Auth = lazy(() => import('../pages/admin/Auth'));
 const Dashboard = lazy(() => import('../pages/admin/Dashboard'));
 const Products = lazy(() => import('../pages/admin/Products'));
+const CategoryAdmin = lazy(() => import('../pages/admin/Category'));
+
 
 export const AppRoutes = () => {
   return (
@@ -40,6 +42,7 @@ export const AppRoutes = () => {
           <Route element={<DashboardLayout />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="products" element={<Products />} />
+            <Route path='categories' element={<CategoryAdmin/>}/>
           </Route>
         </Route>
 

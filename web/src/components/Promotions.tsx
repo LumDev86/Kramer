@@ -33,7 +33,7 @@ export const Promotions = () => {
     );
   }
 
-  if (!promotions) {
+  if (!promotions || !Array.isArray(promotions)) {
     return (
       <section>
         <h2 className="font-bold text-2xl pb-4">Promociones</h2>

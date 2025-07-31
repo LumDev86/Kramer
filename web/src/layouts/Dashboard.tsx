@@ -24,6 +24,10 @@ export default function DashboardLayout() {
             <Package fill="#FDFBFF"/>
             <span className="text-lg">Productos</span>
           </button>
+          <button onClick={() => navigate("/admin/categories")} className="rounded-md p-2 flex items-center gap-[10px] hover:bg-[#6EC3F666]">
+            <Package fill="#FDFBFF"/>
+            <span className="text-lg">Categorias</span>
+          </button>
         </nav>
         <div>
           <p>PROFILE DEL USUARIO</p>

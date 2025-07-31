@@ -44,11 +44,21 @@ const addProductFields = [
   { id: "price", type: "number", placeholder: "Precio" },
 ] as const;
 
+
+/**
+ * Inputs para formulario para crear categorias
+ */
+const addCategoryFields = [
+  { id: "name", type: "text", placeholder: "Nombre de la Categoria" },
+]
+
+
 export const inputs = {
   paymentOptions,
   personalFields,
   mercadoPagoFields,
   authRegisterField,
   authLoginField,
-  addProductFields
+  addProductFields,
+  addCategoryFields
 };
