@@ -11,7 +11,6 @@ dotenv.config();
 const server = express();
 setupSwagger(server);
 
-
 // Middlewares
 server.use(cors(corsOptions));
 server.use(morgan("dev")); // Muestra logs de las peticiones en consola

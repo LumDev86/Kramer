@@ -16,30 +16,24 @@ export class CartService {
       relations: ["product"],
     });
 
-    const itemsWithSubtotal = items.map((item) => ({
+    const itemsWithSubtotal = items.map(item => ({
       id: item.id,
       product: item.product,
       quantity: item.quantity,
       subtotal: item.quantity * item.product.price,
     }));
 
-    const total = itemsWithSubtotal.reduce((acc, item) => acc + item.subtotal, 0);
+    const total = itemsWithSubtotal.reduce((sum, item) => sum + item.subtotal, 0);
 
-    return {
-      items: itemsWithSubtotal,
-      total,
-    };
+    return { items: itemsWithSubtotal, total };
   }
 
-
   async addItem(sessionId: string, productId: string, quantity: number = 1) {
-    if (quantity < 1) throw new Error("Quantity must be at least 1");
-    if (!productId) throw new Error("ProductId is required");
+    if (!productId) throw new Error("El producto es obligatorio.");
+    if (quantity < 1) throw new Error("La cantidad debe ser al menos 1.");
 
     const product = await ProductRepository.findOne({ where: { id: productId } });
-    if (!product) throw new Error("Product not found");
-
-    console.log(`Adding item to cart: product=`, product);
+    if (!product) throw new Error("Producto no encontrado.");
 
     let cartItem = await this.cartRepository.findOne({
       where: { sessionId, product: { id: productId } },
@@ -56,10 +50,14 @@ export class CartService {
   }
 
   async updateItem(sessionId: string, cartItemId: string, quantity: number) {
-    if (quantity < 1) throw new Error("Quantity must be at least 1");
+    if (quantity < 1) throw new Error("La cantidad debe ser al menos 1.");
 
-    const cartItem = await this.cartRepository.findOne({ where: { id: cartItemId, sessionId }, relations: ["product"] });
-    if (!cartItem) throw new Error("Cart item not found");
+    const cartItem = await this.cartRepository.findOne({
+      where: { id: cartItemId, sessionId },
+      relations: ["product"],
+    });
+
+    if (!cartItem) throw new Error("El ítem del carrito no fue encontrado.");
 
     cartItem.quantity = quantity;
     return await this.cartRepository.save(cartItem);
@@ -67,15 +65,17 @@ export class CartService {
 
   async removeItem(sessionId: string, cartItemId: string) {
     const cartItem = await this.cartRepository.findOne({ where: { id: cartItemId, sessionId } });
-    if (!cartItem) throw new Error("Cart item not found");
 
-    await this.cartRepository.delete(cartItemId);
-    return { message: "Cart item removed successfully" };
+    if (!cartItem) throw new Error("Ítem no encontrado en el carrito.");
+
+    await this.cartRepository.remove(cartItem);
+    return { message: "Ítem eliminado correctamente." };
   }
 
   async clearCart(sessionId: string) {
     await this.cartRepository.delete({ sessionId });
-    return { message: "Cart cleared" };
+    return { message: "Carrito vaciado correctamente." };
   }
 }
+
 

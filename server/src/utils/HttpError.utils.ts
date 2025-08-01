@@ -11,3 +11,8 @@ export default class HttpError {
         this.status = status;
     }
 }
+
+// Utilidad para capturar mensajes de error
+export function extractMessage(error: unknown): string {
+  return error instanceof Error ? error.message : "Ocurrió un error inesperado.";
+}

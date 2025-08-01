@@ -19,3 +19,4 @@ export class SalesMetricsController {
     return res.json(data);
   }
 }
+
