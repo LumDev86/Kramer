@@ -6,13 +6,13 @@ const adminCheckoutService = new AdminCheckoutService();
 export class AdminCheckoutController {
   async getAll(req: Request, res: Response) {
     try {
-      const page = parseInt(req.query.page as string) || 1;
-      const limit = parseInt(req.query.limit as string) || 5; // 👈 límite fijo por defecto en 5
+      const page = Number(req.query.page) || 1;
+      const limit = Number(req.query.limit) || 5;
 
       const result = await adminCheckoutService.getAllCheckouts(page, limit);
       return res.status(200).json(result);
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : "Unknown error";
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Unexpected error retrieving checkouts.";
       return res.status(500).json({ error: message });
     }
   }
@@ -21,9 +21,10 @@ export class AdminCheckoutController {
     try {
       const result = await adminCheckoutService.deleteAllCheckouts();
       return res.status(200).json(result);
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : "Unknown error";
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Unexpected error deleting checkouts.";
       return res.status(500).json({ error: message });
     }
   }
 }
+

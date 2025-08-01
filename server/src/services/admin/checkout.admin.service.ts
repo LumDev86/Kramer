@@ -1,5 +1,5 @@
 import { CheckoutFormRepository } from "@/repositories/CheckoutFormRepository";
-
+import { AppDataSource } from "@/config/dbConfig";
 export class AdminCheckoutService {
     async getAllCheckouts(page = 1, limit = 5) {
         const [checkouts, total] = await CheckoutFormRepository.findAndCount({
@@ -43,10 +43,37 @@ export class AdminCheckoutService {
     }
 
     async deleteAllCheckouts() {
-        await CheckoutFormRepository.clear();
+        const queryRunner = AppDataSource.createQueryRunner();
+        await queryRunner.connect();
+        await queryRunner.startTransaction();
+
+        try {
+        // 1. Borrar CartItems que están asociados a Checkouts
+        await queryRunner.manager
+            .createQueryBuilder()
+            .delete()
+            .from("cart_item")
+            .where("checkoutFormId IS NOT NULL")
+            .execute();
+
+        // 2. Borrar Checkouts
+        await queryRunner.manager
+            .createQueryBuilder()
+            .delete()
+            .from("checkout_form")
+            .execute();
+
+        await queryRunner.commitTransaction();
+
         return {
             success: true,
-            message: "All checkouts deleted successfully",
+            message: "All checkouts and related cart items deleted successfully",
         };
+        } catch (error) {
+        await queryRunner.rollbackTransaction();
+        throw new Error("Error deleting checkouts: " + error);
+        } finally {
+        await queryRunner.release();
+        }
     }
 }
