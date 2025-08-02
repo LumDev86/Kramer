@@ -4,6 +4,9 @@ import type { UserConfig } from 'vitest/config';
 
 const config: UserConfig = {
   plugins: [react()],
+  server: {
+    port: 3000, // 👈 esto es lo nuevo
+  },
   test: {
     globals: true,
     environment: 'jsdom',
