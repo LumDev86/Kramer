@@ -12,6 +12,8 @@ export interface Product {
   status?: string;
 }
 
+export type GiftProduct = Partial<Product>
+
 export interface ProductProps {
   product: Product;
 }

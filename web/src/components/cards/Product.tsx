@@ -64,7 +64,12 @@ export const Product = ({ product, promotion }: PromotionsProducts) => {
             />
           </figure>
         )}
-        {/* IMAGE PRODUCT */}
+        {/* REGALO */}
+        {promotion?.data.giftProductId && (
+          <label className="p-1 rounded-xl bg-yellow-300 absolute top-0 left-2.5 text-sm text-black text-nowrap">
+            {promotion.data.minQuantity} producto/s de regalo
+          </label>
+        )}
         <img
           src={product.image}
           alt={product.name}

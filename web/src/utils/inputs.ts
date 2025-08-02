@@ -44,11 +44,21 @@ const addProductFields = [
   { id: "price", type: "number", placeholder: "Precio" },
 ] as const;
 
+/**
+ * Inputs para crear promociones
+ */
+const typeOptions = [
+  { id: "descuento", label: "Descuento"},
+  { id: "combo", label: "Combo"},
+  { id: "regalo", label: "Regalo"},
+];
+
 export const inputs = {
   paymentOptions,
   personalFields,
   mercadoPagoFields,
   authRegisterField,
   authLoginField,
-  addProductFields
+  addProductFields,
+  typeOptions
 };
