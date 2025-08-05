@@ -8,7 +8,7 @@ const authRouter = Router();
 /**
  * @swagger
  * tags:
- *   name: Admin - Auth
+ *   name: Admin - Autenticación
  *   description: Autenticación de administradores
  */
 
@@ -17,7 +17,7 @@ const authRouter = Router();
  * /api/admin/auth/login:
  *   post:
  *     summary: Iniciar sesión como administrador
- *     tags: [Admin - Auth]
+ *     tags: [Admin - Autenticación]
  *     requestBody:
  *       required: true
  *       content:
@@ -54,7 +54,7 @@ authRouter.post(
  * /api/admin/auth/register:
  *   post:
  *     summary: Registrar un nuevo administrador
- *     tags: [Admin - Auth]
+ *     tags: [Admin - Autenticación]
  *     requestBody:
  *       required: true
  *       content:
@@ -97,7 +97,7 @@ authRouter.post(
  * /api/admin/auth/updatePassword:
  *   patch:
  *     summary: Actualizar contraseña del administrador
- *     tags: [Admin - Auth]
+ *     tags: [Admin - Autenticación]
  *     requestBody:
  *       required: true
  *       content:
