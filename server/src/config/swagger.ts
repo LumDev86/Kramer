@@ -50,7 +50,7 @@ const options: swaggerJSDoc.Options = {
         description: "Gestión de promociones por parte del administrador",
       },
       {
-        name: "CRM",
+        name: "CRM - Sales Metrics",
         description: "Rutas para gestión de clientes, ventas y otras áreas del CRM",
       },
     ],
