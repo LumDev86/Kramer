@@ -7,6 +7,7 @@ import { CartItem } from "@entities/CartItem";
 import { Promotion } from "@entities/Promotion"; 
 import { CheckoutForm } from "@/entities/CheckoutForm"; 
 import { User } from "@/entities/User";
+import { Banner } from "@/entities/Banner"; // Importa la entidad Banner
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -19,5 +20,5 @@ export const AppDataSource = new DataSource({
   dropSchema: false, // Cambia a false en producción
   logging: true,
   ssl: config.SSL_DATABASE ? { rejectUnauthorized: false } : undefined,
-  entities: [Category, Product, CartItem, Promotion, CheckoutForm, User], 
+  entities: [Category, Product, CartItem, Promotion, CheckoutForm, User, Banner],
 });

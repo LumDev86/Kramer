@@ -10,6 +10,7 @@ import adminPromotionRouter from "@/routers/admin/promotion.admin.routes";
 import authRouter from "@/routers/admin/auth.admin.routes";
 import salesMetricsRouter from "@/routers/crm/salesMetrics.routes";
 import adminCheckoutRouter from "./admin/checkout.admin.route";
+import adminBannerRouter from "@/routers/admin/banner.admin.routes";
 
 const router = Router();
 
@@ -26,6 +27,7 @@ router.use("/admin/products", adminProductRouter);
 router.use("/admin/promotions", adminPromotionRouter);
 router.use("/admin/auth", authRouter);
 router.use("/admin/checkout", adminCheckoutRouter); 
+router.use("/admin/banners", adminBannerRouter);
 
 // Rutas para CRM
 router.use("/crm/sales", salesMetricsRouter);
