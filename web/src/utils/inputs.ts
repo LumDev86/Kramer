@@ -68,5 +68,7 @@ export const inputs = {
   mercadoPagoFields,
   authRegisterField,
   authLoginField,
-  addProductFields
+  addProductFields,
+  typeOptions,
+  addCategoryFields
 };

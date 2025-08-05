@@ -43,6 +43,8 @@ export const AppRoutes = () => {
           <Route element={<DashboardLayout />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="products" element={<Products />} />
+            <Route path='categories' element={<CategoryAdmin/>}/>
+            <Route path="promotions" element={<Promotions />} />
           </Route>
         </Route>
 
