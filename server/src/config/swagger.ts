@@ -46,6 +46,10 @@ const options: swaggerJSDoc.Options = {
         description: "Gestión de promociones por parte del administrador",
       },
       {
+        name: "Admin - Banners",
+        description: "Gestión de promociones por parte del administrador",
+      },
+      {
         name: "CRM",
         description: "Rutas para gestión de clientes, ventas y otras áreas del CRM",
       },
