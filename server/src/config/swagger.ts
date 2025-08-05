@@ -57,6 +57,10 @@ const options: swaggerJSDoc.Options = {
         name: "CRM - Sales Metrics",
         description: "Rutas para gestión de clientes, ventas y otras áreas del CRM",
       },
+      {
+        name: "Admin - Autenticación",
+        description: "Rutas para la autenticación de administradores",
+      },
     ],
 
     servers: [
