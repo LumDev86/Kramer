@@ -13,7 +13,7 @@ const controller = new SalesMetricsController();
 
 /**
  * @swagger
- * /api/crm/sales-metrics/daily:
+ * /api/crm/sales/daily:
  *   get:
  *     summary: Obtener métricas de ventas diarias
  *     tags: [CRM - Sales Metrics]
@@ -45,7 +45,7 @@ salesMetricsRouter.get("/daily", controller.getDaily);
 
 /**
  * @swagger
- * /api/crm/sales-metrics/weekly:
+ * /api/crm/sales/weekly:
  *   get:
  *     summary: Obtener métricas de ventas semanales
  *     tags: [CRM - Sales Metrics]
@@ -77,7 +77,7 @@ salesMetricsRouter.get("/weekly", controller.getWeekly);
 
 /**
  * @swagger
- * /api/crm/sales-metrics/monthly:
+ * /api/crm/sales/monthly:
  *   get:
  *     summary: Obtener métricas de ventas mensuales
  *     tags: [CRM - Sales Metrics]
