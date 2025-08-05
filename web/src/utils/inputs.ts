@@ -44,6 +44,15 @@ const addProductFields = [
   { id: "price", type: "number", placeholder: "Precio" },
 ] as const;
 
+/**
+ * Inputs para crear promociones
+ */
+const typeOptions = [
+  { id: "descuento", label: "Descuento"},
+  { id: "combo", label: "Combo"},
+  { id: "regalo", label: "Regalo"},
+];
+
 
 /**
  * Inputs para formulario para crear categorias
@@ -59,6 +68,5 @@ export const inputs = {
   mercadoPagoFields,
   authRegisterField,
   authLoginField,
-  addProductFields,
-  addCategoryFields
+  addProductFields
 };

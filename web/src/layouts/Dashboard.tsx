@@ -1,6 +1,6 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import Logo from "../assets/logos/logo.webp";
-import { LayoutDashboard, Package } from 'lucide-react';
+import { LayoutDashboard, Package, BadgePercent } from 'lucide-react';
 
 export default function DashboardLayout() {
   const navigate = useNavigate();
@@ -21,8 +21,12 @@ export default function DashboardLayout() {
             <span className="text-lg">Dashboard</span>
           </button>
           <button onClick={() => navigate("/admin/products")} className="rounded-md p-2 flex items-center gap-[10px] hover:bg-[#6EC3F666]">
-            <Package fill="#FDFBFF"/>
+            <Package fill="#FDFBFF" />
             <span className="text-lg">Productos</span>
+          </button>
+          <button onClick={() => navigate("/admin/promotions")} className="rounded-md p-2 flex items-center gap-[10px] hover:bg-[#6EC3F666]">
+            <BadgePercent fill="#FDFBFF" />
+            <span className="text-lg">Promociones</span>
           </button>
           <button onClick={() => navigate("/admin/categories")} className="rounded-md p-2 flex items-center gap-[10px] hover:bg-[#6EC3F666]">
             <Package fill="#FDFBFF"/>
