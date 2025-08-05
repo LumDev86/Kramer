@@ -34,6 +34,10 @@ const options: swaggerJSDoc.Options = {
         description: "Promociones visibles para los usuarios finales",
       },
       {
+        name: "Admin - Checkout",
+        description: "Endpoints para la gestión de formularios de checkout desde el panel de administrador.",
+      },
+      {
         name: "Admin - Products",
         description: "Gestión de productos por parte del administrador",
       },
