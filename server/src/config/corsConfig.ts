@@ -19,5 +19,5 @@ export const corsOptions: cors.CorsOptions = {
       callback(new Error("CORS policy does not allow this origin"));
     }
   },
-  credentials: true,
+  //credentials: true,
 };
