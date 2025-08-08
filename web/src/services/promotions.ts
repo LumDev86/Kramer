@@ -6,10 +6,10 @@ const prefijo = `${apiUrl}/api`;
 
 const getAllPromotions = async (): Promise<PromotionsResponse[]> => {
   try {
-    const response = await axios.get<PromotionsResponse[]>(
+    const response = await axios.get(
       `${prefijo}/user/promotions`
     );
-    return response.data;
+    return response.data.promotions;
   } catch (error) {
     const axiosError = error as AxiosError;
     console.error(
