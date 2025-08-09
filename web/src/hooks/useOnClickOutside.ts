@@ -10,5 +10,5 @@ export const useClickOutside = (ref: React.RefObject<HTMLElement | null>, callba
 
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
-  }, [callback]);
+  }, [callback, ref]);
 };
