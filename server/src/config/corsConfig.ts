@@ -11,13 +11,15 @@ const allowedOrigins = [
 
 export const corsOptions: cors.CorsOptions = {
   origin: function (origin, callback) {
+    // Permitir peticiones sin origin (Postman, SSR)
     if (!origin) return callback(null, true);
 
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
+      console.warn(`❌ CORS blocked: ${origin}`);
       callback(new Error("CORS policy does not allow this origin"));
     }
   },
-  //credentials: true,
+  credentials: true, // si usamos cookies o auth headers
 };
