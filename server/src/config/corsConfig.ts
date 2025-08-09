@@ -1,4 +1,4 @@
-import cors from "cors";
+/*import cors from "cors";
 import { config } from "@config/validateEnv";
 
 const allowedOrigins = [
@@ -23,3 +23,4 @@ export const corsOptions: cors.CorsOptions = {
   },
   credentials: true, // si usamos cookies o auth headers
 };
+*/

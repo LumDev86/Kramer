@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
-import { corsOptions } from "@config/corsConfig";
 import router from "@routes/indexRoutes";
 import dotenv from "dotenv";
 import { setupSwagger } from "@config/swagger";
@@ -12,7 +11,7 @@ const server = express();
 setupSwagger(server);
 
 // Middlewares
-server.use(cors(corsOptions));
+server.use(cors());
 server.use(morgan("dev")); // Muestra logs de las peticiones en consola
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
